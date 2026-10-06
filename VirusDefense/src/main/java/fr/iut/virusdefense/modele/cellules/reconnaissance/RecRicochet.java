@@ -82,10 +82,10 @@ public class RecRicochet extends Reconnaissance{
         int indMaladiePlusProche;
 
         indMaladiePlusProche = 0;
-        distanceMin = candidats.get(0).distanceEuclidienne(getLigne(), getColonne());
+        distanceMin = candidats.get(0).getCoordonees().distanceEuclidienne(getLigne(), getColonne());
 
         for (int i = 1; i < candidats.size(); i++){
-            distance = candidats.get(i).distanceEuclidienne(getLigne(), getColonne());
+            distance = candidats.get(i).getCoordonees().distanceEuclidienne(getLigne(), getColonne());
             if (distance < distanceMin){
                 indMaladiePlusProche = i;
                 distanceMin = distance;

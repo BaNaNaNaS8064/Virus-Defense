@@ -8,9 +8,7 @@ import java.util.List;
 public abstract class Positionnable extends Identifiable{
 
     private final Environnement environnement;
-
-    private final DoubleProperty ligneProperty;
-    private final DoubleProperty colonneProperty;
+    private final Coordonees coordonees;
 
     public Positionnable(Environnement environnement, int ligne, int colonne){
         this(environnement, ligne + 0.5, colonne + 0.5);
@@ -19,9 +17,7 @@ public abstract class Positionnable extends Identifiable{
     public Positionnable(Environnement environnement, double ligne, double colonne){
         super();
         this.environnement = environnement;
-
-        ligneProperty = new SimpleDoubleProperty(ligne);
-        colonneProperty = new SimpleDoubleProperty(colonne);
+        this.coordonees = new Coordonees(ligne,colonne);
     }
 
     public Environnement getEnvironnement() {
@@ -29,27 +25,31 @@ public abstract class Positionnable extends Identifiable{
     }
 
     public final double getLigne(){
-        return ligneProperty.getValue();
+        return coordonees.getLigne();
     }
 
-    public final void setLigne(double y){
-        this.ligneProperty.setValue(y);
+    public final void setLigne(double ligne){
+        coordonees.setLigne(ligne);
     }
 
     public final DoubleProperty ligneProperty(){
-        return ligneProperty;
+        return coordonees.ligneProperty();
     }
 
     public final double getColonne(){
-        return colonneProperty.getValue();
+        return coordonees.getColonne();
     }
 
     public final void setColonne(double colonne){
-        this.colonneProperty.setValue(colonne);
+        coordonees.setColonne(colonne);
     }
 
     public final DoubleProperty colonneProperty(){
-        return colonneProperty;
+        return coordonees.colonneProperty();
+    }
+
+    public Coordonees getCoordonees() {
+        return coordonees;
     }
 
     public List<Integer> position(){
@@ -57,11 +57,7 @@ public abstract class Positionnable extends Identifiable{
     }
 
     public double distanceEuclidienne(Positionnable e){
-        return distanceEuclidienne(e.getLigne(), e.getColonne());
-    }
-
-    public double distanceEuclidienne(double ligne, double colonne){
-        return Math.sqrt(Math.pow((getLigne() - ligne), 2) + Math.pow((getColonne() - colonne), 2));
+        return coordonees.distanceEuclidienne(e.getLigne(), e.getColonne());
     }
 
     public boolean voit(Positionnable e, boolean ignorerCellules){
