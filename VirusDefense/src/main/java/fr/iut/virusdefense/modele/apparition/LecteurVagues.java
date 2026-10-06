@@ -17,11 +17,7 @@ public class LecteurVagues extends LecteurFichier {
     public LecteurVagues(int nbPointsApparition, String idNiveau){
         super("niveaux/" + idNiveau + "/vague.txt");
         this.nbPointsApparition = nbPointsApparition;
-        try{
-            lire();
-        }catch(FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        lire();
     }
 
     private double[] prochaineLigne(String s){
@@ -42,8 +38,9 @@ public class LecteurVagues extends LecteurFichier {
         return vagues;
     }
 
-    public void lire() throws FileNotFoundException {
-        scanner = new Scanner(fichier);
+    @Override
+    public void lire() {
+        ouvrirScanner();
         double[] maladiesInfo;
         String ligne;
 

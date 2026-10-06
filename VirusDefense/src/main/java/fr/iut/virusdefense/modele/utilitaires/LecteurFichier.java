@@ -6,8 +6,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public abstract class LecteurFichier {
-    protected File fichier;
-    protected Scanner scanner;
+    private File fichier;
+    private Scanner scanner;
 
     public LecteurFichier(String cheminRelatif) {
         try {
@@ -17,4 +17,14 @@ public abstract class LecteurFichier {
         }
     }
     protected abstract void lire() throws FileNotFoundException;
+
+    public void ouvrirScanner(){
+        try {
+            scanner = new Scanner(fichier);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Scanner getScanner() { return scanner; }
 }

@@ -14,15 +14,11 @@ public class LecteurDeCarte extends LecteurFichier{
     public LecteurDeCarte(Environnement environnement, String idNiveau){
         super("niveaux/" + idNiveau + "/carte.txt");
         constructeurDeCarte = new ConstructeurDeCarte(environnement);
-        try {
-            lire();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        lire();
     }
 
     private int[] prochaineLigne(){
-        String[] ligneString = scanner.nextLine().split(" ");
+        String[] ligneString = getScanner().nextLine().split(" ");
         int[] ligneInt = new int[ligneString.length];
 
         for (int i = 0; i < ligneString.length; i++)
@@ -31,8 +27,9 @@ public class LecteurDeCarte extends LecteurFichier{
         return ligneInt;
     }
 
-    protected void lire() throws FileNotFoundException {
-        scanner = new Scanner(fichier);
+    @Override
+    protected void lire() {
+        ouvrirScanner();
         int[] ligne;
         int hauteur, largeur;
         int nbPointsApparitions;
@@ -44,7 +41,7 @@ public class LecteurDeCarte extends LecteurFichier{
 
         constructeurDeCarte.setObjectif(prochaineLigne());
 
-        nbPointsApparitions = Integer.parseInt(scanner.nextLine());
+        nbPointsApparitions = Integer.parseInt(getScanner().nextLine());
         for (int i=0; i<nbPointsApparitions; i++)
             constructeurDeCarte.ajouterPointApparition(prochaineLigne());
 
