@@ -17,12 +17,12 @@ public class RizCocher extends Cellule{
 
     @Override
     public void initRec() {
-        setReconnaissance(new RecRicochet(getEnvironnement(), getLigne(), getColonne(), 3.0, 3));
+        setReconnaissance(new RecRicochet(getEnvironnement(), getCoordonees(), 3.0, 3));
     }
 
     @Override
     public void initGestionnaireAttaque() {
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonRicochet(getEnvironnement(), getLigne(), getColonne(), 75, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonRicochet(getEnvironnement(), getCoordonees(), 75, getReconnaissance().getCibles()));
     }
 
     public static RizCocher creer(Environnement env, int ligne, int colonne){

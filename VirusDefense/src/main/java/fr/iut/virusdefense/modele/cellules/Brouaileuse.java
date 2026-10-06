@@ -17,12 +17,12 @@ public class Brouaileuse extends Cellule {
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getLigne(), getColonne(), 1.5, 1));
+        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 1.5, 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueZone(getEnvironnement(), getLigne(), getColonne(), 90, getReconnaissance().getCibles(), getReconnaissance().getPortee()));
+        setGestionnaireAttaque(new GestionnaireAttaqueZone(getEnvironnement(), getCoordonees(), 90, getReconnaissance().getCibles(), getReconnaissance().getPortee()));
     }
 
     public static Brouaileuse creer(Environnement env, int ligne, int colonne){

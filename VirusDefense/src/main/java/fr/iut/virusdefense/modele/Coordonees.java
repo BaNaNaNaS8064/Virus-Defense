@@ -12,6 +12,11 @@ public class Coordonees {
         this.colonneProperty = new SimpleDoubleProperty(colonne);
     }
 
+    public Coordonees(Coordonees coordonees){
+        this.ligneProperty = new SimpleDoubleProperty(coordonees.getLigne());
+        this.colonneProperty = new SimpleDoubleProperty(coordonees.getColonne());
+    }
+
     public double getLigne() {
         return ligneProperty.getValue();
     }

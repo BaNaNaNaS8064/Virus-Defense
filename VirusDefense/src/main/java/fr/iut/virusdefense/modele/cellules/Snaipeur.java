@@ -17,12 +17,12 @@ public class Snaipeur extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getLigne(), getColonne(), 12.0, 1));
+        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 12.0, 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getLigne(), getColonne(), 100, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getCoordonees(), 100, getReconnaissance().getCibles()));
     }
 
     public static Snaipeur creer(Environnement env, int ligne, int colonne){

@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.modele.cellules.gestionnaireAttaque;
 
+import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.Positionnable;
 import fr.iut.virusdefense.modele.cellules.alteration.Alteration;
@@ -12,8 +13,8 @@ public abstract class GestionnaireAttaque extends Positionnable {
     private final ArrayList<Alteration> alterations;
     private double degats;
 
-    public GestionnaireAttaque(Environnement environnement, double ligne, double colonne, double degats, ArrayList<Maladie> cibles){
-        super(environnement, ligne, colonne);
+    public GestionnaireAttaque(Environnement environnement, Coordonees coordonees, double degats, ArrayList<Maladie> cibles){
+        super(environnement, coordonees);
         this.cibles = cibles;
         this.alterations = new ArrayList<>();
         this.degats = degats;

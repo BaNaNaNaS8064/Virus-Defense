@@ -1,6 +1,7 @@
 package fr.iut.virusdefense.modele.cellules.attaques;
 
 import fr.iut.virusdefense.modele.Acteur;
+import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.Positionnable;
 import fr.iut.virusdefense.modele.cellules.alteration.Alteration;
@@ -14,12 +15,12 @@ public abstract class Attaque extends Positionnable implements Acteur {
     private final List<Alteration> alterations;
     private final double degats;
 
-    public Attaque(Environnement environnement, double ligne, double colonne, double degats, List<Alteration> alterations, Maladie cible){
-        this(environnement, ligne, colonne, degats, alterations, List.of(cible));
+    public Attaque(Environnement environnement, Coordonees coordonees, double degats, List<Alteration> alterations, Maladie cible){
+        this(environnement, coordonees, degats, alterations, List.of(cible));
     }
 
-    public Attaque(Environnement environnement, double ligne, double colonne, double degats, List<Alteration> alterations, List<Maladie> cibles) {
-        super(environnement, ligne, colonne);
+    public Attaque(Environnement environnement, Coordonees coordonees, double degats, List<Alteration> alterations, List<Maladie> cibles) {
+        super(environnement, coordonees);
         this.degats = degats;
         this.alterations = alterations;
         this.cibles = cibles;
