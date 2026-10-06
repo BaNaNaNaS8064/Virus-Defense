@@ -3,7 +3,6 @@ package fr.iut.virusdefense.modele.apparition;
 import fr.iut.virusdefense.modele.utilitaires.LecteurFichier;
 import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
 
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class LecteurVagues extends LecteurFichier {
@@ -17,7 +16,6 @@ public class LecteurVagues extends LecteurFichier {
     public LecteurVagues(int nbPointsApparition, String idNiveau){
         super("niveaux/" + idNiveau + "/vague.txt");
         this.nbPointsApparition = nbPointsApparition;
-        lire();
     }
 
     private double[] prochaineLigne(String s){
@@ -39,7 +37,7 @@ public class LecteurVagues extends LecteurFichier {
     }
 
     @Override
-    public void lire() {
+    public void lireContenu() {
         ouvrirScanner();
         double[] maladiesInfo;
         String ligne;

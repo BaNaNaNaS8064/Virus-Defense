@@ -15,8 +15,9 @@ public abstract class LecteurFichier {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        lire();
     }
-    protected abstract void lire() throws FileNotFoundException;
+    protected abstract void lireContenu();
 
     public void ouvrirScanner(){
         try {
@@ -27,4 +28,10 @@ public abstract class LecteurFichier {
     }
 
     public Scanner getScanner() { return scanner; }
+
+    public void lire(){
+        ouvrirScanner();
+        lireContenu();
+        scanner.close();
+    }
 }
