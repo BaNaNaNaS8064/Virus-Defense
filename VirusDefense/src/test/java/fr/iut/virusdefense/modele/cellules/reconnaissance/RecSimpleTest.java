@@ -55,7 +55,7 @@ class RecSimpleTest {
         recSimple.actualiser();
         assertTrue(recSimple.aAuMoinsUneCible(), "Il y a exactement une cible valide");
 
-        env.getMaladies().clear();
+        env.getGestionnaireActeur().getMaladies().clear();
         recSimple.actualiser();
         assertFalse(recSimple.aAuMoinsUneCible(),"Il y a pas de cibles");
 
@@ -76,7 +76,7 @@ class RecSimpleTest {
         recSimple.actualiser();
         assertTrue(recSimple.aAssezDeCibles(), "Il y a exactement une cible valide");
 
-        env.getMaladies().clear();
+        env.getGestionnaireActeur().getMaladies().clear();
         recSimple.actualiser();
         assertFalse(recSimple.aAssezDeCibles(),"Il y a pas de cibles");
 
@@ -99,7 +99,7 @@ class RecSimpleTest {
         recSimple.actualiser();
         assertTrue(recSimple.valide(), "Il y a exactement une cible valide");
 
-        env.getMaladies().clear();
+        env.getGestionnaireActeur().getMaladies().clear();
         recSimple.actualiser();
         assertFalse(recSimple.valide(),"Il y a pas de cibles");
 

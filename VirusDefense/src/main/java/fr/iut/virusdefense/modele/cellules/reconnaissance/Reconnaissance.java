@@ -63,8 +63,8 @@ public abstract class Reconnaissance extends Positionnable {
 
         cibles.clear();
 
-        while (!aAssezDeCibles() && i < getEnvironnement().getMaladies().size()) {
-            m = getEnvironnement().getMaladies().get(i);
+        while (!aAssezDeCibles() && i < getEnvironnement().getGestionnaireActeur().getMaladies().size()) {
+            m = getEnvironnement().getGestionnaireActeur().getMaladies().get(i);
 
             if (estValide(m))
                 cibles.add(m);

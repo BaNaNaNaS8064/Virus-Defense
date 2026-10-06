@@ -28,7 +28,9 @@ public class Environnement {
 
     private final Niveau niveau;
 
-    private final ArrayList<Alteration> alterations;
+    private final GestionnaireActeur gestionnaireActeur;
+
+    /*private final ArrayList<Alteration> alterations;
 
     private final ObservableList<Maladie> maladies;
 
@@ -36,7 +38,7 @@ public class Environnement {
 
     private final ObservableList<Zone> zones;
 
-    private final ObservableList<Projectile> projectiles;
+    private final ObservableList<Projectile> projectiles;*/
 
     private final ObjectProperty<StatutPartie> statutPartieProperty;
 
@@ -44,15 +46,16 @@ public class Environnement {
      * Créé un terrain sans maladies
      */
     public Environnement(String idNiveau) {
-        maladies = FXCollections.observableArrayList();
+        /*maladies = FXCollections.observableArrayList();
         rayons = FXCollections.observableArrayList();
         zones =  FXCollections.observableArrayList();
-        projectiles = FXCollections.observableArrayList();
+        projectiles = FXCollections.observableArrayList();*/
         carte = new LecteurDeCarte(this, idNiveau).creer();
         deplacement = new Deplacement(carte);
         joueur = new Joueur();
         niveau = new Niveau(this, idNiveau);
-        alterations = new ArrayList<>();
+        gestionnaireActeur = new GestionnaireActeur(carte.getCellules(), carte.getPointsApparitions());
+        //alterations = new ArrayList<>();
         statutPartieProperty = new SimpleObjectProperty<>(StatutPartie.PASTERMINEE);
     }
 
@@ -68,29 +71,31 @@ public class Environnement {
         return deplacement;
     }
 
-    public ObservableList<Maladie> getMaladies() {
-        return maladies;
-    }
+//    public ObservableList<Maladie> getMaladies() {
+//        return maladies;
+//    }
 
     public Joueur getJoueur() {
         return joueur;
     }
 
-    public ArrayList<Alteration> getAlterations() {
-        return alterations;
-    }
+    public GestionnaireActeur getGestionnaireActeur() {return gestionnaireActeur;}
 
-    public ObservableList<Rayon> getRayons() {
-        return rayons;
-    }
+//    public ArrayList<Alteration> getAlterations() {
+//        return alterations;
+//    }
 
-    public ObservableList<Zone> getZones() {
-        return zones;
-    }
-
-    public ObservableList<Projectile> getProjectiles() {
-        return projectiles;
-    }
+//    public ObservableList<Rayon> getRayons() {
+//        return rayons;
+//    }
+//
+//    public ObservableList<Zone> getZones() {
+//        return zones;
+//    }
+//
+//    public ObservableList<Projectile> getProjectiles() {
+//        return projectiles;
+//    }
 
     public final StatutPartie getStatutPartie(){
         return statutPartieProperty.getValue();
@@ -110,12 +115,12 @@ public class Environnement {
      * @param m une maladie à ajouter
      */
     public void ajouterMaladie(Maladie m) {
-        maladies.add(m);
+        gestionnaireActeur.getMaladies().add(m);
     }
 
     public void ajouterSiConforme(Cellule c){
         if (c != null && joueur.getPc() >= c.getCout()) {
-            carte.getCellules().add(c);
+            gestionnaireActeur.getCellules().add(c);
             joueur.retirerPc(c.getCout());
             deplacement.faireAlgo();
 
@@ -127,7 +132,7 @@ public class Environnement {
     }
 
     public void retirerCellule(Cellule c, boolean rendrePC){
-        carte.getCellules().remove(c);
+        gestionnaireActeur.getCellules().remove(c);
 
         if (rendrePC)
             joueur.ajouterPc(c.getCout());
@@ -139,10 +144,10 @@ public class Environnement {
         int i=0;
         boolean trouve = false;
 
-        while (!trouve && i < carte.getCellules().size()){
-            if ((int)carte.getCellules().get(i).getLigne() == ligne && (int)carte.getCellules().get(i).getColonne() == colonne){
+        while (!trouve && i < gestionnaireActeur.getCellules().size()){
+            if ((int)gestionnaireActeur.getCellules().get(i).getLigne() == ligne && (int)gestionnaireActeur.getCellules().get(i).getColonne() == colonne){
                 trouve = true;
-                retirerCellule(carte.getCellules().get(i), rendrePC);
+                retirerCellule(gestionnaireActeur.getCellules().get(i), rendrePC);
             }
             i++;
         }
@@ -150,15 +155,15 @@ public class Environnement {
     }
 
     public void ajouterRayon(Rayon r){
-        rayons.add(r);
+        gestionnaireActeur.getRayons().add(r);
     }
 
     public void ajouterProjectile(Projectile p){
-        projectiles.add(p);
+        gestionnaireActeur.getProjectiles().add(p);
     }
 
     public void ajouterZone(Zone z){
-        zones.add(z);
+        gestionnaireActeur.getZones().add(z);
     }
 
     /**
@@ -166,51 +171,35 @@ public class Environnement {
      */
     public void unTour() {
         if (getStatutPartie() == StatutPartie.PASTERMINEE) {
-            if (joueur.getPv() > 0 && (!niveau.estTermine() || !maladies.isEmpty())) {
-                for (int i = rayons.size() - 1; i >= 0; i--)
-                    if (rayons.get(i).aDepasseAgeMaximal())
-                        rayons.remove(i);
-
-                for (int i = zones.size() - 1; i >= 0; i--)
-                    if (zones.get(i).aDepasseAgeMaximal())
-                        zones.remove(i);
-
-                for (int i = projectiles.size() - 1; i >= 0; i--)
-                    if (projectiles.get(i).getCibleTouché())
-                        projectiles.remove(i);
-
-                for (int i = alterations.size() - 1; i >= 0; i--)
-                    if (alterations.get(i).estFinie())
-                        alterations.remove(i);
-
-                for (Rayon r : rayons)
-                    r.agir();
-
-                for (Zone z : zones)
-                    z.agir();
-
-                for(Projectile p : projectiles)
-                    p.agir();
-
-                for (Cellule c : carte.getCellules())
-                    c.agir();
-
+            if (joueur.getPv() > 0 && (!niveau.estTermine() || !gestionnaireActeur.getMaladies().isEmpty())) {
                 niveau.update();
 
-                for (PointApparition p : carte.getPointsApparitions())
-                    p.agir();
+                for (int i = gestionnaireActeur.getRayons().size() - 1; i >= 0; i--)
+                    if (gestionnaireActeur.getRayons().get(i).aDepasseAgeMaximal())
+                        gestionnaireActeur.getRayons().remove(i);
 
-                for (Alteration alt : alterations) {
-                    alt.agir();
+                for (int i = gestionnaireActeur.getZones().size() - 1; i >= 0; i--)
+                    if (gestionnaireActeur.getZones().get(i).aDepasseAgeMaximal())
+                        gestionnaireActeur.getZones().remove(i);
+
+                for (int i = gestionnaireActeur.getProjectiles().size() - 1; i >= 0; i--)
+                    if (gestionnaireActeur.getProjectiles().get(i).getCibleTouché())
+                        gestionnaireActeur.getProjectiles().remove(i);
+
+                for (int i = gestionnaireActeur.getAlterations().size() - 1; i >= 0; i--)
+                    if (gestionnaireActeur.getAlterations().get(i).estFinie())
+                        gestionnaireActeur.getAlterations().remove(i);
+
+                for (Acteur a : gestionnaireActeur.getActeurs()){
+                    a.agir();
                 }
 
-                for (int i = maladies.size() - 1; i >= 0; i--) {
-                    maladies.get(i).agir();
-                    if (!maladies.get(i).estVivant()) {
-                        maladies.get(i).capaciteALaMort();
-                        if (!maladies.get(i).aAtteintLObjectif())
-                            joueur.ajouterPc(maladies.get(i).getRecompense());
-                        maladies.remove(i);
+                for (int i = gestionnaireActeur.getMaladies().size() - 1; i >= 0; i--) {
+                    if (!gestionnaireActeur.getMaladies().get(i).estVivant()) {
+                        gestionnaireActeur.getMaladies().get(i).capaciteALaMort();
+                        if (!gestionnaireActeur.getMaladies().get(i).aAtteintLObjectif())
+                            joueur.ajouterPc(gestionnaireActeur.getMaladies().get(i).getRecompense());
+                        gestionnaireActeur.getMaladies().remove(i);
                     }
                 }
             }
@@ -225,8 +214,8 @@ public class Environnement {
 
     public boolean maladiesBloquees(){
         int i = 0;
-        while( i < getMaladies().size()){
-            if(getDeplacement().estBloquee(getMaladies().get(i).position()))
+        while( i < gestionnaireActeur.getMaladies().size()){
+            if(getDeplacement().estBloquee(gestionnaireActeur.getMaladies().get(i).position()))
                 return true;
             i++;
         }
@@ -239,7 +228,7 @@ public class Environnement {
      * @return Vrai si bloqué
      */
     public boolean pointsApparitionBloques(){
-        for (PointApparition pointApparition : carte.getPointsApparitions()) {
+        for (PointApparition pointApparition : gestionnaireActeur.getPointApparitions()) {
             if(deplacement.estBloquee(pointApparition.position()))
                 return true;
         }
@@ -248,12 +237,5 @@ public class Environnement {
 
     public boolean maladieOuPointsApparitionsBloques(){
         return maladiesBloquees() || pointsApparitionBloques();
-    }
-
-    public void toutVider(){
-        maladies.clear();
-        zones.clear();
-        rayons.clear();
-        projectiles.clear();
     }
 }

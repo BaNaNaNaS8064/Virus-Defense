@@ -53,7 +53,7 @@ public class RecRicochet extends Reconnaissance{
             while (!aAssezDeRicochets() && resteCandidats){
                 candidats.clear();
 
-                for (Maladie m : getEnvironnement().getMaladies()) {
+                for (Maladie m : getEnvironnement().getGestionnaireActeur().getMaladies()) {
                     if (ricochetValide(m)) {
                         candidats.add(m);
                     }
