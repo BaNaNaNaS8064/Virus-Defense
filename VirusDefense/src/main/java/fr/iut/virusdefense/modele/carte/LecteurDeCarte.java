@@ -2,25 +2,21 @@ package fr.iut.virusdefense.modele.carte;
 
 import fr.iut.virusdefense.Main;
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.utilitaires.LecteurFichier;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class LecteurDeCarte {
+public class LecteurDeCarte extends LecteurFichier{
 
-    private final File fichier;
     private final ConstructeurDeCarte constructeurDeCarte;
-    private Scanner scanner;
 
     public LecteurDeCarte(Environnement environnement, String idNiveau){
+        super("niveaux/" + idNiveau + "/carte.txt");
+        constructeurDeCarte = new ConstructeurDeCarte(environnement);
         try {
-            fichier = new File(Main.class.getResource("niveaux/" + idNiveau + "/carte.txt").toURI());
-
-            constructeurDeCarte = new ConstructeurDeCarte(environnement);
-
             lire();
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -35,7 +31,7 @@ public class LecteurDeCarte {
         return ligneInt;
     }
 
-    private void lire() throws FileNotFoundException {
+    protected void lire() throws FileNotFoundException {
         scanner = new Scanner(fichier);
         int[] ligne;
         int hauteur, largeur;
