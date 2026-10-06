@@ -23,4 +23,9 @@ public class VirusComposé extends Maladie{
             for (int i=0; i<2; i++)
                 getEnvironnement().getMaladies().add(new VirusComposé(getEnvironnement(), getLigne(), getColonne(), stade+1));
     }
+
+    @Override
+    public boolean peutSubirAlteration() {
+        return true;
+    }
 }

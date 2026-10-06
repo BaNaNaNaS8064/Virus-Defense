@@ -21,4 +21,9 @@ public class GrandChampignon extends Maladie{
     private void resetDelai(){
         delaiInvocation = (int)(300 + Math.random()*120);
     }
+
+    @Override
+    public boolean peutSubirAlteration() {
+        return true;
+    }
 }

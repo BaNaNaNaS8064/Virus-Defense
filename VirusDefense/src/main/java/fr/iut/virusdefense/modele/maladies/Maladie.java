@@ -73,6 +73,8 @@ public abstract class Maladie extends Positionnable implements Acteur {
         }
     }
 
+    public abstract boolean peutSubirAlteration();
+
     public void infligerDegatsAuJoueur(){
         getEnvironnement().getJoueur().retirerPv((int) pv);
     }

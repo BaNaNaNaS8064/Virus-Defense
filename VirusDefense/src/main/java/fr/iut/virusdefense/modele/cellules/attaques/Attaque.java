@@ -49,7 +49,7 @@ public abstract class Attaque extends Positionnable implements Acteur {
 
     public final void donnerAlterations() {
         for (Maladie cible : cibles) {
-            if (!(cible instanceof Tumeur)) {
+            if (cible.peutSubirAlteration()) {
                 for (Alteration alt : getAlterations()) {
                     alt.setMaladie(cible);
                     getEnvironnement().getAlterations().add(alt);
