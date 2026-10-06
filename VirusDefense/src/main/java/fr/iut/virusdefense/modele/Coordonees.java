@@ -15,6 +15,7 @@ public class Coordonees {
     public double getLigne() {
         return ligneProperty.getValue();
     }
+
     public final void setLigne(double y){
         this.ligneProperty.setValue(y);
     }
@@ -22,7 +23,6 @@ public class Coordonees {
     public final DoubleProperty ligneProperty(){
         return ligneProperty;
     }
-
 
     public double getColonne() {
         return colonneProperty.getValue();
