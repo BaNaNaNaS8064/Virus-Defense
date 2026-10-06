@@ -6,5 +6,4 @@ public interface Acteur {
      * Méthode exécutée à chaque tour
      */
     void agir();
-
 }

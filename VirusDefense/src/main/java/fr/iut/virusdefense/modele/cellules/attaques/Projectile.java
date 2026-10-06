@@ -15,7 +15,8 @@ public class Projectile extends Attaque {
         this.cibleTouché = false;
     }
 
-    public boolean getCibleTouché(){
+    @Override
+    public boolean doitEtreRetiré(){
         return cibleTouché;
     }
 

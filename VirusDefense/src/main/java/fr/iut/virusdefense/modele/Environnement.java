@@ -171,43 +171,18 @@ public class Environnement {
      */
     public void unTour() {
         if (getStatutPartie() == StatutPartie.PASTERMINEE) {
-            if (joueur.getPv() > 0 && (!niveau.estTermine() || !gestionnaireActeur.getMaladies().isEmpty())) {
-                niveau.update();
-
-                for (int i = gestionnaireActeur.getRayons().size() - 1; i >= 0; i--)
-                    if (gestionnaireActeur.getRayons().get(i).aDepasseAgeMaximal())
-                        gestionnaireActeur.getRayons().remove(i);
-
-                for (int i = gestionnaireActeur.getZones().size() - 1; i >= 0; i--)
-                    if (gestionnaireActeur.getZones().get(i).aDepasseAgeMaximal())
-                        gestionnaireActeur.getZones().remove(i);
-
-                for (int i = gestionnaireActeur.getProjectiles().size() - 1; i >= 0; i--)
-                    if (gestionnaireActeur.getProjectiles().get(i).getCibleTouché())
-                        gestionnaireActeur.getProjectiles().remove(i);
-
-                for (int i = gestionnaireActeur.getAlterations().size() - 1; i >= 0; i--)
-                    if (gestionnaireActeur.getAlterations().get(i).estFinie())
-                        gestionnaireActeur.getAlterations().remove(i);
-
-                for (Acteur a : gestionnaireActeur.getActeurs()){
-                    a.agir();
-                }
-
-                for (int i = gestionnaireActeur.getMaladies().size() - 1; i >= 0; i--) {
-                    if (!gestionnaireActeur.getMaladies().get(i).estVivant()) {
-                        gestionnaireActeur.getMaladies().get(i).capaciteALaMort();
-                        if (!gestionnaireActeur.getMaladies().get(i).aAtteintLObjectif())
-                            joueur.ajouterPc(gestionnaireActeur.getMaladies().get(i).getRecompense());
-                        gestionnaireActeur.getMaladies().remove(i);
-                    }
-                }
-            }
-            else{
+            if (joueur.getPv() <= 0 || (niveau.estTermine() && gestionnaireActeur.getMaladies().isEmpty())) {
                 if(joueur.getPv()>0)
                     setStatutPartie(StatutPartie.GAGNEE);
                 else
                     setStatutPartie(StatutPartie.PERDUE);
+            }
+            else{
+                niveau.update();
+
+                gestionnaireActeur.acteursARetiré(getJoueur());
+
+                gestionnaireActeur.acteursAgir();
             }
         }
     }

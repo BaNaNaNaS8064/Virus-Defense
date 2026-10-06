@@ -1,10 +1,10 @@
 package fr.iut.virusdefense.modele.cellules.alteration;
 
-import fr.iut.virusdefense.modele.Acteur;
+import fr.iut.virusdefense.modele.ActeurRetirable;
 import fr.iut.virusdefense.modele.Identifiable;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
-public abstract class Alteration extends Identifiable implements Acteur {
+public abstract class Alteration extends Identifiable implements ActeurRetirable {
     private int duree;
     private Maladie maladie;
 
@@ -21,7 +21,8 @@ public abstract class Alteration extends Identifiable implements Acteur {
         this.maladie = m;
     }
 
-    public boolean estFinie(){
+    @Override
+    public boolean doitEtreRetiré(){
         return (0 >= duree || !maladie.estVivant());
     }
 

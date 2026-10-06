@@ -18,7 +18,8 @@ public class Rayon extends Attaque {
         attaquer();
     }
 
-    public boolean aDepasseAgeMaximal(){
+    @Override
+    public boolean doitEtreRetiré(){
         return age > ageMaximal;
     }
 

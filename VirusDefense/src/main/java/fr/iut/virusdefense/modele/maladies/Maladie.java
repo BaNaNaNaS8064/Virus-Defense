@@ -1,12 +1,12 @@
 package fr.iut.virusdefense.modele.maladies;
 
-import fr.iut.virusdefense.modele.Acteur;
+import fr.iut.virusdefense.modele.ActeurRetirable;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.Positionnable;
 
 import java.util.List;
 
-public abstract class Maladie extends Positionnable implements Acteur {
+public abstract class Maladie extends Positionnable implements ActeurRetirable {
     private double pv;
     private final double vitesse;
     private final int recompense;
@@ -55,6 +55,11 @@ public abstract class Maladie extends Positionnable implements Acteur {
                 mourir();
             }
         }
+    }
+
+    @Override
+    public boolean doitEtreRetiré(){
+        return !estVivant();
     }
 
     public void bouger(){
