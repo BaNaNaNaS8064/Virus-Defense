@@ -30,32 +30,17 @@ public class Environnement {
 
     private final GestionnaireActeur gestionnaireActeur;
 
-    /*private final ArrayList<Alteration> alterations;
-
-    private final ObservableList<Maladie> maladies;
-
-    private final ObservableList<Rayon> rayons;
-
-    private final ObservableList<Zone> zones;
-
-    private final ObservableList<Projectile> projectiles;*/
-
     private final ObjectProperty<StatutPartie> statutPartieProperty;
 
     /**
      * Créé un terrain sans maladies
      */
     public Environnement(String idNiveau) {
-        /*maladies = FXCollections.observableArrayList();
-        rayons = FXCollections.observableArrayList();
-        zones =  FXCollections.observableArrayList();
-        projectiles = FXCollections.observableArrayList();*/
         carte = new LecteurDeCarte(this, idNiveau).creer();
         deplacement = new Deplacement(carte);
         joueur = new Joueur();
         niveau = new Niveau(this, idNiveau);
         gestionnaireActeur = new GestionnaireActeur(carte.getCellules(), carte.getPointsApparitions());
-        //alterations = new ArrayList<>();
         statutPartieProperty = new SimpleObjectProperty<>(StatutPartie.PASTERMINEE);
     }
 
@@ -71,31 +56,13 @@ public class Environnement {
         return deplacement;
     }
 
-//    public ObservableList<Maladie> getMaladies() {
-//        return maladies;
-//    }
-
     public Joueur getJoueur() {
         return joueur;
     }
 
     public GestionnaireActeur getGestionnaireActeur() {return gestionnaireActeur;}
 
-//    public ArrayList<Alteration> getAlterations() {
-//        return alterations;
-//    }
 
-//    public ObservableList<Rayon> getRayons() {
-//        return rayons;
-//    }
-//
-//    public ObservableList<Zone> getZones() {
-//        return zones;
-//    }
-//
-//    public ObservableList<Projectile> getProjectiles() {
-//        return projectiles;
-//    }
 
     public final StatutPartie getStatutPartie(){
         return statutPartieProperty.getValue();
