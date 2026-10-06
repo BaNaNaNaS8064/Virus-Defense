@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.modele;
 
-public class Identifiable {
+public abstract class Identifiable {
 
     private static long dernierID = 0;
     private final String id;
