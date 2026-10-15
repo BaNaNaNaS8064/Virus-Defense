@@ -2,11 +2,10 @@ package fr.iut.virusdefense.modele.utilitaires;
 import fr.iut.virusdefense.Main;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public abstract class LecteurFichier {
-    private File fichier;
+    private final File fichier;
     private Scanner scanner;
 
     public LecteurFichier(String cheminRelatif) {
@@ -15,8 +14,8 @@ public abstract class LecteurFichier {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        lire();
     }
+
     protected abstract void lireContenu();
 
     public void ouvrirScanner(){

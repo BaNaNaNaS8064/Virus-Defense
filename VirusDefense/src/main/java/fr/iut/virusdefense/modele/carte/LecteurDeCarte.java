@@ -10,6 +10,7 @@ public class LecteurDeCarte extends LecteurFichier{
     public LecteurDeCarte(Environnement environnement, String idNiveau){
         super("niveaux/" + idNiveau + "/carte.txt");
         constructeurDeCarte = new ConstructeurDeCarte(environnement);
+        lire();
     }
 
     private int[] prochaineLigne(){
@@ -24,7 +25,6 @@ public class LecteurDeCarte extends LecteurFichier{
 
     @Override
     protected void lireContenu() {
-        ouvrirScanner();
         int[] ligne;
         int hauteur, largeur;
         int nbPointsApparitions;
@@ -45,7 +45,6 @@ public class LecteurDeCarte extends LecteurFichier{
 
             for (int indColonne = 0; indColonne < largeur; indColonne++)
                 constructeurDeCarte.changerValeur(indLigne, indColonne, ligne[indColonne] == 1);
-
         }
     }
 

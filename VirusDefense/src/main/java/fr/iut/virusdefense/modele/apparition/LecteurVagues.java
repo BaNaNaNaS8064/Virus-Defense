@@ -3,19 +3,15 @@ package fr.iut.virusdefense.modele.apparition;
 import fr.iut.virusdefense.modele.utilitaires.LecteurFichier;
 import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
 
-import java.util.Scanner;
-
 public class LecteurVagues extends LecteurFichier {
-    private Scanner scanner;
     private Vague[] vagues;
-    private int nbPointApparition;
-
     private int nbVague;
     private int nbPointsApparition;
 
     public LecteurVagues(int nbPointsApparition, String idNiveau){
-        super("niveaux/" + idNiveau + "/vague.txt");
+        super("niveaux/" + idNiveau + "/vagues.txt"); // Correction : vagues au pluriel
         this.nbPointsApparition = nbPointsApparition;
+        lire();
     }
 
     private double[] prochaineLigne(String s){
@@ -38,16 +34,16 @@ public class LecteurVagues extends LecteurFichier {
 
     @Override
     public void lireContenu() {
-        ouvrirScanner();
         double[] maladiesInfo;
         String ligne;
 
-        nbVague = Integer.parseInt(scanner.nextLine());
+        nbVague = Integer.parseInt(getScanner().nextLine());
         vagues = new Vague[nbVague];
-        scanner.nextLine();
+        getScanner().nextLine();
+
         for (int indVague = 0; indVague < nbVague; indVague++) {
             vagues[indVague] = new Vague();
-            ligne = scanner.nextLine();
+            ligne = getScanner().nextLine();
             while(!ligne.equals("#")){
                 maladiesInfo = prochaineLigne(ligne);
                 for (int indPointApparition = 0; indPointApparition < nbPointsApparition; indPointApparition++) {
@@ -56,7 +52,7 @@ public class LecteurVagues extends LecteurFichier {
                         vagues[indVague].getListeApparitions().get(indPointApparition).ajouter(CodeMaladie.values()[(int)maladiesInfo[1]], (int)(maladiesInfo[2] *60));
                     }
                 }
-                ligne = scanner.nextLine();
+                ligne = getScanner().nextLine();
             }
         }
     }
