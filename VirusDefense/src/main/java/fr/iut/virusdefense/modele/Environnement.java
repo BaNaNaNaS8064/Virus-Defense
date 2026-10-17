@@ -9,6 +9,7 @@ import fr.iut.virusdefense.modele.cellules.alteration.Alteration;
 import fr.iut.virusdefense.modele.cellules.attaques.Projectile;
 import fr.iut.virusdefense.modele.cellules.attaques.Rayon;
 import fr.iut.virusdefense.modele.cellules.attaques.Zone;
+import fr.iut.virusdefense.modele.deplacement.Deplacement;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 import fr.iut.virusdefense.modele.utilitaires.StatutPartie;
 import javafx.beans.property.ObjectProperty;
