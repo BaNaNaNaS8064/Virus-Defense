@@ -1,16 +1,15 @@
 package fr.iut.virusdefense.modele.cellules.attaques;
 
-import fr.iut.virusdefense.modele.Acteur;
 import fr.iut.virusdefense.modele.Coordonees;
+import fr.iut.virusdefense.modele.ActeurRetirable;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.Positionnable;
 import fr.iut.virusdefense.modele.cellules.alteration.Alteration;
 import fr.iut.virusdefense.modele.maladies.Maladie;
-import fr.iut.virusdefense.modele.maladies.Tumeur;
 
 import java.util.List;
 
-public abstract class Attaque extends Positionnable implements Acteur {
+public abstract class Attaque extends Positionnable implements ActeurRetirable {
     private List<Maladie> cibles;
     private final List<Alteration> alterations;
     private final double degats;
@@ -53,7 +52,7 @@ public abstract class Attaque extends Positionnable implements Acteur {
             if (cible.peutSubirAlteration()) {
                 for (Alteration alt : getAlterations()) {
                     alt.setMaladie(cible);
-                    getEnvironnement().getAlterations().add(alt);
+                    getEnvironnement().getGestionnaireActeur().getAlterations().add(alt);
                 }
             }
         }

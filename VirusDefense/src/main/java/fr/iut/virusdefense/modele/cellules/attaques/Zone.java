@@ -28,7 +28,8 @@ public abstract class Zone extends Attaque {
         return age;
     }
 
-    public boolean aDepasseAgeMaximal(){
+    @Override
+    public boolean doitEtreRetiré(){
         return age > ageMaximal;
     }
 

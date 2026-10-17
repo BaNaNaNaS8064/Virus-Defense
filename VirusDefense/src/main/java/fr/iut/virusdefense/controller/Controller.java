@@ -83,7 +83,7 @@ public class Controller implements Initializable {
 
     private void démarrerEnv(){
         if (environnement != null)
-            environnement.toutVider();
+            environnement.getGestionnaireActeur().toutVider();
         GestionnaireMenuClick.fermerMenuActif();
         pause = false;
         imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/play.png"))));
@@ -104,10 +104,10 @@ public class Controller implements Initializable {
     }
 
     private void initObservateurs(){
-        environnement.getMaladies().addListener(new ObsListeMaladies(paneDessin));
-        environnement.getRayons().addListener(new ObsListeRayons(paneDessin));
-        environnement.getZones().addListener(new ObsListeZones(paneDessin));
-        environnement.getProjectiles().addListener(new ObsListeProjectiles(paneDessin));
+        environnement.getGestionnaireActeur().getMaladies().addListener(new ObsListeMaladies(paneDessin));
+        environnement.getGestionnaireActeur().getRayons().addListener(new ObsListeRayons(paneDessin));
+        environnement.getGestionnaireActeur().getZones().addListener(new ObsListeZones(paneDessin));
+        environnement.getGestionnaireActeur().getProjectiles().addListener(new ObsListeProjectiles(paneDessin));
         environnement.getJoueur().pvProperty().addListener(new ObsVieJoueur(new GestionnaireBarreDeVie(barreDeVie, labelPvActuels, labelPvMax, environnement.getJoueur().getPv())));
         environnement.statutPartieProperty().addListener(new ObsStatutPartie(new GestionnaireEcranDeFin(paneDessin)));
     }
