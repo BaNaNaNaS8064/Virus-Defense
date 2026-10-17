@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.modele.cellules.gestionnaireAttaque;
 
+import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.attaques.ProjectileExplosif;
 import fr.iut.virusdefense.modele.maladies.Maladie;
@@ -13,8 +14,8 @@ public class GestionnaireAttaqueProjectileExplosif extends GestionnaireAttaque {
     private final double rayonInstantane;
 
 
-    public GestionnaireAttaqueProjectileExplosif(Environnement environnement, double ligne, double colonne, double degats, ArrayList<Maladie> cibles, double rayonZonePortee, double degatsInstantane, double rayonInstantane , int tempsZone){
-        super(environnement, ligne, colonne, degats, cibles);
+    public GestionnaireAttaqueProjectileExplosif(Environnement environnement, Coordonees coordonees, double degats, ArrayList<Maladie> cibles, double rayonZonePortee, double degatsInstantane, double rayonInstantane , int tempsZone){
+        super(environnement, coordonees, degats, cibles);
         this.tempsZone = tempsZone;
         this.rayonZonePortee = rayonZonePortee;
         this.degatsInstantane = degatsInstantane;
@@ -30,7 +31,7 @@ public class GestionnaireAttaqueProjectileExplosif extends GestionnaireAttaque {
     }
 
     public void attaque(Maladie m){
-        getEnvironnement().ajouterProjectile(new ProjectileExplosif(getEnvironnement(), getLigne(), getColonne(), m, getDegats(), getAlterations(),rayonZonePortee,degatsInstantane,rayonInstantane, tempsZone));
+        getEnvironnement().ajouterProjectile(new ProjectileExplosif(getEnvironnement(), getCoordonees(), m, getDegats(), getAlterations(),rayonZonePortee,degatsInstantane,rayonInstantane, tempsZone));
     }
 
     public void attaqueCibles(){

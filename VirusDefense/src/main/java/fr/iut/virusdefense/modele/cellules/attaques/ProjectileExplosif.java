@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.modele.cellules.attaques;
 
+import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.alteration.Alteration;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
@@ -14,8 +15,8 @@ public class ProjectileExplosif extends Projectile {
     private final double rayonInstantane;
     private final int tempsZone;
 
-    public ProjectileExplosif(Environnement environnement, double ligne, double colonne, Maladie cible, double degats, List<Alteration> alterations, double rayonZonePortee, double degatsInstantane, double rayonInstantane, int tempsZone) {
-        super(environnement, ligne, colonne, cible, degats, alterations);
+    public ProjectileExplosif(Environnement environnement, Coordonees coordonees, Maladie cible, double degats, List<Alteration> alterations, double rayonZonePortee, double degatsInstantane, double rayonInstantane, int tempsZone) {
+        super(environnement, new Coordonees(coordonees), cible, degats, alterations);
         this.rayonZonePortee = rayonZonePortee;
         this.degatsInstantane = degatsInstantane;
         this.rayonInstantane = rayonInstantane;
@@ -24,10 +25,10 @@ public class ProjectileExplosif extends Projectile {
 
     @Override
     public void attaquer(){
-        Reconnaissance reconnaissance = new RecSimple(getEnvironnement(), getLigne(), getColonne(), rayonZonePortee, Integer.MAX_VALUE);
-        Zone explosion = new ZoneSimple(getEnvironnement(), getLigne(), getColonne(), getCibles(), degatsInstantane, 30, getAlterations(), rayonInstantane);
+        Reconnaissance reconnaissance = new RecSimple(getEnvironnement(), getCoordonees(), rayonZonePortee, Integer.MAX_VALUE);
+        Zone explosion = new ZoneSimple(getEnvironnement(), getCoordonees(), getCibles(), degatsInstantane, 30, getAlterations(), rayonInstantane);
         getEnvironnement().ajouterZone(explosion);
-        Zone explosionDuree = new ZonePersistante(getEnvironnement(), getLigne(), getColonne(), getCibles(), getDegats(), tempsZone, getAlterations(), rayonZonePortee, reconnaissance);
+        Zone explosionDuree = new ZonePersistante(getEnvironnement(), getCoordonees(), getCibles(), getDegats(), tempsZone, getAlterations(), rayonZonePortee, reconnaissance);
         getEnvironnement().ajouterZone(explosionDuree);
     }
 

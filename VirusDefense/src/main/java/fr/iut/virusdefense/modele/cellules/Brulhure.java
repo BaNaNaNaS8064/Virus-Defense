@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.modele.cellules;
 
+import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueProjectileExplosif;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecBrulure;
@@ -19,12 +20,12 @@ public class Brulhure extends Cellule{
 
     @Override
     public void initRec() {
-        setReconnaissance(new RecBrulure(getEnvironnement(), getLigne(),getColonne(), 5, 1));
+        setReconnaissance(new RecBrulure(getEnvironnement(), getCoordonees(), 5, 1));
     }
 
     @Override
     public void initGestionnaireAttaque() {
-        setGestionnaireAttaque(new GestionnaireAttaqueProjectileExplosif(getEnvironnement(),getLigne(),getColonne(),25,getReconnaissance().getCibles(),1.5,400,0.5 ,tempsZone));
+        setGestionnaireAttaque(new GestionnaireAttaqueProjectileExplosif(getEnvironnement(),getCoordonees(),25,getReconnaissance().getCibles(),1.5,400,0.5 ,tempsZone));
     }
 
     public static Brulhure creer(Environnement env, int ligne, int colonne){

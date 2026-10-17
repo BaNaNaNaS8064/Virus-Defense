@@ -17,12 +17,12 @@ public class Lasere extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getLigne(), getColonne(), 3.0, 1));
+        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 3.0, 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getLigne(), getColonne(), 1, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getCoordonees(), 1, getReconnaissance().getCibles()));
     }
 
     public static Lasere creer(Environnement env, int ligne, int colonne){

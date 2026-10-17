@@ -18,12 +18,12 @@ public class Sainple extends Cellule {
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getLigne(), getColonne(), 3.0, 1));
+        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 3.0, 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueProjectile(getEnvironnement(), getLigne(), getColonne(), 40, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueProjectile(getEnvironnement(), getCoordonees(), 40, getReconnaissance().getCibles()));
     }
 
     public static Sainple creer(Environnement env, int ligne, int colonne){

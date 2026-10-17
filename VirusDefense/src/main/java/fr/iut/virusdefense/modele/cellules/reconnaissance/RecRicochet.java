@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.modele.cellules.reconnaissance;
 
+import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
@@ -9,8 +10,8 @@ import java.util.List;
 public class RecRicochet extends Reconnaissance{
     private int nbRicochets;
 
-    public RecRicochet(Environnement environnement, double ligne, double colonne, double portee, int nbRicochets){
-        super(environnement, ligne, colonne, portee, 1);
+    public RecRicochet(Environnement environnement, Coordonees coordonees, double portee, int nbRicochets){
+        super(environnement, coordonees, portee, 1);
         this.nbRicochets = nbRicochets;
     }
 
@@ -82,10 +83,10 @@ public class RecRicochet extends Reconnaissance{
         int indMaladiePlusProche;
 
         indMaladiePlusProche = 0;
-        distanceMin = candidats.get(0).distanceEuclidienne(getLigne(), getColonne());
+        distanceMin = candidats.get(0).getCoordonees().distanceEuclidienne(getLigne(), getColonne());
 
         for (int i = 1; i < candidats.size(); i++){
-            distance = candidats.get(i).distanceEuclidienne(getLigne(), getColonne());
+            distance = candidats.get(i).getCoordonees().distanceEuclidienne(getLigne(), getColonne());
             if (distance < distanceMin){
                 indMaladiePlusProche = i;
                 distanceMin = distance;

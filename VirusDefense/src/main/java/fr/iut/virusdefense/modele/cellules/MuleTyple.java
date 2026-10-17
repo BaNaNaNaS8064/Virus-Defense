@@ -18,12 +18,12 @@ public class MuleTyple extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getLigne(), getColonne(), 3.0 , 3));
+        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 3.0 , 3));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getLigne(), getColonne(), 15, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getCoordonees(), 15, getReconnaissance().getCibles()));
     }
 
     public static MuleTyple creer(Environnement env, int ligne, int colonne){

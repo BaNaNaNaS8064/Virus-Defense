@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.modele.cellules.attaques;
 
+import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.alteration.Alteration;
 import fr.iut.virusdefense.modele.maladies.Maladie;
@@ -11,8 +12,8 @@ public abstract class Zone extends Attaque {
     private final int ageMaximal;
     private final double rayonZone;
 
-    public Zone(Environnement environnement, double ligne, double colonne, List<Maladie> cibles, double degats, int ageMaximal, List<Alteration> alterations, double rayonZone) {
-        super(environnement, ligne, colonne, degats, alterations, cibles);
+    public Zone(Environnement environnement, Coordonees coordonees, List<Maladie> cibles, double degats, int ageMaximal, List<Alteration> alterations, double rayonZone) {
+        super(environnement, new Coordonees(coordonees), degats, alterations, cibles);
         age = 0;
         this.ageMaximal = ageMaximal;
 

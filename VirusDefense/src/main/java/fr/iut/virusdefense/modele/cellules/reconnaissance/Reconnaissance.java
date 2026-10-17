@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.modele.cellules.reconnaissance;
 
+import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.Positionnable;
 import fr.iut.virusdefense.modele.maladies.Maladie;
@@ -12,8 +13,8 @@ public abstract class Reconnaissance extends Positionnable {
     private int nombreCiblesMax;
     private final ArrayList<Maladie> cibles;
 
-    public Reconnaissance(Environnement environnement, double ligne, double colonne, double portee, int nombreCiblesMax){
-        super(environnement, ligne, colonne);
+    public Reconnaissance(Environnement environnement, Coordonees coordonees, double portee, int nombreCiblesMax){
+        super(environnement, coordonees);
         this.portee = portee;
         this.nombreCiblesMax = nombreCiblesMax;
         cibles = new ArrayList<>();

@@ -20,12 +20,12 @@ public class Pouazon extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getLigne(), getColonne(), 3.0, 1));
+        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 3.0, 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        GestionnaireAttaqueRayon temp = new GestionnaireAttaqueRayonSimple(getEnvironnement(), getLigne(), getColonne(), 15, getReconnaissance().getCibles());
+        GestionnaireAttaqueRayon temp = new GestionnaireAttaqueRayonSimple(getEnvironnement(), getCoordonees(), 15, getReconnaissance().getCibles());
         temp.ajouterAlteration(new Dot(15,4));
         setGestionnaireAttaque(temp);
     }

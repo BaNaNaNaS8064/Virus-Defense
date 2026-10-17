@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.modele.cellules.gestionnaireAttaque;
 
+import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
@@ -10,8 +11,8 @@ public class GestionnaireAttaqueRayonConcentre extends GestionnaireAttaqueRayon 
     private ArrayList<Integer> dureeCiblageTourPrecedent;
     private double delaiAugmentation;
 
-    public GestionnaireAttaqueRayonConcentre(Environnement environnement, double ligne, double colonne, double degats, double delaiAugmentation, ArrayList<Maladie> cibles) {
-        super(environnement, ligne, colonne, degats, cibles);
+    public GestionnaireAttaqueRayonConcentre(Environnement environnement, Coordonees coordonees, double degats, double delaiAugmentation, ArrayList<Maladie> cibles) {
+        super(environnement, coordonees, degats, cibles);
         ciblesTourPrecedent = new ArrayList<>();
         dureeCiblageTourPrecedent = new ArrayList<>();
         this.delaiAugmentation = delaiAugmentation;

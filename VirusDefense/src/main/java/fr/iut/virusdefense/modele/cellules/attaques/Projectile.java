@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.modele.cellules.attaques;
 
+import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.alteration.Alteration;
 import fr.iut.virusdefense.modele.maladies.Maladie;
@@ -9,8 +10,8 @@ import java.util.List;
 public class Projectile extends Attaque {
     private boolean cibleTouché;
 
-    public Projectile(Environnement environnement, double ligne, double colonne, Maladie cible, double degats, List<Alteration> alterations){
-        super(environnement, ligne, colonne, degats, alterations, cible);
+    public Projectile(Environnement environnement, Coordonees coordonees, Maladie cible, double degats, List<Alteration> alterations){
+        super(environnement, new Coordonees(coordonees), degats, alterations, cible);
 
         this.cibleTouché = false;
     }

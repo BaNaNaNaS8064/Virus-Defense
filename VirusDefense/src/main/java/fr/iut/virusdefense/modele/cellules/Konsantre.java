@@ -17,12 +17,12 @@ public class Konsantre extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getLigne(), getColonne(), 3.0, 1));
+        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 3.0, 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonConcentre(getEnvironnement(), getLigne(), getColonne(), 1, 60, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonConcentre(getEnvironnement(), getCoordonees(), 1, 60, getReconnaissance().getCibles()));
     }
 
     public static Konsantre creer(Environnement env, int ligne, int colonne){
