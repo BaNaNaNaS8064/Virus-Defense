@@ -1,8 +1,10 @@
 package fr.iut.virusdefense.modele.maladies;
 
 import fr.iut.virusdefense.modele.ActeurRetirable;
+import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.Positionnable;
+import fr.iut.virusdefense.modele.deplacement.GestionnaireDeplacement;
 
 import java.util.List;
 
@@ -11,6 +13,7 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     private final double vitesse;
     private final int recompense;
     private double coefVitesse;
+    private GestionnaireDeplacement gestionnaireDeplacement;
 
     public Maladie(Environnement environnement, double ligne, double colonne, int pv, double vitesse, int recompense){
         super(environnement, ligne+0.5, colonne+0.5);
@@ -19,6 +22,7 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
         this.pv = pv;
         this.recompense = recompense;
         coefVitesse = 1;
+        this.gestionnaireDeplacement = new GestionnaireDeplacement();
     }
 
     public final int getRecompense(){
@@ -63,19 +67,7 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     }
 
     public void bouger(){
-        List<Integer> destination = getEnvironnement().getDeplacement().prochaineCase(position());
-        if (destination != null) {
-            double distLigne = Math.abs(destination.get(0) + 0.5 - getLigne());
-            double distColonne = Math.abs(destination.get(1) + 0.5 - getColonne());
-
-            double distanceMax = Math.max(distLigne, distColonne);
-
-            int directionLigne = Double.compare(destination.get(0) + 0.5, getLigne());
-            int directionColonne = Double.compare(destination.get(1) + 0.5, getColonne());
-
-            setLigne(getLigne() + vitesse * coefVitesse * directionLigne * distLigne / distanceMax);
-            setColonne(getColonne() + vitesse * coefVitesse * directionColonne * distColonne / distanceMax);
-        }
+        getCoordonees().copier(gestionnaireDeplacement.prochainEmplacement(this, vitesse * coefVitesse, new Coordonees(getEnvironnement().getDeplacement().prochaineCase(position()))));
     }
 
     public abstract boolean peutSubirAlteration();

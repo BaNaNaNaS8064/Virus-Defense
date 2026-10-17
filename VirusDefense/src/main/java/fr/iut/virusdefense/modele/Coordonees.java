@@ -3,18 +3,23 @@ package fr.iut.virusdefense.modele;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
+import java.util.List;
+
 public class Coordonees {
     private final DoubleProperty ligneProperty;
     private final DoubleProperty colonneProperty;
 
+    public Coordonees(Coordonees coordonees){
+        this(coordonees.getLigne(), coordonees.getColonne());
+    }
+
+    public Coordonees(List<Integer> coordonees){
+        this(coordonees.get(0) + 0.5, coordonees.get(1) + 0.5);
+    }
+
     public Coordonees(double ligne,double colonne){
         this.ligneProperty = new SimpleDoubleProperty(ligne);
         this.colonneProperty = new SimpleDoubleProperty(colonne);
-    }
-
-    public Coordonees(Coordonees coordonees){
-        this.ligneProperty = new SimpleDoubleProperty(coordonees.getLigne());
-        this.colonneProperty = new SimpleDoubleProperty(coordonees.getColonne());
     }
 
     public double getLigne() {
@@ -43,6 +48,11 @@ public class Coordonees {
 
     public double distanceEuclidienne(double ligne, double colonne){
         return Math.sqrt(Math.pow((getLigne() - ligne), 2) + Math.pow((getColonne() - colonne), 2));
+    }
+
+    public void copier(Coordonees coordonees){
+        setLigne(coordonees.getLigne());
+        setColonne(coordonees.getColonne());
     }
 
 }

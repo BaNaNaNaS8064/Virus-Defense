@@ -23,4 +23,5 @@ module fr.iut.virusdefense {
     exports fr.iut.virusdefense.modele.utilitaires;
     exports fr.iut.virusdefense.vue;
     exports fr.iut.virusdefense.vue.sprites;
+    exports fr.iut.virusdefense.modele.deplacement;
 }

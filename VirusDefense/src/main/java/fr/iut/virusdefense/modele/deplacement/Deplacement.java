@@ -1,4 +1,4 @@
-package fr.iut.virusdefense.modele;
+package fr.iut.virusdefense.modele.deplacement;
 
 import fr.iut.virusdefense.modele.carte.Carte;
 
