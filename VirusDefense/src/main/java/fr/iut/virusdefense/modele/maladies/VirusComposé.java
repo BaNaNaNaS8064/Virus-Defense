@@ -4,7 +4,7 @@ import fr.iut.virusdefense.modele.Environnement;
 
 public class VirusComposé extends Maladie{
     private final int stade;
-    public VirusComposé(Environnement environnement, int ligne, int colonne){
+    public VirusComposé(Environnement environnement, double ligne, double colonne){
         this(environnement, ligne, colonne, 1);
     }
 
@@ -21,7 +21,7 @@ public class VirusComposé extends Maladie{
     public void capaciteALaMort() {
         if(stade<3 && !aAtteintLObjectif())
             for (int i=0; i<2; i++)
-                getEnvironnement().getGestionnaireActeur().getMaladies().add(new VirusComposé(getEnvironnement(), getLigne(), getColonne(), stade+1));
+        getEnvironnement().getGestionnaireActeur().getMaladies().add(new VirusComposé(getEnvironnement(), getLigne()-0.5, getColonne()-0.5, stade+1));
     }
 
     @Override

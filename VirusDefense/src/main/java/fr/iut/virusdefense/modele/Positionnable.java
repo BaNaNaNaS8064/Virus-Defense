@@ -11,7 +11,7 @@ public abstract class Positionnable extends Identifiable{
     private final Coordonees coordonees;
 
     public Positionnable(Environnement environnement, int ligne, int colonne){
-        this(environnement, ligne + 0.5, colonne + 0.5);
+        this(environnement, new Coordonees(ligne+0.5, colonne+0.5));
     }
 
     public Positionnable(Environnement environnement, double ligne, double colonne){
