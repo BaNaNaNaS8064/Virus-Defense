@@ -13,7 +13,7 @@ public abstract class Maladie extends Positionnable implements Acteur {
     private double coefVitesse;
 
     public Maladie(Environnement environnement, double ligne, double colonne, int pv, double vitesse, int recompense){
-        super(environnement, (int) ligne, (int) colonne);
+        super(environnement, ligne+0.5, colonne+0.5);
 
         this.vitesse = vitesse;
         this.pv = pv;
