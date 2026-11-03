@@ -1,28 +1,17 @@
 package fr.iut.virusdefense.modele.apparition;
 
-import fr.iut.virusdefense.Main;
+import fr.iut.virusdefense.modele.utilitaires.LecteurFichier;
 import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
-public class LecteurVagues {
-    private File fichier;
-    private Scanner sc;
+public class LecteurVagues extends LecteurFichier {
     private Vague[] vagues;
-
     private int nbVague;
     private int nbPointsApparition;
 
     public LecteurVagues(int nbPointsApparition, String idNiveau){
-        try{
-            fichier = new File(Main.class.getResource("niveaux/" + idNiveau + "/vagues.txt").toURI());
-            this.nbPointsApparition = nbPointsApparition;
-            lire();
-        }catch(Exception e) {
-            throw new RuntimeException(e);
-        }
+        super("niveaux/" + idNiveau + "/vagues.txt"); // Correction : vagues au pluriel
+        this.nbPointsApparition = nbPointsApparition;
+        lire();
     }
 
     private double[] prochaineLigne(String s){
@@ -43,17 +32,18 @@ public class LecteurVagues {
         return vagues;
     }
 
-    public void lire() throws FileNotFoundException {
-        sc = new Scanner(fichier);
+    @Override
+    public void lireContenu() {
         double[] maladiesInfo;
         String ligne;
 
-        nbVague = Integer.parseInt(sc.nextLine());
+        nbVague = Integer.parseInt(getScanner().nextLine());
         vagues = new Vague[nbVague];
-        sc.nextLine();
+        getScanner().nextLine();
+
         for (int indVague = 0; indVague < nbVague; indVague++) {
             vagues[indVague] = new Vague();
-            ligne = sc.nextLine();
+            ligne = getScanner().nextLine();
             while(!ligne.equals("#")){
                 maladiesInfo = prochaineLigne(ligne);
                 for (int indPointApparition = 0; indPointApparition < nbPointsApparition; indPointApparition++) {
@@ -62,7 +52,7 @@ public class LecteurVagues {
                         vagues[indVague].getListeApparitions().get(indPointApparition).ajouter(CodeMaladie.values()[(int)maladiesInfo[1]], (int)(maladiesInfo[2] *60));
                     }
                 }
-                ligne = sc.nextLine();
+                ligne = getScanner().nextLine();
             }
         }
     }

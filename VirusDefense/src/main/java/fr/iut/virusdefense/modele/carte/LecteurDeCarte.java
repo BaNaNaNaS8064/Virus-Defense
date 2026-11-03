@@ -1,32 +1,20 @@
 package fr.iut.virusdefense.modele.carte;
 
-import fr.iut.virusdefense.Main;
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.utilitaires.LecteurFichier;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+public class LecteurDeCarte extends LecteurFichier{
 
-public class LecteurDeCarte {
-
-    private final File fichier;
     private final ConstructeurDeCarte constructeurDeCarte;
-    private Scanner scanner;
 
     public LecteurDeCarte(Environnement environnement, String idNiveau){
-        try {
-            fichier = new File(Main.class.getResource("niveaux/" + idNiveau + "/carte.txt").toURI());
-
-            constructeurDeCarte = new ConstructeurDeCarte(environnement);
-
-            lire();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        super("niveaux/" + idNiveau + "/carte.txt");
+        constructeurDeCarte = new ConstructeurDeCarte(environnement);
+        lire();
     }
 
     private int[] prochaineLigne(){
-        String[] ligneString = scanner.nextLine().split(" ");
+        String[] ligneString = getScanner().nextLine().split(" ");
         int[] ligneInt = new int[ligneString.length];
 
         for (int i = 0; i < ligneString.length; i++)
@@ -35,8 +23,8 @@ public class LecteurDeCarte {
         return ligneInt;
     }
 
-    private void lire() throws FileNotFoundException {
-        scanner = new Scanner(fichier);
+    @Override
+    protected void lireContenu() {
         int[] ligne;
         int hauteur, largeur;
         int nbPointsApparitions;
@@ -48,7 +36,7 @@ public class LecteurDeCarte {
 
         constructeurDeCarte.setObjectif(prochaineLigne());
 
-        nbPointsApparitions = Integer.parseInt(scanner.nextLine());
+        nbPointsApparitions = Integer.parseInt(getScanner().nextLine());
         for (int i=0; i<nbPointsApparitions; i++)
             constructeurDeCarte.ajouterPointApparition(prochaineLigne());
 
@@ -57,7 +45,6 @@ public class LecteurDeCarte {
 
             for (int indColonne = 0; indColonne < largeur; indColonne++)
                 constructeurDeCarte.changerValeur(indLigne, indColonne, ligne[indColonne] == 1);
-
         }
     }
 
