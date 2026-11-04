@@ -14,18 +14,18 @@ public class Snaipeur extends Cellule{
 
     private Snaipeur(Environnement env, int ligne, int colonne){
         super(env, ligne, colonne,
-                LecteurStatistiques.getStatistique("SNAIPEUR").frequence,
-                LecteurStatistiques.getStatistique("SNAIPEUR").cout);
+                LecteurStatistiques.getStatistique("SNAIPEUR").getFrequence(),
+                LecteurStatistiques.getStatistique("SNAIPEUR").getCout());
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 12.0, 1));
+        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), LecteurStatistiques.getStatistique("SNAIPLEUR").getPortee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getCoordonees(), 100, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getCoordonees(), LecteurStatistiques.getStatistique("SNAIPEUR").getDegats(), getReconnaissance().getCibles()));
     }
 
     public static Snaipeur creer(Environnement env, int ligne, int colonne){

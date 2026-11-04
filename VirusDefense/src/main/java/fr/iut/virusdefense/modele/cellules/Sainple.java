@@ -15,19 +15,19 @@ public class Sainple extends Cellule {
 
     private Sainple(Environnement env, int ligne, int colonne){
         super(env, ligne, colonne,
-                LecteurStatistiques.getStatistique("SAINPLE").frequence,
-                LecteurStatistiques.getStatistique("SAINPLE").cout
+                LecteurStatistiques.getStatistique("SAINPLE").getFrequence(),
+                LecteurStatistiques.getStatistique("SAINPLE").getCout()
         );
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 3.0, 1));
+        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), LecteurStatistiques.getStatistique("SAINPLE").getPortee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueProjectile(getEnvironnement(), getCoordonees(), 40, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueProjectile(getEnvironnement(), getCoordonees(), LecteurStatistiques.getStatistique("SAINPLE").getDegats(), getReconnaissance().getCibles()));
     }
 
     public static Sainple creer(Environnement env, int ligne, int colonne){

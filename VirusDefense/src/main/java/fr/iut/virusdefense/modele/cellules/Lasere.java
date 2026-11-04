@@ -14,18 +14,18 @@ public class Lasere extends Cellule{
 
     private Lasere(Environnement env, int ligne, int colonne){
         super(env, ligne, colonne,
-                LecteurStatistiques.getStatistique("LASERE").frequence,
-                LecteurStatistiques.getStatistique("LASERE").cout);
+                LecteurStatistiques.getStatistique("LASERE").getFrequence(),
+                LecteurStatistiques.getStatistique("LASERE").getCout());
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 3.0, 1));
+        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(),LecteurStatistiques.getStatistique("LASERE").getPortee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getCoordonees(), 1, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getCoordonees(), LecteurStatistiques.getStatistique("LASERE").getDegats(), getReconnaissance().getCibles()));
     }
 
     public static Lasere creer(Environnement env, int ligne, int colonne){

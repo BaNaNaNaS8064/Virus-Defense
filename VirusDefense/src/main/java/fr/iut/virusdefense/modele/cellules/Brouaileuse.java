@@ -14,19 +14,19 @@ public class Brouaileuse extends Cellule {
 
     private Brouaileuse(Environnement env, int ligne, int colonne){
             super(env, ligne, colonne,
-                    LecteurStatistiques.getStatistique("BROUAIEUSE").frequence,
-                    LecteurStatistiques.getStatistique("BROUAIEUSE").cout
+                    LecteurStatistiques.getStatistique("BROUAIEUSE").getFrequence(),
+                    LecteurStatistiques.getStatistique("BROUAIEUSE").getCout()
             );
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 1.5, 1));
+        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), LecteurStatistiques.getStatistique("BROUAILLEUSE").getPortee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueZone(getEnvironnement(), getCoordonees(), 90, getReconnaissance().getCibles(), getReconnaissance().getPortee()));
+        setGestionnaireAttaque(new GestionnaireAttaqueZone(getEnvironnement(), getCoordonees(), LecteurStatistiques.getStatistique("BROUAILLEUSE").getDegats(), getReconnaissance().getCibles(), getReconnaissance().getPortee()));
     }
 
     public static Brouaileuse creer(Environnement env, int ligne, int colonne){

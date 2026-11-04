@@ -15,18 +15,18 @@ public class MuleTyple extends Cellule{
 
     private MuleTyple(Environnement env, int ligne, int colonne){
         super(env, ligne, colonne,
-                LecteurStatistiques.getStatistique("MULETYPLE").frequence,
-                LecteurStatistiques.getStatistique("MULETYPLE").cout);
+                LecteurStatistiques.getStatistique("MULETYPLE").getFrequence(),
+                LecteurStatistiques.getStatistique("MULETYPLE").getCout());
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 3.0 , 3));
+        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), LecteurStatistiques.getStatistique("MULETYPLE").getPortee() , 3));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getCoordonees(), 15, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getCoordonees(), LecteurStatistiques.getStatistique("MULETYPLE").getDegats(), getReconnaissance().getCibles()));
     }
 
     public static MuleTyple creer(Environnement env, int ligne, int colonne){

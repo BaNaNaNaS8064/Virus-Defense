@@ -14,18 +14,18 @@ public class Konsantre extends Cellule{
 
     private Konsantre(Environnement env, int ligne, int colonne){
         super(env, ligne, colonne,
-                LecteurStatistiques.getStatistique("KONSANTRE").frequence,
-                LecteurStatistiques.getStatistique("KONSANTRE").cout);
+                LecteurStatistiques.getStatistique("KONSANTRE").getFrequence(),
+                LecteurStatistiques.getStatistique("KONSANTRE").getCout());
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 3.0, 1));
+        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), LecteurStatistiques.getStatistique("KONSANTE").getPortee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonConcentre(getEnvironnement(), getCoordonees(), 1, 60, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonConcentre(getEnvironnement(), getCoordonees(), LecteurStatistiques.getStatistique("KONSANTE").getDegats(), 60, getReconnaissance().getCibles()));
     }
 
     public static Konsantre creer(Environnement env, int ligne, int colonne){

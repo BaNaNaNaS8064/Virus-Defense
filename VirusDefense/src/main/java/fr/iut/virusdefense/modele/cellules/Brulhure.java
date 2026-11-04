@@ -16,19 +16,19 @@ public class Brulhure extends Cellule{
 
     public Brulhure(Environnement environnement, int ligne, int colonne) {
         super(environnement, ligne, colonne,
-                LecteurStatistiques.getStatistique("BRULHURE").frequence,
-                LecteurStatistiques.getStatistique("BRULHURE").cout);
+                LecteurStatistiques.getStatistique("BRULHURE").getFrequence(),
+                LecteurStatistiques.getStatistique("BRULHURE").getCout());
         tempsZone = 200;
     }
 
     @Override
     public void initRec() {
-        setReconnaissance(new RecBrulure(getEnvironnement(), getCoordonees(), 5, 1));
+        setReconnaissance(new RecBrulure(getEnvironnement(), getCoordonees(), LecteurStatistiques.getStatistique("BRULHURE").getPortee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque() {
-        setGestionnaireAttaque(new GestionnaireAttaqueProjectileExplosif(getEnvironnement(),getCoordonees(),25,getReconnaissance().getCibles(),1.5,400,0.5 ,tempsZone));
+        setGestionnaireAttaque(new GestionnaireAttaqueProjectileExplosif(getEnvironnement(),getCoordonees(),LecteurStatistiques.getStatistique("BRULHURE").getDegats(), getReconnaissance().getCibles(),1.5,400,0.5 ,tempsZone));
     }
 
     public static Brulhure creer(Environnement env, int ligne, int colonne){

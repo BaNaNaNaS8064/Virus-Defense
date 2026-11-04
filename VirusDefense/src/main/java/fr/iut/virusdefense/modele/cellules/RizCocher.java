@@ -14,18 +14,18 @@ public class RizCocher extends Cellule{
 
     private RizCocher(Environnement env, int ligne, int colonne){
         super(env, ligne, colonne,
-                LecteurStatistiques.getStatistique("RIZCOCHER").frequence,
-                LecteurStatistiques.getStatistique("RIZCOCHER").cout);
+                LecteurStatistiques.getStatistique("RIZCOCHER").getFrequence(),
+                LecteurStatistiques.getStatistique("RIZCOCHER").getCout());
     }
 
     @Override
     public void initRec() {
-        setReconnaissance(new RecRicochet(getEnvironnement(), getCoordonees(), 3.0, 3));
+        setReconnaissance(new RecRicochet(getEnvironnement(), getCoordonees(), LecteurStatistiques.getStatistique("RIZCOCHER").getPortee(), 3));
     }
 
     @Override
     public void initGestionnaireAttaque() {
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonRicochet(getEnvironnement(), getCoordonees(), 75, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonRicochet(getEnvironnement(), getCoordonees(), LecteurStatistiques.getStatistique("RIZCOCHER").getDegats(), getReconnaissance().getCibles()));
     }
 
     public static RizCocher creer(Environnement env, int ligne, int colonne){
