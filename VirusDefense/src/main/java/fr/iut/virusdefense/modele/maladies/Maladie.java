@@ -5,8 +5,7 @@ import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.Positionnable;
 import fr.iut.virusdefense.modele.deplacement.GestionnaireDeplacement;
-
-import java.util.List;
+import fr.iut.virusdefense.modele.maladies.Capacité.CapaciteActive;
 
 public abstract class Maladie extends Positionnable implements ActeurRetirable {
     private double pv;
@@ -14,8 +13,10 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     private final int recompense;
     private double coefVitesse;
     private GestionnaireDeplacement gestionnaireDeplacement;
+    private CapaciteActive capaciteActive;
 
-    public Maladie(Environnement environnement, double ligne, double colonne, int pv, double vitesse, int recompense){
+
+    public Maladie(Environnement environnement, double ligne, double colonne, int pv, double vitesse, int recompense, CapaciteActive capaciteActive) {
         super(environnement, ligne+0.5, colonne+0.5);
 
         this.vitesse = vitesse;
@@ -23,12 +24,20 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
         this.recompense = recompense;
         coefVitesse = 1;
         this.gestionnaireDeplacement = new GestionnaireDeplacement();
+        initCapacite(capaciteActive);
+    }
+
+    public void initCapacite(CapaciteActive capaciteActive){
+        this.capaciteActive = capaciteActive;
     }
 
     public final int getRecompense(){
         return recompense;
     }
 
+    public CapaciteActive getCapaciteActive() {
+        return capaciteActive;
+    }
 
     public boolean estVivant(){
         return pv > 0;
@@ -51,7 +60,7 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     public final void agir(){
         if (estVivant()) {
             coefVitesse = 1;
-            capaciteActive();
+            activationCapacite();
             bouger();
 
             if (aAtteintLObjectif()) {
@@ -80,7 +89,12 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
         coefVitesse *= coefRalentissement;
     }
 
-    public void capaciteActive(){}
+    public void activationCapacite(){
+        getCapaciteActive().reduireDelai();
+        if(getCapaciteActive().CapacitePossible() && estVivant()){
+            this.capaciteActive.ActivationCapacite(getEnvironnement(), (int) getLigne(),(int) getColonne());
+        }
+    }
 
     public void capaciteALaMort(){}
 }

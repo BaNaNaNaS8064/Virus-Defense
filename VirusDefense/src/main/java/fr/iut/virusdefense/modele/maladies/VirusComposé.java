@@ -9,7 +9,7 @@ public class VirusComposé extends Maladie{
     }
 
     private VirusComposé(Environnement environnement, double ligne, double colonne, int stade){
-        super(environnement, ligne, colonne, 333/(int)(Math.pow(2,(stade-1))), 0.013, 24/(int)(Math.pow(2,(stade-1))));
+        super(environnement, ligne, colonne, 333/(int)(Math.pow(2,(stade-1))), 0.013, 24/(int)(Math.pow(2,(stade-1))), null);
         this.stade = stade;
     }
 
@@ -28,4 +28,7 @@ public class VirusComposé extends Maladie{
     public boolean peutSubirAlteration() {
         return true;
     }
+
+    @Override
+    public void activationCapacite() {}
 }
