@@ -12,8 +12,10 @@ public class Sainple extends Cellule {
         return coutBase;
     }
 
-    private Sainple(Environnement env, int ligne, int colonne){
+    public Sainple(Environnement env, int ligne, int colonne){
         super(env, ligne, colonne, 60, coutBase);
+        initRec();
+        initGestionnaireAttaque();
     }
 
     @Override
@@ -24,13 +26,6 @@ public class Sainple extends Cellule {
     @Override
     public void initGestionnaireAttaque(){
         setGestionnaireAttaque(new GestionnaireAttaqueProjectile(getEnvironnement(), getCoordonees(), 40, getReconnaissance().getCibles()));
-    }
-
-    public static Sainple creer(Environnement env, int ligne, int colonne){
-        Sainple temp = new Sainple(env, ligne, colonne);
-        temp.initRec();
-        temp.initGestionnaireAttaque();
-        return temp;
     }
 
     @Override

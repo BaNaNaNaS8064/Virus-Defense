@@ -2,6 +2,7 @@ package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.*;
+import fr.iut.virusdefense.modele.utilitaires.CodeTuile;
 import fr.iut.virusdefense.vue.AfficheurDeCarte;
 import fr.iut.virusdefense.vue.GestionnaireMenuClick;
 import javafx.scene.control.RadioButton;
@@ -40,21 +41,8 @@ public class GestionnaireClick {
 
     public void poser(int ligne, int colonne) {
         String boutonSelectionne = ((RadioButton) toggleGrpCellules.getSelectedToggle()).getId();
-
-        Cellule c = switch (boutonSelectionne) {
-            case "RbSainple" -> Sainple.creer(environnement, ligne, colonne);
-            case "RbLasere" -> Lasere.creer(environnement, ligne, colonne);
-            case "RbBrouaieuse" -> Brouaileuse.creer(environnement, ligne, colonne);
-            case "RbMuleTyple" -> MuleTyple.creer(environnement, ligne, colonne);
-            case "RbSnaipeur" -> Snaipeur.creer(environnement, ligne, colonne);
-            case "RbRizCoCher" -> RizCocher.creer(environnement, ligne, colonne);
-            case "RbKonsantre" -> Konsantre.creer(environnement, ligne, colonne);
-            case "RbPouazon" -> Pouazon.creer(environnement, ligne, colonne);
-            case "RbBrulHure" -> Brulhure.creer(environnement,ligne,colonne);
-            default -> null;
-        };
-
-        environnement.ajouterSiConforme(c);
+        Cellule c = FabriqueCellule.créer(CodeTuile.valueOf(boutonSelectionne.substring(2).toUpperCase()), environnement, ligne, colonne);
+        if (c != null) {environnement.ajouterSiConforme(c);}
     }
 
     public void creerMenu(int ligne, int colonne){

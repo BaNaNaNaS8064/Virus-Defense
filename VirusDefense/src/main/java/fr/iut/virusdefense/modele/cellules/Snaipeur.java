@@ -11,8 +11,10 @@ public class Snaipeur extends Cellule{
         return coutBase;
     }
 
-    private Snaipeur(Environnement env, int ligne, int colonne){
+    public Snaipeur(Environnement env, int ligne, int colonne){
         super(env, ligne, colonne, 250, coutBase);
+        initRec();
+        initGestionnaireAttaque();
     }
 
     @Override
@@ -23,13 +25,6 @@ public class Snaipeur extends Cellule{
     @Override
     public void initGestionnaireAttaque(){
         setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getCoordonees(), 100, getReconnaissance().getCibles()));
-    }
-
-    public static Snaipeur creer(Environnement env, int ligne, int colonne){
-        Snaipeur temp = new Snaipeur(env, ligne, colonne);
-        temp.initRec();
-        temp.initGestionnaireAttaque();
-        return temp;
     }
 
     @Override

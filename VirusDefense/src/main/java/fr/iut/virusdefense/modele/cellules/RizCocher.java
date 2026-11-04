@@ -11,8 +11,10 @@ public class RizCocher extends Cellule{
         return coutBase;
     }
 
-    private RizCocher(Environnement env, int ligne, int colonne){
+    public RizCocher(Environnement env, int ligne, int colonne){
         super(env, ligne, colonne, 120, coutBase);
+        initRec();
+        initGestionnaireAttaque();
     }
 
     @Override
@@ -23,13 +25,6 @@ public class RizCocher extends Cellule{
     @Override
     public void initGestionnaireAttaque() {
         setGestionnaireAttaque(new GestionnaireAttaqueRayonRicochet(getEnvironnement(), getCoordonees(), 75, getReconnaissance().getCibles()));
-    }
-
-    public static RizCocher creer(Environnement env, int ligne, int colonne){
-        RizCocher temp = new RizCocher(env, ligne, colonne);
-        temp.initRec();
-        temp.initGestionnaireAttaque();
-        return temp;
     }
 
     @Override

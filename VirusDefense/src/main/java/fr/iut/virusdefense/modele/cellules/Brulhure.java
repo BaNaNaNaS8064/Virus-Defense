@@ -16,6 +16,8 @@ public class Brulhure extends Cellule{
     public Brulhure(Environnement environnement, int ligne, int colonne) {
         super(environnement, ligne, colonne, 720, coutBase);
         tempsZone=200;
+        initRec();
+        initGestionnaireAttaque();
     }
 
     @Override
@@ -26,13 +28,6 @@ public class Brulhure extends Cellule{
     @Override
     public void initGestionnaireAttaque() {
         setGestionnaireAttaque(new GestionnaireAttaqueProjectileExplosif(getEnvironnement(),getCoordonees(),25,getReconnaissance().getCibles(),1.5,400,0.5 ,tempsZone));
-    }
-
-    public static Brulhure creer(Environnement env, int ligne, int colonne){
-        Brulhure temp = new Brulhure(env,ligne,colonne) ;
-        temp.initRec();
-        temp.initGestionnaireAttaque();
-        return temp;
     }
 
     @Override

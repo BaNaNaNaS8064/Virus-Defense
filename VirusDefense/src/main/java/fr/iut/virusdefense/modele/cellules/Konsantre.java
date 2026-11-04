@@ -11,8 +11,10 @@ public class Konsantre extends Cellule{
         return coutBase;
     }
 
-    private Konsantre(Environnement env, int ligne, int colonne){
+    public Konsantre(Environnement env, int ligne, int colonne){
         super(env, ligne, colonne, 1, coutBase);
+        initRec();
+        initGestionnaireAttaque();
     }
 
     @Override
@@ -23,13 +25,6 @@ public class Konsantre extends Cellule{
     @Override
     public void initGestionnaireAttaque(){
         setGestionnaireAttaque(new GestionnaireAttaqueRayonConcentre(getEnvironnement(), getCoordonees(), 1, 60, getReconnaissance().getCibles()));
-    }
-
-    public static Konsantre creer(Environnement env, int ligne, int colonne){
-        Konsantre temp = new Konsantre(env, ligne, colonne);
-        temp.initRec();
-        temp.initGestionnaireAttaque();
-        return temp;
     }
 
     @Override

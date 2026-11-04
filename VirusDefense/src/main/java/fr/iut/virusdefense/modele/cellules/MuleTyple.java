@@ -12,8 +12,10 @@ public class MuleTyple extends Cellule{
         return coutBase;
     }
 
-    private MuleTyple(Environnement env, int ligne, int colonne){
+    public MuleTyple(Environnement env, int ligne, int colonne){
         super(env, ligne, colonne, 50, coutBase);
+        initRec();
+        initGestionnaireAttaque();
     }
 
     @Override
@@ -24,13 +26,6 @@ public class MuleTyple extends Cellule{
     @Override
     public void initGestionnaireAttaque(){
         setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getCoordonees(), 15, getReconnaissance().getCibles()));
-    }
-
-    public static MuleTyple creer(Environnement env, int ligne, int colonne){
-        MuleTyple temp = new MuleTyple(env, ligne, colonne);
-        temp.initRec();
-        temp.initGestionnaireAttaque();
-        return temp;
     }
 
     @Override
