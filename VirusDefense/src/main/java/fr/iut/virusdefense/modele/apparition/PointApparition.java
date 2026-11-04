@@ -45,28 +45,7 @@ public class PointApparition extends Positionnable implements Acteur {
     }
 
     private void ajouterDansLEnvironnement(CodeMaladie codeMaladie){
-        switch (codeMaladie){
-            case BACTERIEBANALE:
-                getEnvironnement().ajouterMaladie(new BacterieBanale(getEnvironnement(), (int) getLigne(), (int) getColonne()));
-                break;
-            case PARASITE:
-                getEnvironnement().ajouterMaladie(new Parasite(getEnvironnement(), (int) getLigne(), (int) getColonne()));
-                break;
-            case VIRUS:
-                getEnvironnement().ajouterMaladie(new Virus(getEnvironnement(), (int) getLigne(), (int) getColonne()));
-                break;
-            case VIRUSCOMPOSE_1:
-                getEnvironnement().ajouterMaladie(new VirusComposé(getEnvironnement(), (int) getLigne(), (int) getColonne()));
-                break;
-            case PETITCHAMPIGNON:
-                getEnvironnement().ajouterMaladie(new PetitChampignon(getEnvironnement(), (int) getLigne(), (int) getColonne()));
-                break;
-            case GRANDCHAMPIGNON:
-                getEnvironnement().ajouterMaladie(new GrandChampignon(getEnvironnement(), (int) getLigne(), (int) getColonne()));
-                break;
-            case TUMEUR:
-                getEnvironnement().ajouterMaladie(new Tumeur(getEnvironnement(), (int) getLigne(), (int) getColonne()));
-                break;
-        }
+        Maladie m = FabriqueMaladie.créerMaladie(codeMaladie, getEnvironnement(), (int) getLigne(), (int) getColonne());
+        if (m != null) {getEnvironnement().ajouterMaladie(m);}
     }
 }
