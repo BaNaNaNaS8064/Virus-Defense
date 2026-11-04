@@ -3,6 +3,7 @@ package fr.iut.virusdefense.modele.cellules;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonSimple;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
+import fr.iut.virusdefense.modele.utilitaires.LecteurStatistiques;
 
 public class Snaipeur extends Cellule{
     private static int coutBase = 500;
@@ -12,7 +13,9 @@ public class Snaipeur extends Cellule{
     }
 
     private Snaipeur(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 250, coutBase);
+        super(env, ligne, colonne,
+                LecteurStatistiques.getStatistique("SNAIPEUR").frequence,
+                LecteurStatistiques.getStatistique("SNAIPEUR").cout);
     }
 
     @Override

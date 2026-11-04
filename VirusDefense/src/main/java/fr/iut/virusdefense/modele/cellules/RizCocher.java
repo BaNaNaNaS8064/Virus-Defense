@@ -3,6 +3,7 @@ package fr.iut.virusdefense.modele.cellules;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonRicochet;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecRicochet;
+import fr.iut.virusdefense.modele.utilitaires.LecteurStatistiques;
 
 public class RizCocher extends Cellule{
     private static int coutBase = 900;
@@ -12,7 +13,9 @@ public class RizCocher extends Cellule{
     }
 
     private RizCocher(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 120, coutBase);
+        super(env, ligne, colonne,
+                LecteurStatistiques.getStatistique("RIZCOCHER").frequence,
+                LecteurStatistiques.getStatistique("RIZCOCHER").cout);
     }
 
     @Override

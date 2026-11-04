@@ -6,6 +6,7 @@ import fr.iut.virusdefense.modele.cellules.alteration.Ralentissement;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayon;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonSimple;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
+import fr.iut.virusdefense.modele.utilitaires.LecteurStatistiques;
 
 public class Pouazon extends Cellule{
     private static int coutBase = 850;
@@ -15,7 +16,10 @@ public class Pouazon extends Cellule{
     }
 
     private Pouazon(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 50, coutBase);
+            super(env, ligne, colonne,
+                    LecteurStatistiques.getStatistique("POUAZON").frequence,
+                    LecteurStatistiques.getStatistique("POUAZON").cout);
+        
     }
 
     @Override

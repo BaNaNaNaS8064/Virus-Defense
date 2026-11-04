@@ -4,6 +4,7 @@ import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueProjectileExplosif;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecBrulure;
+import fr.iut.virusdefense.modele.utilitaires.LecteurStatistiques;
 
 public class Brulhure extends Cellule{
     private static int coutBase = 1300;
@@ -14,8 +15,10 @@ public class Brulhure extends Cellule{
     }
 
     public Brulhure(Environnement environnement, int ligne, int colonne) {
-        super(environnement, ligne, colonne, 720, coutBase);
-        tempsZone=200;
+        super(environnement, ligne, colonne,
+                LecteurStatistiques.getStatistique("BRULHURE").frequence,
+                LecteurStatistiques.getStatistique("BRULHURE").cout);
+        tempsZone = 200;
     }
 
     @Override

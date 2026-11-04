@@ -3,6 +3,7 @@ package fr.iut.virusdefense.modele.cellules;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonConcentre;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
+import fr.iut.virusdefense.modele.utilitaires.LecteurStatistiques;
 
 public class Konsantre extends Cellule{
     private static int coutBase = 1000;
@@ -12,7 +13,9 @@ public class Konsantre extends Cellule{
     }
 
     private Konsantre(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 1, coutBase);
+        super(env, ligne, colonne,
+                LecteurStatistiques.getStatistique("KONSANTRE").frequence,
+                LecteurStatistiques.getStatistique("KONSANTRE").cout);
     }
 
     @Override
