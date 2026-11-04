@@ -1,11 +1,14 @@
 package fr.iut.virusdefense.modele.cellules;
 
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.cellules.alteration.AlterationComposite;
 import fr.iut.virusdefense.modele.cellules.alteration.Dot;
 import fr.iut.virusdefense.modele.cellules.alteration.Ralentissement;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayon;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonSimple;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
+
+import java.util.List;
 
 public class Pouazon extends Cellule{
     private static int coutBase = 850;
@@ -28,7 +31,7 @@ public class Pouazon extends Cellule{
     @Override
     public void initGestionnaireAttaque(){
         GestionnaireAttaqueRayon temp = new GestionnaireAttaqueRayonSimple(getEnvironnement(), getCoordonees(), 15, getReconnaissance().getCibles());
-        temp.ajouterAlteration(new Dot(15,4));
+        temp.setAlteration(new Dot(15,4));
         setGestionnaireAttaque(temp);
     }
 
@@ -54,6 +57,7 @@ public class Pouazon extends Cellule{
 
     @Override
     public void ameliorerAuNiveau3() {
-        getAttaque().ajouterAlteration(new Ralentissement(5,0.9));
+        //getAttaque().setAlteration(new AlterationComposite(List.of(new Ralentissement(5,0.9), getAttaque().getAlteration())));
+        getAttaque().setAlteration(new Ralentissement(5,0.9));
     }
 }

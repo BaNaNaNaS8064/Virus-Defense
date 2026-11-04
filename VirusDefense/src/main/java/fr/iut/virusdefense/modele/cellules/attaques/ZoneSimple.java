@@ -8,8 +8,8 @@ import fr.iut.virusdefense.modele.maladies.Maladie;
 import java.util.List;
 
 public class ZoneSimple extends Zone {
-    public ZoneSimple(Environnement environnement, Coordonees coordonees, List<Maladie> cibles, double degats, int ageMaximal, List<Alteration> alterations, double rayonZone) {
-        super(environnement, new Coordonees(coordonees), cibles, degats, ageMaximal, alterations, rayonZone);
+    public ZoneSimple(Environnement environnement, Coordonees coordonees, List<Maladie> cibles, double degats, int ageMaximal, Alteration alteration, double rayonZone) {
+        super(environnement, new Coordonees(coordonees), cibles, degats, ageMaximal, alteration, rayonZone);
         attaquer();
     }
 }

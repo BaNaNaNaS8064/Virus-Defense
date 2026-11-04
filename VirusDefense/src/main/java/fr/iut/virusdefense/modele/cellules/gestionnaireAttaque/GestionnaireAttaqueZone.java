@@ -17,6 +17,6 @@ public class GestionnaireAttaqueZone extends GestionnaireAttaque {
 
     @Override
     public final void attaqueCibles(){
-        getEnvironnement().ajouterZone(new ZoneSimple(getEnvironnement(), getCoordonees(), getCibles() , getDegats(), 10 , getAlterations(), rayonZone));
+        getEnvironnement().ajouterZone(new ZoneSimple(getEnvironnement(), getCoordonees(), getCibles() , getDegats(), 10 , getAlteration(), rayonZone));
     }
 }

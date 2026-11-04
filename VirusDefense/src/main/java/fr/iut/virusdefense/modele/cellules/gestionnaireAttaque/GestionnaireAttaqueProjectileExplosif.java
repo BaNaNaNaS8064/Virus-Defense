@@ -31,7 +31,7 @@ public class GestionnaireAttaqueProjectileExplosif extends GestionnaireAttaque {
     }
 
     public void attaque(Maladie m){
-        getEnvironnement().ajouterProjectile(new ProjectileExplosif(getEnvironnement(), getCoordonees(), m, getDegats(), getAlterations(),rayonZonePortee,degatsInstantane,rayonInstantane, tempsZone));
+        getEnvironnement().ajouterProjectile(new ProjectileExplosif(getEnvironnement(), getCoordonees(), m, getDegats(), getAlteration(),rayonZonePortee,degatsInstantane,rayonInstantane, tempsZone));
     }
 
     public void attaqueCibles(){
