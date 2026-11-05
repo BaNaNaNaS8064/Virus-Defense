@@ -14,9 +14,6 @@ import java.util.List;
  */
 public class Niveau {
 
-    /// L'environnement dans lequel tout se passe
-    private final Environnement environnement;
-
     /// L'indice de la vague actuelle
     private final IntegerProperty numVagueProperty;
     /// La liste des vagues
@@ -28,8 +25,7 @@ public class Niveau {
     /// le nombre restant de tours avant la prochain vague
     int delai;
 
-    public Niveau(Environnement environnement, String idNiveau){
-        this.environnement = environnement;
+    public Niveau(String idNiveau){
         delaiEntreVagues = 600;
         delai = Integer.MAX_VALUE;
         numVagueProperty = new SimpleIntegerProperty(-1);
@@ -54,7 +50,7 @@ public class Niveau {
      * que le nombre de points d'apparition dans la carte de {@code environnnement}
      */
     private void initVagues(String idNiveau){
-        vagues = Arrays.asList(new LecteurVagues(environnement.getCarte().getPointsApparitions().size(), idNiveau).getVagues());
+        vagues = Arrays.asList(new LecteurVagues(Environnement.getUniqueInstance().getCarte().getPointsApparitions().size(), idNiveau).getVagues());
     }
 
     /**
@@ -64,8 +60,8 @@ public class Niveau {
      */
     public void passerProchaineVague(){
         numVagueProperty.setValue(getNumVague() + 1);
-        for (int i = 0; i<environnement.getCarte().getPointsApparitions().size(); i++)
-            environnement.getCarte().getPointsApparitions().get(i).ajouter(vagues.get(getNumVague()).getListeApparitions().get(i));
+        for (int i = 0; i<Environnement.getUniqueInstance().getCarte().getPointsApparitions().size(); i++)
+            Environnement.getUniqueInstance().getCarte().getPointsApparitions().get(i).ajouter(vagues.get(getNumVague()).getListeApparitions().get(i));
          delai = Integer.MAX_VALUE;
     }
 

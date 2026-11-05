@@ -12,22 +12,22 @@ public class MuleTyple extends Cellule{
         return coutBase;
     }
 
-    private MuleTyple(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 50, coutBase);
+    private MuleTyple(int ligne, int colonne){
+        super(ligne, colonne, 50, coutBase);
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 3.0 , 3));
+        setReconnaissance(new RecSimple(getCoordonees(), 3.0 , 3));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getCoordonees(), 15, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getCoordonees(), 15, getReconnaissance().getCibles()));
     }
 
-    public static MuleTyple creer(Environnement env, int ligne, int colonne){
-        MuleTyple temp = new MuleTyple(env, ligne, colonne);
+    public static MuleTyple creer(int ligne, int colonne){
+        MuleTyple temp = new MuleTyple(ligne, colonne);
         temp.initRec();
         temp.initGestionnaireAttaque();
         return temp;

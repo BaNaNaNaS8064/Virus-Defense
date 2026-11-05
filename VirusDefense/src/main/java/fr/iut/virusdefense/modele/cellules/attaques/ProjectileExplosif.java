@@ -15,8 +15,8 @@ public class ProjectileExplosif extends Projectile {
     private final double rayonInstantane;
     private final int tempsZone;
 
-    public ProjectileExplosif(Environnement environnement, Coordonees coordonees, Maladie cible, double degats, List<Alteration> alterations, double rayonZonePortee, double degatsInstantane, double rayonInstantane, int tempsZone) {
-        super(environnement, new Coordonees(coordonees), cible, degats, alterations);
+    public ProjectileExplosif(Coordonees coordonees, Maladie cible, double degats, List<Alteration> alterations, double rayonZonePortee, double degatsInstantane, double rayonInstantane, int tempsZone) {
+        super(new Coordonees(coordonees), cible, degats, alterations);
         this.rayonZonePortee = rayonZonePortee;
         this.degatsInstantane = degatsInstantane;
         this.rayonInstantane = rayonInstantane;
@@ -25,11 +25,11 @@ public class ProjectileExplosif extends Projectile {
 
     @Override
     public void attaquer(){
-        Reconnaissance reconnaissance = new RecSimple(getEnvironnement(), getCoordonees(), rayonZonePortee, Integer.MAX_VALUE);
-        Zone explosion = new ZoneSimple(getEnvironnement(), getCoordonees(), getCibles(), degatsInstantane, 30, getAlterations(), rayonInstantane);
-        getEnvironnement().ajouterZone(explosion);
-        Zone explosionDuree = new ZonePersistante(getEnvironnement(), getCoordonees(), getCibles(), getDegats(), tempsZone, getAlterations(), rayonZonePortee, reconnaissance);
-        getEnvironnement().ajouterZone(explosionDuree);
+        Reconnaissance reconnaissance = new RecSimple(getCoordonees(), rayonZonePortee, Integer.MAX_VALUE);
+        Zone explosion = new ZoneSimple(getCoordonees(), getCibles(), degatsInstantane, 30, getAlterations(), rayonInstantane);
+        Environnement.getUniqueInstance().ajouterZone(explosion);
+        Zone explosionDuree = new ZonePersistante(getCoordonees(), getCibles(), getDegats(), tempsZone, getAlterations(), rayonZonePortee, reconnaissance);
+        Environnement.getUniqueInstance().ajouterZone(explosionDuree);
     }
 
 

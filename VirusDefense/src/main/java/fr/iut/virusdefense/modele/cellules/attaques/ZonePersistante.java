@@ -11,8 +11,8 @@ import java.util.List;
 public class ZonePersistante extends Zone{
     private final Reconnaissance reconnaissance;
     private final int delai;
-    public ZonePersistante(Environnement environnement, Coordonees coordonees, List<Maladie> cibles, double degats, int ageMaximal, List<Alteration> alterations, double rayonZone, Reconnaissance reconnaissance) {
-        super(environnement, new Coordonees(coordonees), cibles, degats, ageMaximal, alterations, rayonZone);
+    public ZonePersistante(Coordonees coordonees, List<Maladie> cibles, double degats, int ageMaximal, List<Alteration> alterations, double rayonZone, Reconnaissance reconnaissance) {
+        super(new Coordonees(coordonees), cibles, degats, ageMaximal, alterations, rayonZone);
         this.reconnaissance = reconnaissance;
         this.delai = 50;
     }

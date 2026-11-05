@@ -11,22 +11,22 @@ public class Lasere extends Cellule{
         return coutBase;
     }
 
-    private Lasere(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 1, coutBase);
+    private Lasere(int ligne, int colonne){
+        super(ligne, colonne, 1, coutBase);
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 3.0, 1));
+        setReconnaissance(new RecSimple(getCoordonees(), 3.0, 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getCoordonees(), 1, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getCoordonees(), 1, getReconnaissance().getCibles()));
     }
 
-    public static Lasere creer(Environnement env, int ligne, int colonne){
-        Lasere temp = new Lasere(env, ligne, colonne);
+    public static Lasere creer(int ligne, int colonne){
+        Lasere temp = new Lasere(ligne, colonne);
         temp.initRec();
         temp.initGestionnaireAttaque();
         return temp;

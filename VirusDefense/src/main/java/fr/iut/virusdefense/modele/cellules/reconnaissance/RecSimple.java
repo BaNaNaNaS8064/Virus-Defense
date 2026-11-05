@@ -7,8 +7,8 @@ import fr.iut.virusdefense.modele.maladies.Maladie;
 
 public class RecSimple extends Reconnaissance{
 
-    public RecSimple(Environnement environnement, Coordonees coordonees, double portee, int nombreCiblesMax){
-        super(environnement, coordonees, portee, nombreCiblesMax);
+    public RecSimple(Coordonees coordonees, double portee, int nombreCiblesMax){
+        super(coordonees, portee, nombreCiblesMax);
     }
 
     @Override

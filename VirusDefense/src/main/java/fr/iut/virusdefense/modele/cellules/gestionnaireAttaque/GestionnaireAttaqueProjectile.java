@@ -9,12 +9,12 @@ import java.util.ArrayList;
 
 public class GestionnaireAttaqueProjectile extends GestionnaireAttaque {
 
-    public GestionnaireAttaqueProjectile(Environnement environnement, Coordonees coordonees, double degats, ArrayList<Maladie> cibles){
-        super(environnement, coordonees, degats, cibles);
+    public GestionnaireAttaqueProjectile(Coordonees coordonees, double degats, ArrayList<Maladie> cibles){
+        super(coordonees, degats, cibles);
     }
 
     public void attaque(Maladie m){
-        getEnvironnement().ajouterProjectile(new Projectile(getEnvironnement(), getCoordonees(), m, getDegats(), getAlterations()));
+        Environnement.getUniqueInstance().ajouterProjectile(new Projectile(getCoordonees(), m, getDegats(), getAlterations()));
     }
 
     public void attaqueCibles(){

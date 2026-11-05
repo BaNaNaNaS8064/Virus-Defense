@@ -10,13 +10,13 @@ import java.util.ArrayList;
 public class GestionnaireAttaqueZone extends GestionnaireAttaque {
     private final double rayonZone;
 
-    public GestionnaireAttaqueZone(Environnement environnement, Coordonees coordonees, double degats, ArrayList<Maladie> cibles, double rayonZone){
-        super(environnement, coordonees, degats, cibles);
+    public GestionnaireAttaqueZone(Coordonees coordonees, double degats, ArrayList<Maladie> cibles, double rayonZone){
+        super(coordonees, degats, cibles);
         this.rayonZone = rayonZone;
     }
 
     @Override
     public final void attaqueCibles(){
-        getEnvironnement().ajouterZone(new ZoneSimple(getEnvironnement(), getCoordonees(), getCibles() , getDegats(), 10 , getAlterations(), rayonZone));
+        Environnement.getUniqueInstance().ajouterZone(new ZoneSimple(getCoordonees(), getCibles() , getDegats(), 10 , getAlterations(), rayonZone));
     }
 }

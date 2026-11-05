@@ -10,11 +10,9 @@ public class ConstructeurDeCarte {
 
     private boolean[][] carteStatique;
     private List<Integer> objectif;
-    private Environnement environnement;
     private ArrayList<PointApparition> pointApparitions;
 
-    public ConstructeurDeCarte(Environnement environnement){
-        this.environnement = environnement;
+    public ConstructeurDeCarte(){
         pointApparitions = new ArrayList<>();
     }
 
@@ -35,7 +33,7 @@ public class ConstructeurDeCarte {
     }
 
     public void ajouterPointApparition(int ligne, int colonne){
-        pointApparitions.add(new PointApparition(environnement, ligne, colonne));
+        pointApparitions.add(new PointApparition(ligne, colonne));
     }
 
     public void changerValeur(int ligne, int colonne, boolean valeur){

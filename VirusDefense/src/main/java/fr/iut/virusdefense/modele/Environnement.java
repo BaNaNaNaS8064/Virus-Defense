@@ -27,22 +27,36 @@ public class Environnement {
 
     private final Joueur joueur;
 
-    private final Niveau niveau;
+    private Niveau niveau;
 
     private final GestionnaireActeur gestionnaireActeur;
 
     private final ObjectProperty<StatutPartie> statutPartieProperty;
 
+    private static Environnement uniqueInstance = null;
+
     /**
      * Créé un terrain sans maladies
      */
-    public Environnement(String idNiveau) {
-        carte = new LecteurDeCarte(this, idNiveau).creer();
+    private Environnement(String idNiveau) {
+        carte = new LecteurDeCarte(idNiveau).creer();
         deplacement = new Deplacement(carte);
         joueur = new Joueur();
-        niveau = new Niveau(this, idNiveau);
         gestionnaireActeur = new GestionnaireActeur(carte.getCellules(), carte.getPointsApparitions());
         statutPartieProperty = new SimpleObjectProperty<>(StatutPartie.PASTERMINEE);
+    }
+
+    private void creerNiveau(String idNiveau){
+        getUniqueInstance().niveau = new Niveau(idNiveau);
+    }
+
+    public static Environnement getUniqueInstance(){
+        return uniqueInstance;
+    }
+
+    public static void creerInstance(String idNiveau){
+        uniqueInstance = new Environnement(idNiveau);
+        uniqueInstance.creerNiveau(idNiveau);
     }
 
     public Carte getCarte() {

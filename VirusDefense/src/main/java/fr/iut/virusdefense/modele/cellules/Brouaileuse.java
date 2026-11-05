@@ -11,22 +11,22 @@ public class Brouaileuse extends Cellule {
         return coutBase;
     }
 
-    private Brouaileuse(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 200, coutBase);
+    private Brouaileuse(int ligne, int colonne){
+        super(ligne, colonne, 200, coutBase);
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 1.5, 1));
+        setReconnaissance(new RecSimple(getCoordonees(), 1.5, 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueZone(getEnvironnement(), getCoordonees(), 90, getReconnaissance().getCibles(), getReconnaissance().getPortee()));
+        setGestionnaireAttaque(new GestionnaireAttaqueZone(getCoordonees(), 90, getReconnaissance().getCibles(), getReconnaissance().getPortee()));
     }
 
-    public static Brouaileuse creer(Environnement env, int ligne, int colonne){
-        Brouaileuse temp = new Brouaileuse(env, ligne, colonne);
+    public static Brouaileuse creer(int ligne, int colonne){
+        Brouaileuse temp = new Brouaileuse(ligne, colonne);
         temp.initRec();
         temp.initGestionnaireAttaque();
         return temp;

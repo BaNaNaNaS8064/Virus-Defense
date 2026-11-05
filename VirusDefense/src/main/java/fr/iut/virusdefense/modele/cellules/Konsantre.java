@@ -11,22 +11,22 @@ public class Konsantre extends Cellule{
         return coutBase;
     }
 
-    private Konsantre(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 1, coutBase);
+    private Konsantre(int ligne, int colonne){
+        super(ligne, colonne, 1, coutBase);
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 3.0, 1));
+        setReconnaissance(new RecSimple(getCoordonees(), 3.0, 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonConcentre(getEnvironnement(), getCoordonees(), 1, 60, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonConcentre(getCoordonees(), 1, 60, getReconnaissance().getCibles()));
     }
 
-    public static Konsantre creer(Environnement env, int ligne, int colonne){
-        Konsantre temp = new Konsantre(env, ligne, colonne);
+    public static Konsantre creer(int ligne, int colonne){
+        Konsantre temp = new Konsantre(ligne, colonne);
         temp.initRec();
         temp.initGestionnaireAttaque();
         return temp;

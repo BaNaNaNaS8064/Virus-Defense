@@ -13,8 +13,8 @@ public class PointApparition extends Positionnable implements Acteur {
     private int delai;
     private ArrayList<ListeApparition> listes;
 
-    public PointApparition(Environnement environnement, int ligne, int colonne){
-        super(environnement, ligne, colonne);
+    public PointApparition(int ligne, int colonne){
+        super(ligne, colonne);
         delai = 0;
         listes = new ArrayList<>();
     }
@@ -47,25 +47,25 @@ public class PointApparition extends Positionnable implements Acteur {
     private void ajouterDansLEnvironnement(CodeMaladie codeMaladie){
         switch (codeMaladie){
             case BACTERIEBANALE:
-                getEnvironnement().ajouterMaladie(new BacterieBanale(getEnvironnement(), (int) getLigne(), (int) getColonne()));
+                Environnement.getUniqueInstance().ajouterMaladie(new BacterieBanale((int) getLigne(), (int) getColonne()));
                 break;
             case PARASITE:
-                getEnvironnement().ajouterMaladie(new Parasite(getEnvironnement(), (int) getLigne(), (int) getColonne()));
+                Environnement.getUniqueInstance().ajouterMaladie(new Parasite((int) getLigne(), (int) getColonne()));
                 break;
             case VIRUS:
-                getEnvironnement().ajouterMaladie(new Virus(getEnvironnement(), (int) getLigne(), (int) getColonne()));
+                Environnement.getUniqueInstance().ajouterMaladie(new Virus((int) getLigne(), (int) getColonne()));
                 break;
             case VIRUSCOMPOSE_1:
-                getEnvironnement().ajouterMaladie(new VirusComposé(getEnvironnement(), (int) getLigne(), (int) getColonne()));
+                Environnement.getUniqueInstance().ajouterMaladie(new VirusComposé((int) getLigne(), (int) getColonne()));
                 break;
             case PETITCHAMPIGNON:
-                getEnvironnement().ajouterMaladie(new PetitChampignon(getEnvironnement(), (int) getLigne(), (int) getColonne()));
+                Environnement.getUniqueInstance().ajouterMaladie(new PetitChampignon((int) getLigne(), (int) getColonne()));
                 break;
             case GRANDCHAMPIGNON:
-                getEnvironnement().ajouterMaladie(new GrandChampignon(getEnvironnement(), (int) getLigne(), (int) getColonne()));
+                Environnement.getUniqueInstance().ajouterMaladie(new GrandChampignon((int) getLigne(), (int) getColonne()));
                 break;
             case TUMEUR:
-                getEnvironnement().ajouterMaladie(new Tumeur(getEnvironnement(), (int) getLigne(), (int) getColonne()));
+                Environnement.getUniqueInstance().ajouterMaladie(new Tumeur((int) getLigne(), (int) getColonne()));
                 break;
         }
     }

@@ -11,8 +11,8 @@ public class GestionnaireAttaqueRayonConcentre extends GestionnaireAttaqueRayon 
     private ArrayList<Integer> dureeCiblageTourPrecedent;
     private double delaiAugmentation;
 
-    public GestionnaireAttaqueRayonConcentre(Environnement environnement, Coordonees coordonees, double degats, double delaiAugmentation, ArrayList<Maladie> cibles) {
-        super(environnement, coordonees, degats, cibles);
+    public GestionnaireAttaqueRayonConcentre(Coordonees coordonees, double degats, double delaiAugmentation, ArrayList<Maladie> cibles) {
+        super(coordonees, degats, cibles);
         ciblesTourPrecedent = new ArrayList<>();
         dureeCiblageTourPrecedent = new ArrayList<>();
         this.delaiAugmentation = delaiAugmentation;

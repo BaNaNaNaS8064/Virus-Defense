@@ -12,22 +12,22 @@ public class Sainple extends Cellule {
         return coutBase;
     }
 
-    private Sainple(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 60, coutBase);
+    private Sainple(int ligne, int colonne){
+        super(ligne, colonne, 60, coutBase);
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 3.0, 1));
+        setReconnaissance(new RecSimple(getCoordonees(), 3.0, 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueProjectile(getEnvironnement(), getCoordonees(), 40, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueProjectile(getCoordonees(), 40, getReconnaissance().getCibles()));
     }
 
-    public static Sainple creer(Environnement env, int ligne, int colonne){
-        Sainple temp = new Sainple(env, ligne, colonne);
+    public static Sainple creer(int ligne, int colonne){
+        Sainple temp = new Sainple(ligne, colonne);
         temp.initRec();
         temp.initGestionnaireAttaque();
         return temp;

@@ -15,7 +15,7 @@ public class Joueur {
 
     public Joueur(){
         pvProperty = new SimpleIntegerProperty(1000);
-        pcProperty = new SimpleIntegerProperty(150);
+        pcProperty = new SimpleIntegerProperty(150213);
     }
 
     public final int getPv() {

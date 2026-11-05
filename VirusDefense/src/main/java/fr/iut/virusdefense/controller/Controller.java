@@ -70,9 +70,6 @@ public class Controller implements Initializable {
     // vue
     private AfficheurDeCarte afficheurDeCarte;
 
-    // modèle
-    private Environnement environnement;
-
     //controllerPackage
     private GestionnaireClick gestionnaireClick;
 
@@ -82,8 +79,8 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {}
 
     private void démarrerEnv(){
-        if (environnement != null)
-            environnement.getGestionnaireActeur().toutVider();
+        if (Environnement.getUniqueInstance() != null)
+            Environnement.getUniqueInstance().getGestionnaireActeur().toutVider();
         GestionnaireMenuClick.fermerMenuActif();
         pause = false;
         imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/play.png"))));
@@ -91,10 +88,10 @@ public class Controller implements Initializable {
         boutonVague.setStyle("-fx-background-color: #79911B");
         boutonVague.setOnMousePressed(this::démarrerVague);
 
-        environnement = new Environnement(idNiveau);
+        Environnement.creerInstance(idNiveau);
 
-        afficheurDeCarte = new AfficheurDeCarte(environnement, tuiles, new AfficheurDeChemin(environnement, paneLignes));
-        gestionnaireClick = new GestionnaireClick(environnement, toggleGrpCellules, afficheurDeCarte , paneCentre);
+        afficheurDeCarte = new AfficheurDeCarte(tuiles, new AfficheurDeChemin(paneLignes));
+        gestionnaireClick = new GestionnaireClick(toggleGrpCellules, afficheurDeCarte , paneCentre);
 
         initLabels();
         initObservateurs();
@@ -104,18 +101,18 @@ public class Controller implements Initializable {
     }
 
     private void initObservateurs(){
-        environnement.getGestionnaireActeur().getMaladies().addListener(new ObsListeMaladies(paneDessin));
-        environnement.getGestionnaireActeur().getRayons().addListener(new ObsListeRayons(paneDessin));
-        environnement.getGestionnaireActeur().getZones().addListener(new ObsListeZones(paneDessin));
-        environnement.getGestionnaireActeur().getProjectiles().addListener(new ObsListeProjectiles(paneDessin));
-        environnement.getJoueur().pvProperty().addListener(new ObsVieJoueur(new GestionnaireBarreDeVie(barreDeVie, labelPvActuels, labelPvMax, environnement.getJoueur().getPv())));
-        environnement.statutPartieProperty().addListener(new ObsStatutPartie(new GestionnaireEcranDeFin(paneDessin)));
+        Environnement.getUniqueInstance().getGestionnaireActeur().getMaladies().addListener(new ObsListeMaladies(paneDessin));
+        Environnement.getUniqueInstance().getGestionnaireActeur().getRayons().addListener(new ObsListeRayons(paneDessin));
+        Environnement.getUniqueInstance().getGestionnaireActeur().getZones().addListener(new ObsListeZones(paneDessin));
+        Environnement.getUniqueInstance().getGestionnaireActeur().getProjectiles().addListener(new ObsListeProjectiles(paneDessin));
+        Environnement.getUniqueInstance().getJoueur().pvProperty().addListener(new ObsVieJoueur(new GestionnaireBarreDeVie(barreDeVie, labelPvActuels, labelPvMax, Environnement.getUniqueInstance().getJoueur().getPv())));
+        Environnement.getUniqueInstance().statutPartieProperty().addListener(new ObsStatutPartie(new GestionnaireEcranDeFin(paneDessin)));
     }
 
     private void initLabels(){
-        labelSolde.textProperty().bind(environnement.getJoueur().pcProperty().asString());
-        labelVagueActuelle.textProperty().bind(environnement.getNiveau().numVagueProperty().add(1).asString());
-        labelVagueMax.setText("/" + environnement.getNiveau().nombreDeVagues());
+        labelSolde.textProperty().bind(Environnement.getUniqueInstance().getJoueur().pcProperty().asString());
+        labelVagueActuelle.textProperty().bind(Environnement.getUniqueInstance().getNiveau().numVagueProperty().add(1).asString());
+        labelVagueMax.setText("/" + Environnement.getUniqueInstance().getNiveau().nombreDeVagues());
 
         labelCoutSainple.setText("" + Sainple.getCoutBase());
         labelCoutLasere.setText("" + Lasere.getCoutBase());
@@ -141,7 +138,7 @@ public class Controller implements Initializable {
      * Méthode exécutée à chaque tour
      */
     private void uneFrame(){
-        environnement.unTour();
+        Environnement.getUniqueInstance().unTour();
     }
 
     @FXML
@@ -166,7 +163,7 @@ public class Controller implements Initializable {
     @FXML
     public void démarrerVague(MouseEvent mouseEvent) {
         if (!pause){
-            environnement.getNiveau().passerProchaineVague();
+            Environnement.getUniqueInstance().getNiveau().passerProchaineVague();
             ((ImageView) boutonVague.getGraphic()).setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/next.png"))));
             boutonVague.setStyle("-fx-background-color: #2F4D1A");
             boutonVague.setOnMousePressed(this::passerVague);
@@ -174,8 +171,8 @@ public class Controller implements Initializable {
     }
 
     public void passerVague(MouseEvent mouseEvent){
-        if(environnement.getNiveau().resteVague() && !pause)
-            environnement.getNiveau().passerProchaineVague();
+        if(Environnement.getUniqueInstance().getNiveau().resteVague() && !pause)
+            Environnement.getUniqueInstance().getNiveau().passerProchaineVague();
     }
 
     @FXML
@@ -198,7 +195,7 @@ public class Controller implements Initializable {
 
     public void retourMenuPrincipal(){
         Main.changerScene();
-        environnement.setStatutPartie(StatutPartie.PASTERMINEE);
+        Environnement.getUniqueInstance().setStatutPartie(StatutPartie.PASTERMINEE);
         gameLoop.pause();
     }
 }
