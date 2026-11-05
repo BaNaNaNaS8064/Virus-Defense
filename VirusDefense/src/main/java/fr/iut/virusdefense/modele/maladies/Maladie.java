@@ -6,6 +6,7 @@ import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.Positionnable;
 import fr.iut.virusdefense.modele.deplacement.GestionnaireDeplacement;
 import fr.iut.virusdefense.modele.maladies.Capacité.CapaciteActive;
+import fr.iut.virusdefense.modele.maladies.Capacité.CapaciteMort;
 
 public abstract class Maladie extends Positionnable implements ActeurRetirable {
     private double pv;
@@ -14,9 +15,10 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     private double coefVitesse;
     private GestionnaireDeplacement gestionnaireDeplacement;
     private CapaciteActive capaciteActive;
+    private CapaciteMort capaciteMort;
 
 
-    public Maladie(Environnement environnement, double ligne, double colonne, int pv, double vitesse, int recompense, CapaciteActive capaciteActive) {
+    public Maladie(Environnement environnement, double ligne, double colonne, int pv, double vitesse, int recompense, CapaciteActive capaciteActive, CapaciteMort capaciteMort) {
         super(environnement, ligne+0.5, colonne+0.5);
 
         this.vitesse = vitesse;
@@ -24,11 +26,12 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
         this.recompense = recompense;
         coefVitesse = 1;
         this.gestionnaireDeplacement = new GestionnaireDeplacement();
-        initCapacite(capaciteActive);
+        initCapacite(capaciteActive, capaciteMort);
     }
 
-    public void initCapacite(CapaciteActive capaciteActive){
+    public void initCapacite(CapaciteActive capaciteActive, CapaciteMort capaciteMort) {
         this.capaciteActive = capaciteActive;
+        this.capaciteMort = capaciteMort;
     }
 
     public final int getRecompense(){
@@ -38,6 +41,8 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     public CapaciteActive getCapaciteActive() {
         return capaciteActive;
     }
+
+    public CapaciteMort getCapaciteMort() {return capaciteMort;}
 
     public boolean estVivant(){
         return pv > 0;
@@ -90,11 +95,17 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     }
 
     public void activationCapaciteActive(){
-        getCapaciteActive().reduireDelai();
-        if(getCapaciteActive().CapacitePossible() && estVivant()){
-            this.capaciteActive.ActivationCapacite(getEnvironnement(), (int) getLigne(),(int) getColonne());
+        if (capaciteActive != null) {
+            this.capaciteActive.reduireDelai();
+            if (this.capaciteActive.CapacitePossible() && estVivant()) {
+                this.capaciteActive.ActivationCapacite(getEnvironnement(), (int) getLigne(), (int) getColonne());
+            }
         }
     }
 
-    public void capaciteALaMort(){}
+    public void activationCapaciteMort(){
+        if (!aAtteintLObjectif() && !estVivant() && capaciteMort != null) {
+            this.capaciteMort.ActivationCapacite(getEnvironnement(), (int) getLigne(), (int) getColonne());
+        }
+    }
 }

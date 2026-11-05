@@ -1,6 +1,7 @@
 package fr.iut.virusdefense.modele.maladies;
 
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.maladies.Capacité.CapaciteMortDivision;
 
 public class VirusComposé extends Maladie{
     private final int stade;
@@ -8,20 +9,13 @@ public class VirusComposé extends Maladie{
         this(environnement, ligne, colonne, 1);
     }
 
-    private VirusComposé(Environnement environnement, double ligne, double colonne, int stade){
-        super(environnement, ligne, colonne, 333/(int)(Math.pow(2,(stade-1))), 0.013, 24/(int)(Math.pow(2,(stade-1))), null);
+    public VirusComposé(Environnement environnement, double ligne, double colonne, int stade){
+        super(environnement, ligne, colonne, 333/(int)(Math.pow(2,(stade-1))), 0.013, 24/(int)(Math.pow(2,(stade-1))), null, new CapaciteMortDivision(stade));
         this.stade = stade;
     }
 
     public int getStade() {
         return stade;
-    }
-
-    @Override
-    public void capaciteALaMort() {
-        if(stade<3 && !aAtteintLObjectif())
-            for (int i=0; i<2; i++)
-        getEnvironnement().getGestionnaireActeur().getMaladies().add(new VirusComposé(getEnvironnement(), getLigne()-0.5, getColonne()-0.5, stade+1));
     }
 
     @Override

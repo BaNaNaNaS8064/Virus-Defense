@@ -6,9 +6,8 @@ import fr.iut.virusdefense.modele.maladies.Capacité.CapaciteActiveInvocation;
 
 public class GrandChampignon extends Maladie{
     public GrandChampignon(Environnement environnement, int ligne, int colonne) {
-        super(environnement, ligne, colonne, 1000, 0.015, 100, new CapaciteActiveInvocation());
+        super(environnement, ligne, colonne, 1000, 0.015, 100, new CapaciteActiveInvocation(), null);
     }
-
 
     @Override
     public boolean peutSubirAlteration() {
