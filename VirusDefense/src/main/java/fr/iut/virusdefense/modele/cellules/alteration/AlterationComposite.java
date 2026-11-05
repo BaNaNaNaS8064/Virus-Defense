@@ -2,6 +2,7 @@ package fr.iut.virusdefense.modele.cellules.alteration;
 
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AlterationComposite extends Alteration{
@@ -40,14 +41,13 @@ public class AlterationComposite extends Alteration{
     }
 
     @Override
-    public String toString() {
-        String s = "";
+    public Alteration copy() {
+        List<Alteration> liste = new ArrayList<Alteration>();
         for(Alteration alteration : alterations){
-            s += alteration + "\n";
+            liste.add(alteration.copy());
         }
-        s += getDuree() + "\n";
-        s += getMaladie() + "\n";
-        s += getId();
-        return s;
+        Alteration temp = new AlterationComposite(liste);
+        temp.setMaladie(this.getMaladie());
+        return temp;
     }
 }

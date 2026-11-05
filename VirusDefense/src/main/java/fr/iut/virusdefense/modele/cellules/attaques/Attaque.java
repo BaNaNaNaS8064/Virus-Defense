@@ -50,8 +50,9 @@ public abstract class Attaque extends Positionnable implements ActeurRetirable {
     public final void donnerAlterations() {
         for (Maladie cible : cibles) {
             if (cible.peutSubirAlteration() && getAlteration() != null) {
-                getAlteration().setMaladie(cible);
-                getEnvironnement().getGestionnaireActeur().getAlterations().add(getAlteration());
+                Alteration copie = getAlteration().copy();
+                copie.setMaladie(cible);
+                getEnvironnement().getGestionnaireActeur().getAlterations().add(copie);
             }
         }
     }

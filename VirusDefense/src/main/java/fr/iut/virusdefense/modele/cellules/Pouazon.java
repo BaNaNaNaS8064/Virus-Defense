@@ -57,7 +57,6 @@ public class Pouazon extends Cellule{
 
     @Override
     public void ameliorerAuNiveau3() {
-        //getAttaque().setAlteration(new AlterationComposite(List.of(new Ralentissement(5,0.9), getAttaque().getAlteration())));
-        getAttaque().setAlteration(new Ralentissement(5,0.9));
+        getAttaque().setAlteration(new AlterationComposite(List.of(new Ralentissement(5,0.9), getAttaque().getAlteration())));
     }
 }

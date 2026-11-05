@@ -50,7 +50,6 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     @Override
     public final void agir(){
         if (estVivant()) {
-            coefVitesse = 1;
             capaciteActive();
             bouger();
 
@@ -58,6 +57,7 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
                 infligerDegatsAuJoueur();
                 mourir();
             }
+            coefVitesse = 1;
         }
     }
 

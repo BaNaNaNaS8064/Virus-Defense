@@ -35,4 +35,6 @@ public abstract class Alteration extends Identifiable implements ActeurRetirable
     }
 
     public abstract void affecter();
+
+    public abstract Alteration copy();
 }

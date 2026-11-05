@@ -12,4 +12,11 @@ public class Dot extends Alteration {
     public void affecter() {
         getMaladie().prendreDegats(degats);
     }
+
+    @Override
+    public Alteration copy() {
+        Alteration temp = new Dot(getDuree(), degats);
+        temp.setMaladie(this.getMaladie());
+        return temp;
+    }
 }
