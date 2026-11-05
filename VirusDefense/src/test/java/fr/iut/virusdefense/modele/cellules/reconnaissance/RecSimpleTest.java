@@ -99,7 +99,7 @@ class RecSimpleTest {
 
     @Test
     void valide(){
-        Reconnaissance recSimple = new RecSimple(2,2,3,1);
+        Reconnaissance recSimple = new RecSimple(new Coordonees(2,2),3,1);
         Environnement.getUniqueInstance().ajouterMaladie(new Virus(2,3));
         recSimple.actualiser();
         assertTrue(recSimple.valide(), "Il y a exactement une cible valide");
