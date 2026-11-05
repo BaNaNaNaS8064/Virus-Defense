@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.modele.maladies;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.maladies.Capacité.CapaciteMortDivision;
+import fr.iut.virusdefense.modele.maladies.capacites.CapaciteMortDivision;
 
 public class VirusComposé extends Maladie{
     private final int stade;

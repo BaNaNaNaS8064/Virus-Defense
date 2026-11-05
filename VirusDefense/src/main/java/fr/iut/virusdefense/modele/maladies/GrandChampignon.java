@@ -1,8 +1,7 @@
 package fr.iut.virusdefense.modele.maladies;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.maladies.Capacité.CapaciteActive;
-import fr.iut.virusdefense.modele.maladies.Capacité.CapaciteActiveInvocation;
+import fr.iut.virusdefense.modele.maladies.capacites.CapaciteActiveInvocation;
 
 public class GrandChampignon extends Maladie{
     public GrandChampignon(Environnement environnement, int ligne, int colonne) {

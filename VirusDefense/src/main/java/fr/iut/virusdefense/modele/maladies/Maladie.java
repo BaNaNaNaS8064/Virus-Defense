@@ -5,8 +5,8 @@ import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.Positionnable;
 import fr.iut.virusdefense.modele.deplacement.GestionnaireDeplacement;
-import fr.iut.virusdefense.modele.maladies.Capacité.CapaciteActive;
-import fr.iut.virusdefense.modele.maladies.Capacité.CapaciteMort;
+import fr.iut.virusdefense.modele.maladies.capacites.CapaciteActive;
+import fr.iut.virusdefense.modele.maladies.capacites.CapaciteMort;
 
 public abstract class Maladie extends Positionnable implements ActeurRetirable {
     private double pv;
@@ -98,14 +98,14 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
         if (capaciteActive != null) {
             this.capaciteActive.reduireDelai();
             if (this.capaciteActive.CapacitePossible() && estVivant()) {
-                this.capaciteActive.ActivationCapacite(getEnvironnement(), (int) getLigne(), (int) getColonne());
+                this.capaciteActive.Activer(this);
             }
         }
     }
 
     public void activationCapaciteMort(){
         if (!aAtteintLObjectif() && !estVivant() && capaciteMort != null) {
-            this.capaciteMort.ActivationCapacite(getEnvironnement(), (int) getLigne(), (int) getColonne());
+            this.capaciteMort.Activer(this);
         }
     }
 }

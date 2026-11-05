@@ -1,8 +1,6 @@
-package fr.iut.virusdefense.modele.maladies.Capacité;
+package fr.iut.virusdefense.modele.maladies.capacites;
 
-import fr.iut.virusdefense.modele.Environnement;
-
-public abstract class CapaciteActive {
+public abstract class CapaciteActive implements Capacite {
     private int delaiActivation;
 
     public CapaciteActive() {
@@ -20,8 +18,6 @@ public abstract class CapaciteActive {
     public void reduireDelai(){
         delaiActivation--;
     }
-
-    public abstract void ActivationCapacite(Environnement environnement, int ligne, int colonne);
 
     public abstract void resetDelai();
 

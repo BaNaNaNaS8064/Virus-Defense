@@ -1,18 +1,18 @@
-package fr.iut.virusdefense.modele.maladies.Capacité;
+package fr.iut.virusdefense.modele.maladies.capacites;
 
-import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.maladies.Maladie;
 import fr.iut.virusdefense.modele.maladies.PetitChampignon;
 
 public class CapaciteActiveInvocation extends CapaciteActive {
     public CapaciteActiveInvocation() {
-
+        super();
     }
 
     @Override
-    public void ActivationCapacite(Environnement environnement, int ligne, int colonne) {
+    public void Activer(Maladie m) {
         resetDelai();
         for (int i = 0; i < (int)((Math.random()*3) + 2); i++) {
-            environnement.ajouterMaladie(new PetitChampignon(environnement, ligne, colonne));
+            m.getEnvironnement().ajouterMaladie(new PetitChampignon(m.getEnvironnement(), (int) m.getLigne(), (int) m.getColonne()));
         }
     }
 
