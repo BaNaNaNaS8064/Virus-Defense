@@ -11,8 +11,8 @@ public class Rayon extends Attaque {
     private int age;
     private final int ageMaximal;
 
-    public Rayon(Coordonees coordonees, Maladie cible, double degats, int ageMaximal, List<Alteration> alterations) {
-        super(new Coordonees(coordonees), degats, alterations, cible);
+    public Rayon(Coordonees coordonees, Maladie cible, double degats, int ageMaximal, Alteration alteration) {
+        super(new Coordonees(coordonees), degats, alteration, cible);
         age = 0;
         this.ageMaximal = ageMaximal;
 

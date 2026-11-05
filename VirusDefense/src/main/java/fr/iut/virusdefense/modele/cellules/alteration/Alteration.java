@@ -21,6 +21,8 @@ public abstract class Alteration extends Identifiable implements ActeurRetirable
         this.maladie = m;
     }
 
+    public int getDuree() {return duree;}
+
     @Override
     public boolean doitEtreRetiré(){
         return (0 >= duree || !maladie.estVivant());
@@ -33,4 +35,6 @@ public abstract class Alteration extends Identifiable implements ActeurRetirable
     }
 
     public abstract void affecter();
+
+    public abstract Alteration copy();
 }

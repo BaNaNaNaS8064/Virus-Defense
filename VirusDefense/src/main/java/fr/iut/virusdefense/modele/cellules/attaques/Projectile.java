@@ -12,9 +12,8 @@ public class Projectile extends Attaque {
     private boolean cibleTouché;
     private GestionnaireDeplacement gestionnaireDeplacement;
 
-    public Projectile(Coordonees coordonees, Maladie cible, double degats, List<Alteration> alterations){
-        super(new Coordonees(coordonees), degats, alterations, cible);
-
+    public Projectile(Coordonees coordonees, Maladie cible, double degats, Alteration alteration){
+        super(new Coordonees(coordonees), degats, alteration, cible);
         this.cibleTouché = false;
         this.gestionnaireDeplacement = new GestionnaireDeplacement();
     }

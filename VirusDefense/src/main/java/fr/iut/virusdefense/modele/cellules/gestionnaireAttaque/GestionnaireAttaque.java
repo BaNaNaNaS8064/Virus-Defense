@@ -10,13 +10,13 @@ import java.util.ArrayList;
 
 public abstract class GestionnaireAttaque extends Positionnable {
     private final ArrayList<Maladie> cibles;
-    private final ArrayList<Alteration> alterations;
+    private Alteration alteration;
     private double degats;
 
     public GestionnaireAttaque(Coordonees coordonees, double degats, ArrayList<Maladie> cibles){
         super(coordonees);
         this.cibles = cibles;
-        this.alterations = new ArrayList<>();
+        this.alteration = null;
         this.degats = degats;
     }
 
@@ -24,8 +24,8 @@ public abstract class GestionnaireAttaque extends Positionnable {
         return cibles;
     }
 
-    public ArrayList<Alteration> getAlterations() {
-        return alterations;
+    public Alteration getAlteration() {
+        return alteration;
     }
 
     public double getDegats() {
@@ -36,8 +36,8 @@ public abstract class GestionnaireAttaque extends Positionnable {
         this.degats = degats;
     }
 
-    public void ajouterAlteration(Alteration alt){
-        alterations.add(alt);
+    public void setAlteration(Alteration alt){
+        alteration = alt;
     }
 
     abstract public void attaqueCibles();

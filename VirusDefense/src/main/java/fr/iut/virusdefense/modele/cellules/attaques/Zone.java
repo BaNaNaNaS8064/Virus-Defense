@@ -12,8 +12,8 @@ public abstract class Zone extends Attaque {
     private final int ageMaximal;
     private final double rayonZone;
 
-    public Zone(Coordonees coordonees, List<Maladie> cibles, double degats, int ageMaximal, List<Alteration> alterations, double rayonZone) {
-        super(new Coordonees(coordonees), degats, alterations, cibles);
+    public Zone(Coordonees coordonees, List<Maladie> cibles, double degats, int ageMaximal, Alteration alteration, double rayonZone) {
+        super(new Coordonees(coordonees), degats, alteration, cibles);
         age = 0;
         this.ageMaximal = ageMaximal;
 

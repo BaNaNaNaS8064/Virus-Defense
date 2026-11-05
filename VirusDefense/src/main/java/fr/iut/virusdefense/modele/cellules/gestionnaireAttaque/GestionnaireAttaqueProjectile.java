@@ -2,6 +2,7 @@ package fr.iut.virusdefense.modele.cellules.gestionnaireAttaque;
 
 import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.cellules.alteration.Dot;
 import fr.iut.virusdefense.modele.cellules.attaques.Projectile;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
@@ -14,7 +15,7 @@ public class GestionnaireAttaqueProjectile extends GestionnaireAttaque {
     }
 
     public void attaque(Maladie m){
-        Environnement.getUniqueInstance().ajouterProjectile(new Projectile(getCoordonees(), m, getDegats(), getAlterations()));
+        Environnement.getUniqueInstance().ajouterProjectile(new Projectile(getCoordonees(), m, getDegats(), getAlteration()));
     }
 
     public void attaqueCibles(){

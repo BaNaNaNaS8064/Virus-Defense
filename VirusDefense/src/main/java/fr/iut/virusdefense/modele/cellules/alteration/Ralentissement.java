@@ -12,4 +12,11 @@ public class Ralentissement extends Alteration{
     public void affecter() {
         getMaladie().ralentir(coefRalentissement);
     }
+
+    @Override
+    public Alteration copy() {
+        Alteration temp = new Ralentissement(getDuree(), coefRalentissement);
+        temp.setMaladie(this.getMaladie());
+        return temp;
+    }
 }

@@ -11,17 +11,18 @@ import java.util.List;
 
 public abstract class Attaque extends Positionnable implements ActeurRetirable {
     private List<Maladie> cibles;
-    private final List<Alteration> alterations;
+    private final Alteration alteration;
     private final double degats;
 
-    public Attaque(Coordonees coordonees, double degats, List<Alteration> alterations, Maladie cible){
-        this(coordonees, degats, alterations, List.of(cible));
+    public Attaque(Coordonees coordonees, double degats, Alteration alteration, Maladie cible){
+        this(coordonees, degats, alteration, List.of(cible));
     }
 
-    public Attaque(Coordonees coordonees, double degats, List<Alteration> alterations, List<Maladie> cibles) {
+    public Attaque(Coordonees coordonees, double degats, Alteration alteration, List<Maladie> cibles) {
         super(coordonees);
+
         this.degats = degats;
-        this.alterations = alterations;
+        this.alteration = alteration;
         this.cibles = cibles;
     }
 
@@ -29,8 +30,8 @@ public abstract class Attaque extends Positionnable implements ActeurRetirable {
         return degats;
     }
 
-    public List<Alteration> getAlterations() {
-        return alterations;
+    public Alteration getAlteration() {
+        return alteration;
     }
 
     public List<Maladie> getCibles(){
@@ -48,11 +49,12 @@ public abstract class Attaque extends Positionnable implements ActeurRetirable {
     }
 
     public final void donnerAlterations() {
-        for (Maladie cible : cibles) {
-            if (cible.peutSubirAlteration()) {
-                for (Alteration alt : getAlterations()) {
-                    alt.setMaladie(cible);
-                    Environnement.getUniqueInstance().getGestionnaireActeur().getAlterations().add(alt);
+        if (getAlteration() != null) {
+            for (Maladie cible : cibles) {
+                if (cible.peutSubirAlteration()) {
+                    Alteration copie = getAlteration().copy();
+                    copie.setMaladie(cible);
+                    Environnement.getUniqueInstance().getGestionnaireActeur().getAlterations().add(copie);
                 }
             }
         }
