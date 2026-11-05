@@ -7,25 +7,19 @@ import java.util.List;
 
 public abstract class Positionnable extends Identifiable{
 
-    private final Environnement environnement;
     private final Coordonees coordonees;
 
-    public Positionnable(Environnement environnement, int ligne, int colonne){
-        this(environnement, new Coordonees(ligne+0.5, colonne+0.5));
+    public Positionnable(int ligne, int colonne){
+        this(new Coordonees(ligne+0.5, colonne+0.5));
     }
 
-    public Positionnable(Environnement environnement, double ligne, double colonne){
-        this(environnement, new Coordonees(ligne,colonne));
+    public Positionnable(double ligne, double colonne){
+        this(new Coordonees(ligne,colonne));
     }
 
-    public Positionnable(Environnement environnement, Coordonees coordonees){
+    public Positionnable(Coordonees coordonees){
         super();
-        this.environnement = environnement;
         this.coordonees = coordonees;
-    }
-
-    public Environnement getEnvironnement() {
-        return environnement;
     }
 
     public final double getLigne(){
@@ -87,7 +81,7 @@ public abstract class Positionnable extends Identifiable{
             positionColonne += distColonne / nombreDePoints;
             positionLigne = pente * positionColonne + ordoneeOrigine;
 
-            if (!getEnvironnement().getCarte().peutVoirAuTravers((int)positionLigne, (int)positionColonne, ignorerCellules) && ((int)positionLigne != (int)getLigne() || (int)positionColonne != (int)getColonne()))
+            if (!Environnement.getUniqueInstance().getCarte().peutVoirAuTravers((int)positionLigne, (int)positionColonne, ignorerCellules) && ((int)positionLigne != (int)getLigne() || (int)positionColonne != (int)getColonne()))
                 bloque = true;
 
             i++;
@@ -104,13 +98,13 @@ public abstract class Positionnable extends Identifiable{
         else if (ligne > getLigne())
             direction = 1;
         else
-            return getEnvironnement().getCarte().peutVoirAuTravers((int)getLigne(), (int)getColonne(), ignorerCellules);
+            return Environnement.getUniqueInstance().getCarte().peutVoirAuTravers((int)getLigne(), (int)getColonne(), ignorerCellules);
 
         boolean bloque = false;
 
         while (!bloque && positionLigne != ligne + direction){
             positionLigne += direction;
-            if (!getEnvironnement().getCarte().peutVoirAuTravers(positionLigne, (int)getColonne(), ignorerCellules))
+            if (!Environnement.getUniqueInstance().getCarte().peutVoirAuTravers(positionLigne, (int)getColonne(), ignorerCellules))
                 bloque = true;
         }
 

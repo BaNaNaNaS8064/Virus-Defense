@@ -13,8 +13,8 @@ public abstract class GestionnaireAttaque extends Positionnable {
     private final ArrayList<Alteration> alterations;
     private double degats;
 
-    public GestionnaireAttaque(Environnement environnement, Coordonees coordonees, double degats, ArrayList<Maladie> cibles){
-        super(environnement, coordonees);
+    public GestionnaireAttaque(Coordonees coordonees, double degats, ArrayList<Maladie> cibles){
+        super(coordonees);
         this.cibles = cibles;
         this.alterations = new ArrayList<>();
         this.degats = degats;

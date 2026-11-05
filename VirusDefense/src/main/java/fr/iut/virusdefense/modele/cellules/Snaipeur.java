@@ -11,20 +11,20 @@ public class Snaipeur extends Cellule{
         return coutBase;
     }
 
-    public Snaipeur(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 250, coutBase);
+    public Snaipeur(int ligne, int colonne){
+        super(ligne, colonne, 250, coutBase);
         initRec();
         initGestionnaireAttaque();
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 12.0, 1));
+        setReconnaissance(new RecSimple(getCoordonees(), 12.0, 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getEnvironnement(), getCoordonees(), 100, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getCoordonees(), 100, getReconnaissance().getCibles()));
     }
 
     @Override

@@ -4,8 +4,8 @@ import fr.iut.virusdefense.modele.Environnement;
 
 public class GrandChampignon extends Maladie{
     private int delaiInvocation;
-    public GrandChampignon(Environnement environnement, int ligne, int colonne){
-        super(environnement, ligne, colonne, 1000, 0.015, 100);
+    public GrandChampignon(int ligne, int colonne){
+        super(ligne, colonne, 1000, 0.015, 100);
         resetDelai();
     }
 
@@ -14,7 +14,7 @@ public class GrandChampignon extends Maladie{
         if(--delaiInvocation <= 0){
             resetDelai();
             for (int i = 0; i < (int)((Math.random()*3) + 2); i++)
-                getEnvironnement().ajouterMaladie(new PetitChampignon(getEnvironnement(), (int)getLigne(), (int)getColonne()));
+                Environnement.getUniqueInstance().ajouterMaladie(new PetitChampignon((int)getLigne(), (int)getColonne()));
         }
     }
 

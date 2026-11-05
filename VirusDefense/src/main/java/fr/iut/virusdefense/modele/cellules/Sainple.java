@@ -12,20 +12,20 @@ public class Sainple extends Cellule {
         return coutBase;
     }
 
-    public Sainple(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 60, coutBase);
+    public Sainple(int ligne, int colonne){
+        super(ligne, colonne, 60, coutBase);
         initRec();
         initGestionnaireAttaque();
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 3.0, 1));
+        setReconnaissance(new RecSimple(getCoordonees(), 3.0, 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueProjectile(getEnvironnement(), getCoordonees(), 40, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueProjectile(getCoordonees(), 40, getReconnaissance().getCibles()));
     }
 
     @Override

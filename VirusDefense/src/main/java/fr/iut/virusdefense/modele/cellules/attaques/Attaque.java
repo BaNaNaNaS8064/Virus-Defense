@@ -14,12 +14,12 @@ public abstract class Attaque extends Positionnable implements ActeurRetirable {
     private final List<Alteration> alterations;
     private final double degats;
 
-    public Attaque(Environnement environnement, Coordonees coordonees, double degats, List<Alteration> alterations, Maladie cible){
-        this(environnement, coordonees, degats, alterations, List.of(cible));
+    public Attaque(Coordonees coordonees, double degats, List<Alteration> alterations, Maladie cible){
+        this(coordonees, degats, alterations, List.of(cible));
     }
 
-    public Attaque(Environnement environnement, Coordonees coordonees, double degats, List<Alteration> alterations, List<Maladie> cibles) {
-        super(environnement, coordonees);
+    public Attaque(Coordonees coordonees, double degats, List<Alteration> alterations, List<Maladie> cibles) {
+        super(coordonees);
         this.degats = degats;
         this.alterations = alterations;
         this.cibles = cibles;
@@ -52,7 +52,7 @@ public abstract class Attaque extends Positionnable implements ActeurRetirable {
             if (cible.peutSubirAlteration()) {
                 for (Alteration alt : getAlterations()) {
                     alt.setMaladie(cible);
-                    getEnvironnement().getGestionnaireActeur().getAlterations().add(alt);
+                    Environnement.getUniqueInstance().getGestionnaireActeur().getAlterations().add(alt);
                 }
             }
         }

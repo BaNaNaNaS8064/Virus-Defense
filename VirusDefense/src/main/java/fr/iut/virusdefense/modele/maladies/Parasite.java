@@ -4,8 +4,8 @@ import fr.iut.virusdefense.modele.Environnement;
 
 public class Parasite extends Maladie{
 
-    public Parasite(Environnement environnement, int ligne, int colonne){
-        super(environnement, ligne, colonne, 80, 0.022, 10);
+    public Parasite(int ligne, int colonne){
+        super(ligne, colonne, 80, 0.022, 10);
     }
 
     @Override

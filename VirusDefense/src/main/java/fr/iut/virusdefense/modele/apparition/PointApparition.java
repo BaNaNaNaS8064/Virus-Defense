@@ -13,8 +13,8 @@ public class PointApparition extends Positionnable implements Acteur {
     private int delai;
     private ArrayList<ListeApparition> listes;
 
-    public PointApparition(Environnement environnement, int ligne, int colonne){
-        super(environnement, ligne, colonne);
+    public PointApparition(int ligne, int colonne){
+        super(ligne, colonne);
         delai = 0;
         listes = new ArrayList<>();
     }
@@ -45,7 +45,8 @@ public class PointApparition extends Positionnable implements Acteur {
     }
 
     private void ajouterDansLEnvironnement(CodeMaladie codeMaladie){
-        Maladie m = FabriqueMaladie.créerMaladie(codeMaladie, getEnvironnement(), (int) getLigne(), (int) getColonne());
-        if (m != null) {getEnvironnement().ajouterMaladie(m);}
+        Maladie m = FabriqueMaladie.créerMaladie(codeMaladie, (int) getLigne(), (int) getColonne());
+        if (m != null)
+            Environnement.getUniqueInstance().ajouterMaladie(m);
     }
 }

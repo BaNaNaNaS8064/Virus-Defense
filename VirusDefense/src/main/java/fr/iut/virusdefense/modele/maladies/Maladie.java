@@ -15,8 +15,8 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     private double coefVitesse;
     private GestionnaireDeplacement gestionnaireDeplacement;
 
-    public Maladie(Environnement environnement, double ligne, double colonne, int pv, double vitesse, int recompense){
-        super(environnement, ligne+0.5, colonne+0.5);
+    public Maladie(double ligne, double colonne, int pv, double vitesse, int recompense){
+        super(ligne+0.5, colonne+0.5);
 
         this.vitesse = vitesse;
         this.pv = pv;
@@ -44,7 +44,7 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     }
 
     public boolean aAtteintLObjectif(){
-        return getEnvironnement().getCarte().getObjectif().equals(position());
+        return Environnement.getUniqueInstance().getCarte().getObjectif().equals(position());
     }
 
     @Override
@@ -67,13 +67,13 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     }
 
     public void bouger(){
-        getCoordonees().copier(gestionnaireDeplacement.prochainEmplacement(this, vitesse * coefVitesse, new Coordonees(getEnvironnement().getDeplacement().prochaineCase(position()))));
+        getCoordonees().copier(gestionnaireDeplacement.prochainEmplacement(this, vitesse * coefVitesse, new Coordonees(Environnement.getUniqueInstance().getDeplacement().prochaineCase(position()))));
     }
 
     public abstract boolean peutSubirAlteration();
 
     public void infligerDegatsAuJoueur(){
-        getEnvironnement().getJoueur().retirerPv((int) pv);
+        Environnement.getUniqueInstance().getJoueur().retirerPv((int) pv);
     }
 
     public void ralentir(double coefRalentissement){

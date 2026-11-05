@@ -14,8 +14,8 @@ public class GestionnaireAttaqueProjectileExplosif extends GestionnaireAttaque {
     private final double rayonInstantane;
 
 
-    public GestionnaireAttaqueProjectileExplosif(Environnement environnement, Coordonees coordonees, double degats, ArrayList<Maladie> cibles, double rayonZonePortee, double degatsInstantane, double rayonInstantane , int tempsZone){
-        super(environnement, coordonees, degats, cibles);
+    public GestionnaireAttaqueProjectileExplosif(Coordonees coordonees, double degats, ArrayList<Maladie> cibles, double rayonZonePortee, double degatsInstantane, double rayonInstantane , int tempsZone){
+        super(coordonees, degats, cibles);
         this.tempsZone = tempsZone;
         this.rayonZonePortee = rayonZonePortee;
         this.degatsInstantane = degatsInstantane;
@@ -31,7 +31,7 @@ public class GestionnaireAttaqueProjectileExplosif extends GestionnaireAttaque {
     }
 
     public void attaque(Maladie m){
-        getEnvironnement().ajouterProjectile(new ProjectileExplosif(getEnvironnement(), getCoordonees(), m, getDegats(), getAlterations(),rayonZonePortee,degatsInstantane,rayonInstantane, tempsZone));
+        Environnement.getUniqueInstance().ajouterProjectile(new ProjectileExplosif(getCoordonees(), m, getDegats(), getAlterations(),rayonZonePortee,degatsInstantane,rayonInstantane, tempsZone));
     }
 
     public void attaqueCibles(){

@@ -13,8 +13,8 @@ public abstract class Reconnaissance extends Positionnable {
     private int nombreCiblesMax;
     private final ArrayList<Maladie> cibles;
 
-    public Reconnaissance(Environnement environnement, Coordonees coordonees, double portee, int nombreCiblesMax){
-        super(environnement, coordonees);
+    public Reconnaissance(Coordonees coordonees, double portee, int nombreCiblesMax){
+        super(coordonees);
         this.portee = portee;
         this.nombreCiblesMax = nombreCiblesMax;
         cibles = new ArrayList<>();
@@ -64,8 +64,8 @@ public abstract class Reconnaissance extends Positionnable {
 
         cibles.clear();
 
-        while (!aAssezDeCibles() && i < getEnvironnement().getGestionnaireActeur().getMaladies().size()) {
-            m = getEnvironnement().getGestionnaireActeur().getMaladies().get(i);
+        while (!aAssezDeCibles() && i < Environnement.getUniqueInstance().getGestionnaireActeur().getMaladies().size()) {
+            m = Environnement.getUniqueInstance().getGestionnaireActeur().getMaladies().get(i);
 
             if (estValide(m))
                 cibles.add(m);

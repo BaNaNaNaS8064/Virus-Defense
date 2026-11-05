@@ -5,15 +5,15 @@ import fr.iut.virusdefense.modele.maladies.*;
 import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
 
 public class FabriqueMaladie {
-    public static Maladie créerMaladie(CodeMaladie codeMaladie, Environnement environnement, int ligne, int colonne) {
+    public static Maladie créerMaladie(CodeMaladie codeMaladie, int ligne, int colonne) {
         return switch (codeMaladie) {
-            case BACTERIEBANALE -> new BacterieBanale(environnement, ligne, colonne);
-            case PARASITE -> new Parasite(environnement, ligne, colonne);
-            case VIRUS -> new Virus(environnement, ligne, colonne);
-            case VIRUSCOMPOSE_1 -> new VirusComposé(environnement, ligne, colonne);
-            case PETITCHAMPIGNON -> new PetitChampignon(environnement, ligne, colonne);
-            case GRANDCHAMPIGNON -> new GrandChampignon(environnement, ligne, colonne);
-            case TUMEUR -> new Tumeur(environnement, ligne, colonne);
+            case BACTERIEBANALE -> new BacterieBanale(ligne, colonne);
+            case PARASITE -> new Parasite(ligne, colonne);
+            case VIRUS -> new Virus(ligne, colonne);
+            case VIRUSCOMPOSE_1 -> new VirusComposé(ligne, colonne);
+            case PETITCHAMPIGNON -> new PetitChampignon(ligne, colonne);
+            case GRANDCHAMPIGNON -> new GrandChampignon(ligne, colonne);
+            case TUMEUR -> new Tumeur(ligne, colonne);
             default -> null;
         };
     }

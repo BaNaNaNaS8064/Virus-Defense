@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class GestionnaireAttaqueRayonRicochet extends GestionnaireAttaqueRayon {
 
-    public GestionnaireAttaqueRayonRicochet(Environnement environnement, Coordonees coordonees, double degats, ArrayList<Maladie> cibles){
-        super(environnement, coordonees, degats, cibles);
+    public GestionnaireAttaqueRayonRicochet(Coordonees coordonees, double degats, ArrayList<Maladie> cibles){
+        super(coordonees, degats, cibles);
     }
 
     @Override

@@ -6,9 +6,8 @@ import fr.iut.virusdefense.modele.maladies.Maladie;
 
 public class RecBrulure extends Reconnaissance{
 
-
-    public RecBrulure(Environnement environnement, Coordonees coordonees, double portee, int nombreCiblesMax) {
-        super(environnement, coordonees, portee, nombreCiblesMax);
+    public RecBrulure(Coordonees coordonees, double portee, int nombreCiblesMax) {
+        super(coordonees, portee, nombreCiblesMax);
     }
 
     @Override

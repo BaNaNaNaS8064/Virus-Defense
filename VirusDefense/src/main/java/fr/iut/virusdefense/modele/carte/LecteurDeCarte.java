@@ -7,9 +7,9 @@ public class LecteurDeCarte extends LecteurFichier{
 
     private final ConstructeurDeCarte constructeurDeCarte;
 
-    public LecteurDeCarte(Environnement environnement, String idNiveau){
+    public LecteurDeCarte(String idNiveau){
         super("niveaux/" + idNiveau + "/carte.txt");
-        constructeurDeCarte = new ConstructeurDeCarte(environnement);
+        constructeurDeCarte = new ConstructeurDeCarte();
         lire();
     }
 

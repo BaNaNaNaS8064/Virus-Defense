@@ -4,17 +4,17 @@ import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.utilitaires.CodeTuile;
 
 public class FabriqueCellule {
-    public static Cellule créer(CodeTuile codeCellule, Environnement environnement, int ligne, int colonne) {
+    public static Cellule créer(CodeTuile codeCellule, int ligne, int colonne) {
         return switch (codeCellule) {
-            case SAINPLE -> new Sainple(environnement, ligne, colonne);
-            case LASERE -> new Lasere(environnement, ligne, colonne);
-            case BROUAIEUSE -> new Brouaileuse(environnement, ligne, colonne);
-            case MULETYPLE -> new MuleTyple(environnement, ligne, colonne);
-            case SNAIPEUR -> new Snaipeur(environnement, ligne, colonne);
-            case RIZCOCHER -> new RizCocher(environnement, ligne, colonne);
-            case KONSANTRE -> new Konsantre(environnement, ligne, colonne);
-            case POUAZON -> new Pouazon(environnement, ligne, colonne);
-            case BRULHURE -> new Brulhure(environnement, ligne, colonne);
+            case SAINPLE -> new Sainple(ligne, colonne);
+            case LASERE -> new Lasere(ligne, colonne);
+            case BROUAIEUSE -> new Brouaileuse(ligne, colonne);
+            case MULETYPLE -> new MuleTyple(ligne, colonne);
+            case SNAIPEUR -> new Snaipeur(ligne, colonne);
+            case RIZCOCHER -> new RizCocher(ligne, colonne);
+            case KONSANTRE -> new Konsantre(ligne, colonne);
+            case POUAZON -> new Pouazon(ligne, colonne);
+            case BRULHURE -> new Brulhure(ligne, colonne);
             default -> null;
         };
     }

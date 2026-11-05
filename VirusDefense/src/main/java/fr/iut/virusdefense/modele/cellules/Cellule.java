@@ -16,8 +16,8 @@ public abstract class Cellule extends Positionnable implements Acteur {
     private int niveau;
     private final int cout;
 
-    public Cellule(Environnement environnement, int ligne, int colonne, int frequenceAttaque, int cout){
-        super(environnement, ligne, colonne);
+    public Cellule(int ligne, int colonne, int frequenceAttaque, int cout){
+        super(ligne, colonne);
 
         this.frequenceAttaque = frequenceAttaque;
         this.delai = frequenceAttaque;
@@ -82,8 +82,8 @@ public abstract class Cellule extends Positionnable implements Acteur {
     }
 
     public void niveauSuperieur(){
-        if (resteAmeliorations() && getEnvironnement().getJoueur().getPc() >= getCoutAmelioration()) {
-            getEnvironnement().getJoueur().retirerPc(getCoutAmelioration());
+        if (resteAmeliorations() && Environnement.getUniqueInstance().getJoueur().getPc() >= getCoutAmelioration()) {
+            Environnement.getUniqueInstance().getJoueur().retirerPc(getCoutAmelioration());
             switch (++niveau){
                 case 2:
                     ameliorerAuNiveau2();

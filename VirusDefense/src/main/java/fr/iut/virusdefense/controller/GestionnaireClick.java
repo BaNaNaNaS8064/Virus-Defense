@@ -12,15 +12,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 public class GestionnaireClick {
-    private final Environnement environnement;
-
     private final AfficheurDeCarte afficheurDeCarte;
 
     private final Pane paneCentre;
     private final ToggleGroup toggleGrpCellules;
 
-    public GestionnaireClick(Environnement environnement, ToggleGroup toggleGrpCellules, AfficheurDeCarte afficheurDeCarte, Pane paneCentre){
-        this.environnement = environnement;
+    public GestionnaireClick(ToggleGroup toggleGrpCellules, AfficheurDeCarte afficheurDeCarte, Pane paneCentre){
         this.toggleGrpCellules = toggleGrpCellules;
         this.afficheurDeCarte = afficheurDeCarte;
         this.paneCentre = paneCentre;
@@ -30,10 +27,10 @@ public class GestionnaireClick {
         int ligne = (int)(mouseEvent.getY()/32);
         int colonne = (int)(mouseEvent.getX()/32);
 
-        if (mouseEvent.getButton().equals(MouseButton.PRIMARY) && environnement.getCarte().emplacementVide(ligne, colonne))
+        if (mouseEvent.getButton().equals(MouseButton.PRIMARY) && Environnement.getUniqueInstance().getCarte().emplacementVide(ligne, colonne))
             poser(ligne, colonne);
 
-        else if (mouseEvent.getButton().equals(MouseButton.SECONDARY) && environnement.getCarte().estCellule(ligne, colonne))
+        else if (mouseEvent.getButton().equals(MouseButton.SECONDARY) && Environnement.getUniqueInstance().getCarte().estCellule(ligne, colonne))
             creerMenu(ligne,colonne);
 
         afficheurDeCarte.rechargerEmplacement(ligne, colonne);
@@ -41,14 +38,15 @@ public class GestionnaireClick {
 
     public void poser(int ligne, int colonne) {
         String boutonSelectionne = ((RadioButton) toggleGrpCellules.getSelectedToggle()).getId();
-        Cellule c = FabriqueCellule.créer(CodeTuile.valueOf(boutonSelectionne.substring(2).toUpperCase()), environnement, ligne, colonne);
-        if (c != null) {environnement.ajouterSiConforme(c);}
+        Cellule c = FabriqueCellule.créer(CodeTuile.valueOf(boutonSelectionne.substring(2).toUpperCase()), ligne, colonne);
+        if (c != null)
+            Environnement.getUniqueInstance().ajouterSiConforme(c);
     }
 
     public void creerMenu(int ligne, int colonne){
-        for (Cellule c : environnement.getCarte().getCellules()){
+        for (Cellule c : Environnement.getUniqueInstance().getCarte().getCellules()){
             if ((int) c.getLigne() == ligne && (int) c.getColonne() == colonne) {
-                new GestionnaireMenuClick(ligne, colonne, paneCentre, environnement, afficheurDeCarte);
+                new GestionnaireMenuClick(ligne, colonne, paneCentre, afficheurDeCarte);
             }
         }
     }

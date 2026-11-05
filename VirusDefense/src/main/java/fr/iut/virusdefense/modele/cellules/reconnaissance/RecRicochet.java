@@ -10,8 +10,8 @@ import java.util.List;
 public class RecRicochet extends Reconnaissance{
     private int nbRicochets;
 
-    public RecRicochet(Environnement environnement, Coordonees coordonees, double portee, int nbRicochets){
-        super(environnement, coordonees, portee, 1);
+    public RecRicochet(Coordonees coordonees, double portee, int nbRicochets){
+        super(coordonees, portee, 1);
         this.nbRicochets = nbRicochets;
     }
 
@@ -54,7 +54,7 @@ public class RecRicochet extends Reconnaissance{
             while (!aAssezDeRicochets() && resteCandidats){
                 candidats.clear();
 
-                for (Maladie m : getEnvironnement().getGestionnaireActeur().getMaladies()) {
+                for (Maladie m : Environnement.getUniqueInstance().getGestionnaireActeur().getMaladies()) {
                     if (ricochetValide(m)) {
                         candidats.add(m);
                     }

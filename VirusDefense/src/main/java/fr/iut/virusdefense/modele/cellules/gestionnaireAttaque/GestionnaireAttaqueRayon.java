@@ -9,11 +9,11 @@ import java.util.ArrayList;
 
 public abstract class GestionnaireAttaqueRayon extends GestionnaireAttaque {
 
-    public GestionnaireAttaqueRayon(Environnement environnement, Coordonees coordonees, double degats, ArrayList<Maladie> cibles){
-        super(environnement, coordonees, degats, cibles);
+    public GestionnaireAttaqueRayon(Coordonees coordonees, double degats, ArrayList<Maladie> cibles){
+        super(coordonees, degats, cibles);
     }
 
     public final void attaque(Maladie m, double degats){
-        getEnvironnement().ajouterRayon(new Rayon(getEnvironnement(), getCoordonees(), m, degats, 2, getAlterations()));
+        Environnement.getUniqueInstance().ajouterRayon(new Rayon(getCoordonees(), m, degats, 2, getAlterations()));
     }
 }

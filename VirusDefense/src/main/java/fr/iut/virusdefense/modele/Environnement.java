@@ -27,30 +27,34 @@ public class Environnement {
 
     private final Joueur joueur;
 
-    private final Niveau niveau;
-
     private final GestionnaireActeur gestionnaireActeur;
 
     private final ObjectProperty<StatutPartie> statutPartieProperty;
 
+    private static Environnement uniqueInstance = null;
+
     /**
      * Créé un terrain sans maladies
      */
-    public Environnement(String idNiveau) {
-        carte = new LecteurDeCarte(this, idNiveau).creer();
+    private Environnement(String idNiveau) {
+        carte = new LecteurDeCarte(idNiveau).creer();
         deplacement = new Deplacement(carte);
         joueur = new Joueur();
-        niveau = new Niveau(this, idNiveau);
         gestionnaireActeur = new GestionnaireActeur(carte.getCellules(), carte.getPointsApparitions());
         statutPartieProperty = new SimpleObjectProperty<>(StatutPartie.PASTERMINEE);
     }
 
-    public Carte getCarte() {
-        return carte;
+    public static Environnement getUniqueInstance(){
+        return uniqueInstance;
     }
 
-    public Niveau getNiveau() {
-        return niveau;
+    public static void creerInstance(String idNiveau){
+        uniqueInstance = new Environnement(idNiveau);
+        Niveau.creerUniqueInstance(idNiveau);
+    }
+
+    public Carte getCarte() {
+        return carte;
     }
 
     public Deplacement getDeplacement() {
@@ -139,14 +143,14 @@ public class Environnement {
      */
     public void unTour() {
         if (getStatutPartie() == StatutPartie.PASTERMINEE) {
-            if (joueur.getPv() <= 0 || (niveau.estTermine() && gestionnaireActeur.getMaladies().isEmpty())) {
+            if (joueur.getPv() <= 0 || (Niveau.getUniqueInstance().estTermine() && gestionnaireActeur.getMaladies().isEmpty())) {
                 if(joueur.getPv()>0)
                     setStatutPartie(StatutPartie.GAGNEE);
                 else
                     setStatutPartie(StatutPartie.PERDUE);
             }
             else{
-                niveau.update();
+                Niveau.getUniqueInstance().update();
 
                 gestionnaireActeur.acteursARetiré(getJoueur());
 

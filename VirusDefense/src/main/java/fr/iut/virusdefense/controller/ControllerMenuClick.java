@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.controller;
 
+import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.Cellule;
 import fr.iut.virusdefense.vue.GestionnaireMenuClick;
 import javafx.fxml.FXML;
@@ -32,9 +33,9 @@ public class ControllerMenuClick implements Initializable {
 
     public void setGestionnaireMenu(GestionnaireMenuClick gestionnaireMenu){
         this.gestionnaireMenu = gestionnaireMenu;
-        this.gestionnaireMenu.getEnvironnement().statutPartieProperty().addListener((observableValue, statutPartie, t1) -> this.gestionnaireMenu.retirerMenu());
+        Environnement.getUniqueInstance().statutPartieProperty().addListener((observableValue, statutPartie, t1) -> this.gestionnaireMenu.retirerMenu());
 
-        for (Cellule c : this.gestionnaireMenu.getEnvironnement().getCarte().getCellules()) {
+        for (Cellule c : Environnement.getUniqueInstance().getCarte().getCellules()) {
             if ((int) c.getLigne() == this.gestionnaireMenu.getLigne() && (int) c.getColonne() == this.gestionnaireMenu.getColonne()) {
                 initLabel(c);
                 desactiverBoutonAmeliorationSiNiveauMax(c);
@@ -66,7 +67,7 @@ public class ControllerMenuClick implements Initializable {
 
     @FXML
     public void clickBoutonAmelioration(){
-        for (Cellule c : gestionnaireMenu.getEnvironnement().getCarte().getCellules()){
+        for (Cellule c : Environnement.getUniqueInstance().getCarte().getCellules()){
             if ((int) c.getLigne() == gestionnaireMenu.getLigne() && (int) c.getColonne() == gestionnaireMenu.getColonne()) {
                 c.niveauSuperieur();
             }
@@ -76,7 +77,7 @@ public class ControllerMenuClick implements Initializable {
 
     @FXML
     public void clickBoutonSupprimer(){
-        gestionnaireMenu.getEnvironnement().retirerCelluleALEmplacement(gestionnaireMenu.getLigne(), gestionnaireMenu.getColonne(), false);
+        Environnement.getUniqueInstance().retirerCelluleALEmplacement(gestionnaireMenu.getLigne(), gestionnaireMenu.getColonne(), false);
         gestionnaireMenu.getAfficheurDeCarte().rechargerEmplacement(gestionnaireMenu.getLigne(), gestionnaireMenu.getColonne());
         gestionnaireMenu.retirerMenu();
     }

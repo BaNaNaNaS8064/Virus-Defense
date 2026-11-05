@@ -18,7 +18,7 @@ class DeplacementTest {
 
     public void miseEnSituation(boolean[][] carteStatique, List<Integer> objectif, List<Integer> pointApparition){
         pointApp.clear();
-        pointApp.add(new PointApparition(null, pointApparition.get(0), pointApparition.get(1)));
+        pointApp.add(new PointApparition(pointApparition.get(0), pointApparition.get(1)));
         carte = new Carte(carteStatique, objectif, pointApp);
         dep = new Deplacement(carte);
     }

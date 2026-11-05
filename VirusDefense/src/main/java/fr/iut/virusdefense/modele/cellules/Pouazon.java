@@ -14,20 +14,20 @@ public class Pouazon extends Cellule{
         return coutBase;
     }
 
-    public Pouazon(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne, 50, coutBase);
+    public Pouazon(int ligne, int colonne){
+        super(ligne, colonne, 50, coutBase);
         initRec();
         initGestionnaireAttaque();
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getEnvironnement(), getCoordonees(), 3.0, 1));
+        setReconnaissance(new RecSimple(getCoordonees(), 3.0, 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        GestionnaireAttaqueRayon temp = new GestionnaireAttaqueRayonSimple(getEnvironnement(), getCoordonees(), 15, getReconnaissance().getCibles());
+        GestionnaireAttaqueRayon temp = new GestionnaireAttaqueRayonSimple(getCoordonees(), 15, getReconnaissance().getCibles());
         temp.ajouterAlteration(new Dot(15,4));
         setGestionnaireAttaque(temp);
     }
