@@ -5,7 +5,7 @@ import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.Positionnable;
 import fr.iut.virusdefense.modele.deplacement.GestionnaireDeplacement;
-import fr.iut.virusdefense.modele.maladies.capacites.CapaciteActive;
+import fr.iut.virusdefense.modele.maladies.capacites.CapacitePeriodique;
 import fr.iut.virusdefense.modele.maladies.capacites.CapaciteMort;
 
 public abstract class Maladie extends Positionnable implements ActeurRetirable {
@@ -14,11 +14,11 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     private final int recompense;
     private double coefVitesse;
     private GestionnaireDeplacement gestionnaireDeplacement;
-    private CapaciteActive capaciteActive;
+    private CapacitePeriodique capacitePeriodique;
     private CapaciteMort capaciteMort;
 
 
-    public Maladie(Environnement environnement, double ligne, double colonne, int pv, double vitesse, int recompense, CapaciteActive capaciteActive, CapaciteMort capaciteMort) {
+    public Maladie(Environnement environnement, double ligne, double colonne, int pv, double vitesse, int recompense, CapacitePeriodique capacitePeriodique, CapaciteMort capaciteMort) {
         super(environnement, ligne+0.5, colonne+0.5);
 
         this.vitesse = vitesse;
@@ -26,11 +26,7 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
         this.recompense = recompense;
         coefVitesse = 1;
         this.gestionnaireDeplacement = new GestionnaireDeplacement();
-        initCapacite(capaciteActive, capaciteMort);
-    }
-
-    public void initCapacite(CapaciteActive capaciteActive, CapaciteMort capaciteMort) {
-        this.capaciteActive = capaciteActive;
+        this.capacitePeriodique = capacitePeriodique;
         this.capaciteMort = capaciteMort;
     }
 
@@ -89,8 +85,8 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     }
 
     public void activationCapaciteActive(){
-        if (capaciteActive != null)
-            capaciteActive.agir(this);
+        if (capacitePeriodique != null)
+            capacitePeriodique.agir(this);
     }
 
     public void activationCapaciteMort(){

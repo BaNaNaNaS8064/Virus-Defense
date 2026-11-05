@@ -3,10 +3,10 @@ package fr.iut.virusdefense.modele.maladies.capacites;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 import fr.iut.virusdefense.modele.maladies.VirusComposé;
 
-public class CapaciteMortDivision extends CapaciteMort {
+public class CapaciteDivision extends CapaciteMort {
     private final int stade;
 
-    public CapaciteMortDivision(int stade) {
+    public CapaciteDivision(int stade) {
         this.stade = stade;
     }
 
