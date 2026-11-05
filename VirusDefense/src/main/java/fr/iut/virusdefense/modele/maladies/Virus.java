@@ -12,6 +12,4 @@ public class Virus extends Maladie{
         return true;
     }
 
-    @Override
-    public void activationCapacite() {}
 }

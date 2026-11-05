@@ -13,6 +13,4 @@ public class Parasite extends Maladie{
         return true;
     }
 
-    @Override
-    public void activationCapacite() {}
 }

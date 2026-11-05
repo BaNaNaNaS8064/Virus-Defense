@@ -29,6 +29,4 @@ public class VirusComposé extends Maladie{
         return true;
     }
 
-    @Override
-    public void activationCapacite() {}
 }

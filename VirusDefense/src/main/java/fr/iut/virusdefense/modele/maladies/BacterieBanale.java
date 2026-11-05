@@ -13,6 +13,4 @@ public class BacterieBanale extends Maladie{
         return true;
     }
 
-    @Override
-    public void activationCapacite() {}
 }

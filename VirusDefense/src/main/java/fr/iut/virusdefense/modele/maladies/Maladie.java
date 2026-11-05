@@ -60,7 +60,7 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     public final void agir(){
         if (estVivant()) {
             coefVitesse = 1;
-            activationCapacite();
+            activationCapaciteActive();
             bouger();
 
             if (aAtteintLObjectif()) {
@@ -89,7 +89,7 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
         coefVitesse *= coefRalentissement;
     }
 
-    public void activationCapacite(){
+    public void activationCapaciteActive(){
         getCapaciteActive().reduireDelai();
         if(getCapaciteActive().CapacitePossible() && estVivant()){
             this.capaciteActive.ActivationCapacite(getEnvironnement(), (int) getLigne(),(int) getColonne());

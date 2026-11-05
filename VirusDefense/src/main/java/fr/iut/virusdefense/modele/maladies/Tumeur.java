@@ -12,6 +12,4 @@ public class Tumeur extends Maladie{
         return false;
     }
 
-    @Override
-    public void activationCapacite() {}
 }

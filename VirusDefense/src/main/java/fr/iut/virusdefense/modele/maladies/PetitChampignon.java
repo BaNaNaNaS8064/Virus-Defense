@@ -12,6 +12,4 @@ public class PetitChampignon extends Maladie{
         return true;
     }
 
-    @Override
-    public void activationCapacite() {}
 }
