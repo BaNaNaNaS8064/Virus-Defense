@@ -38,12 +38,6 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
         return recompense;
     }
 
-    public CapaciteActive getCapaciteActive() {
-        return capaciteActive;
-    }
-
-    public CapaciteMort getCapaciteMort() {return capaciteMort;}
-
     public boolean estVivant(){
         return pv > 0;
     }
@@ -95,17 +89,13 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     }
 
     public void activationCapaciteActive(){
-        if (capaciteActive != null) {
-            this.capaciteActive.reduireDelai();
-            if (this.capaciteActive.CapacitePossible() && estVivant()) {
-                this.capaciteActive.Activer(this);
-            }
-        }
+        if (capaciteActive != null)
+            capaciteActive.agir(this);
     }
 
     public void activationCapaciteMort(){
         if (!aAtteintLObjectif() && !estVivant() && capaciteMort != null) {
-            this.capaciteMort.Activer(this);
+            this.capaciteMort.activer(this);
         }
     }
 }

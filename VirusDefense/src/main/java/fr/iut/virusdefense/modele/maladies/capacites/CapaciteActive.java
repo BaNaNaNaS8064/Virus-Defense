@@ -1,24 +1,27 @@
 package fr.iut.virusdefense.modele.maladies.capacites;
 
-public abstract class CapaciteActive implements Capacite {
-    private int delaiActivation;
+import fr.iut.virusdefense.modele.maladies.Maladie;
 
-    public CapaciteActive() {
+public abstract class CapaciteActive implements Capacite {
+    private final int frequence;
+    private final int variationFrequence;
+    private int delai;
+
+    public CapaciteActive(int frequence, int variationFrequence) {
+        this.frequence = frequence;
+        this.variationFrequence = variationFrequence;
         resetDelai();
     }
 
-    public void setDelaiActivation(int delaiActivation) {
-        this.delaiActivation = delaiActivation;
+    private void resetDelai(){
+        int variation = (int) (Math.random()*variationFrequence - (double) variationFrequence /2);
+        delai = frequence + variation;
     }
 
-    public boolean CapacitePossible() {
-        return delaiActivation <= 0;
+    public void agir(Maladie m) {
+        if (--delai <= 0) {
+            resetDelai();
+            activer(m);
+        }
     }
-
-    public void reduireDelai(){
-        delaiActivation--;
-    }
-
-    public abstract void resetDelai();
-
 }

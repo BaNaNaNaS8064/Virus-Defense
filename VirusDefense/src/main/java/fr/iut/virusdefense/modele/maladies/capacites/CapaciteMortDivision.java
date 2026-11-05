@@ -10,7 +10,7 @@ public class CapaciteMortDivision extends CapaciteMort {
         this.stade = stade;
     }
 
-    public void Activer(Maladie m){
+    public void activer(Maladie m){
         if(stade<3)
             for (int i=0; i<2; i++)
                 m.getEnvironnement().getGestionnaireActeur().getMaladies().add(new VirusComposé(m.getEnvironnement(), m.getLigne(), m.getColonne(), stade+1));
