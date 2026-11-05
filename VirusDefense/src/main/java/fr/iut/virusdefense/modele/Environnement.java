@@ -27,8 +27,6 @@ public class Environnement {
 
     private final Joueur joueur;
 
-    private Niveau niveau;
-
     private final GestionnaireActeur gestionnaireActeur;
 
     private final ObjectProperty<StatutPartie> statutPartieProperty;
@@ -46,25 +44,17 @@ public class Environnement {
         statutPartieProperty = new SimpleObjectProperty<>(StatutPartie.PASTERMINEE);
     }
 
-    private void creerNiveau(String idNiveau){
-        getUniqueInstance().niveau = new Niveau(idNiveau);
-    }
-
     public static Environnement getUniqueInstance(){
         return uniqueInstance;
     }
 
     public static void creerInstance(String idNiveau){
         uniqueInstance = new Environnement(idNiveau);
-        uniqueInstance.creerNiveau(idNiveau);
+        Niveau.creerUniqueInstance(idNiveau);
     }
 
     public Carte getCarte() {
         return carte;
-    }
-
-    public Niveau getNiveau() {
-        return niveau;
     }
 
     public Deplacement getDeplacement() {
@@ -153,14 +143,14 @@ public class Environnement {
      */
     public void unTour() {
         if (getStatutPartie() == StatutPartie.PASTERMINEE) {
-            if (joueur.getPv() <= 0 || (niveau.estTermine() && gestionnaireActeur.getMaladies().isEmpty())) {
+            if (joueur.getPv() <= 0 || (Niveau.getUniqueInstance().estTermine() && gestionnaireActeur.getMaladies().isEmpty())) {
                 if(joueur.getPv()>0)
                     setStatutPartie(StatutPartie.GAGNEE);
                 else
                     setStatutPartie(StatutPartie.PERDUE);
             }
             else{
-                niveau.update();
+                Niveau.getUniqueInstance().update();
 
                 gestionnaireActeur.acteursARetiré(getJoueur());
 

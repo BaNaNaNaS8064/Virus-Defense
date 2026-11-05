@@ -25,11 +25,21 @@ public class Niveau {
     /// le nombre restant de tours avant la prochain vague
     int delai;
 
-    public Niveau(String idNiveau){
+    private static Niveau uniqueInstance = null;
+
+    private Niveau(String idNiveau){
         delaiEntreVagues = 600;
         delai = Integer.MAX_VALUE;
         numVagueProperty = new SimpleIntegerProperty(-1);
         initVagues(idNiveau);
+    }
+
+    public static Niveau getUniqueInstance(){
+        return uniqueInstance;
+    }
+
+    public static void creerUniqueInstance(String idNiveau){
+        uniqueInstance = new Niveau(idNiveau);
     }
 
     public final int getNumVague(){

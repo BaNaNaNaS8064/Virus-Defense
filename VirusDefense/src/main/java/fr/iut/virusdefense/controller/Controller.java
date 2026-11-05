@@ -3,6 +3,7 @@ package fr.iut.virusdefense.controller;
 import fr.iut.virusdefense.Main;
 import fr.iut.virusdefense.controller.observateurs.*;
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.apparition.Niveau;
 import fr.iut.virusdefense.modele.cellules.*;
 import fr.iut.virusdefense.modele.utilitaires.StatutPartie;
 import fr.iut.virusdefense.vue.*;
@@ -111,8 +112,8 @@ public class Controller implements Initializable {
 
     private void initLabels(){
         labelSolde.textProperty().bind(Environnement.getUniqueInstance().getJoueur().pcProperty().asString());
-        labelVagueActuelle.textProperty().bind(Environnement.getUniqueInstance().getNiveau().numVagueProperty().add(1).asString());
-        labelVagueMax.setText("/" + Environnement.getUniqueInstance().getNiveau().nombreDeVagues());
+        labelVagueActuelle.textProperty().bind(Niveau.getUniqueInstance().numVagueProperty().add(1).asString());
+        labelVagueMax.setText("/" + Niveau.getUniqueInstance().nombreDeVagues());
 
         labelCoutSainple.setText("" + Sainple.getCoutBase());
         labelCoutLasere.setText("" + Lasere.getCoutBase());
@@ -163,7 +164,7 @@ public class Controller implements Initializable {
     @FXML
     public void démarrerVague(MouseEvent mouseEvent) {
         if (!pause){
-            Environnement.getUniqueInstance().getNiveau().passerProchaineVague();
+            Niveau.getUniqueInstance().passerProchaineVague();
             ((ImageView) boutonVague.getGraphic()).setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/next.png"))));
             boutonVague.setStyle("-fx-background-color: #2F4D1A");
             boutonVague.setOnMousePressed(this::passerVague);
@@ -171,8 +172,8 @@ public class Controller implements Initializable {
     }
 
     public void passerVague(MouseEvent mouseEvent){
-        if(Environnement.getUniqueInstance().getNiveau().resteVague() && !pause)
-            Environnement.getUniqueInstance().getNiveau().passerProchaineVague();
+        if(Niveau.getUniqueInstance().resteVague() && !pause)
+            Niveau.getUniqueInstance().passerProchaineVague();
     }
 
     @FXML
