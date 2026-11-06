@@ -16,8 +16,7 @@ public class Brulhure extends Cellule {
     public Brulhure(int ligne, int colonne) {
         super(ligne, colonne,
                 LecteurStatsCellules.getStatistique("BRULHURE").frequence(),
-                LecteurStatsCellules.getStatistique("BRULHURE").cout(),
-                LecteurStatsCellules.getStatistique("BRULHURE").coutsAmeliorations()
+                LecteurStatsCellules.getStatistique("BRULHURE").couts()
                 );
         tempsZone=200;
         initRec();

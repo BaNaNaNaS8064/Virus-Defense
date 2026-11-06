@@ -15,8 +15,7 @@ public class Konsantre extends Cellule {
     public Konsantre(int ligne, int colonne){
         super(ligne, colonne,
                 LecteurStatsCellules.getStatistique("KONSANTRE").frequence(),
-                LecteurStatsCellules.getStatistique("KONSANTRE").cout(),
-                LecteurStatsCellules.getStatistique("KONSANTRE").coutsAmeliorations()
+                LecteurStatsCellules.getStatistique("KONSANTRE").couts()
                 );
         initRec();
         initGestionnaireAttaque();

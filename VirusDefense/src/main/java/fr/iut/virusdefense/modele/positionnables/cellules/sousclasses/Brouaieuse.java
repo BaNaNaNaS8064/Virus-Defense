@@ -15,8 +15,7 @@ public class Brouaieuse extends Cellule {
     public Brouaieuse(int ligne, int colonne){
         super(ligne, colonne,
                 LecteurStatsCellules.getStatistique("BROUAIEUSE").frequence(),
-                LecteurStatsCellules.getStatistique("BROUAIEUSE").cout(),
-                LecteurStatsCellules.getStatistique("BROUAIEUSE").coutsAmeliorations()
+                LecteurStatsCellules.getStatistique("BROUAIEUSE").couts()
         );
         initRec();
         initGestionnaireAttaque();

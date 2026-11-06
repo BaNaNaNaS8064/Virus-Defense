@@ -16,9 +16,7 @@ public class MuleTyple extends Cellule {
     public MuleTyple(int ligne, int colonne){
         super(ligne, colonne,
                 LecteurStatsCellules.getStatistique("MULETYPLE").frequence(),
-                LecteurStatsCellules.getStatistique("MULETYPLE").cout(),
-                LecteurStatsCellules.getStatistique("MULETYPLE").coutsAmeliorations()
-        );
+                LecteurStatsCellules.getStatistique("MULETYPLE").couts());
 
         initRec();
         initGestionnaireAttaque();
