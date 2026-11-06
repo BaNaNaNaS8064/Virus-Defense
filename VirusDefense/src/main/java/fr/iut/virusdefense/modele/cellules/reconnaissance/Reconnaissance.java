@@ -58,7 +58,7 @@ public abstract class Reconnaissance extends Positionnable {
 
     public abstract boolean estValide(Maladie m);
 
-    private void changerCibles(){
+    public void actualiser(){
         int i = 0;
         Maladie m;
 
@@ -74,11 +74,6 @@ public abstract class Reconnaissance extends Positionnable {
         }
     }
 
-    public void reconnaissanceSecondaire(){}
 
-    public final void actualiser() {
-        changerCibles();
-        reconnaissanceSecondaire();
-    }
 
 }

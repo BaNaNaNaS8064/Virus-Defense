@@ -102,7 +102,7 @@ public abstract class Positionnable extends Identifiable{
 
         boolean bloque = false;
 
-        while (!bloque && positionLigne != ligne + direction){
+        while (!bloque && positionLigne != ligne){
             positionLigne += direction;
             if (!Environnement.getUniqueInstance().getCarte().peutVoirAuTravers(positionLigne, (int)getColonne(), ignorerCellules))
                 bloque = true;

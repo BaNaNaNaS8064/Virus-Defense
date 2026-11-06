@@ -3,6 +3,8 @@ package fr.iut.virusdefense.modele.cellules;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonRicochet;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecRicochet;
+import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
+import fr.iut.virusdefense.modele.cellules.reconnaissance.Reconnaissance;
 import fr.iut.virusdefense.modele.utilitaires.LecteurStatistiques;
 
 public class RizCocher extends Cellule{
@@ -22,7 +24,8 @@ public class RizCocher extends Cellule{
 
     @Override
     public void initRec() {
-        setReconnaissance(new RecRicochet(getCoordonees(), LecteurStatistiques.getStatistique("RIZCOCHER").getPortee(), 3));
+        Reconnaissance base = new RecSimple(getCoordonees(), LecteurStatistiques.getStatistique("RIZCOCHER").getPortee(),1);
+        setReconnaissance(new RecRicochet(base,3));
     }
 
     @Override

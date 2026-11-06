@@ -1,6 +1,5 @@
 package fr.iut.virusdefense.modele.cellules.reconnaissance;
 
-import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
@@ -9,9 +8,11 @@ import java.util.List;
 
 public class RecRicochet extends Reconnaissance{
     private int nbRicochets;
+    private Reconnaissance reconnaissanceBasique;
 
-    public RecRicochet(Coordonees coordonees, double portee, int nbRicochets){
-        super(coordonees, portee, 1);
+    public RecRicochet(Reconnaissance reconnaissanceBasique, int nbRicochets) {
+        super(reconnaissanceBasique.getCoordonees(), reconnaissanceBasique.getPortee(), 1);
+        this.reconnaissanceBasique = reconnaissanceBasique;
         this.nbRicochets = nbRicochets;
     }
 
@@ -25,7 +26,7 @@ public class RecRicochet extends Reconnaissance{
 
     @Override
     public boolean estValide(Maladie m) {
-        return m.estVivant() && aPortee(m) && voit(m,true);
+        return reconnaissanceBasique.estValide(m);
     }
 
     public boolean ricochetValide(Maladie m){
@@ -42,30 +43,35 @@ public class RecRicochet extends Reconnaissance{
     }
 
     @Override
-    public void reconnaissanceSecondaire() {
-        if (aAuMoinsUneCible()){
-            double posLigne = getLigne(), posColonne = getColonne();
+    public void actualiser() { //override changerCible
+        reconnaissanceBasique.actualiser();
+        getCibles().clear();
+        if(reconnaissanceBasique.aAuMoinsUneCible()){
+            getCibles().add(reconnaissanceBasique.getCibles().get(0));
+
+            double posLigne = getLigne();
+            double posColonne = getColonne();
             ArrayList<Maladie> candidats = new ArrayList<>();
             boolean resteCandidats = true;
             Maladie maladie;
 
             setLigne(getCibles().get(0).getLigne());
             setColonne(getCibles().get(0).getColonne());
-            while (!aAssezDeRicochets() && resteCandidats){
+
+            while(!aAssezDeRicochets() && resteCandidats){
                 candidats.clear();
 
-                for (Maladie m : Environnement.getUniqueInstance().getGestionnaireActeur().getMaladies()) {
-                    if (ricochetValide(m)) {
+                for(Maladie m : Environnement.getUniqueInstance().getGestionnaireActeur().getMaladies()){
+                    if(ricochetValide(m)){
                         candidats.add(m);
                     }
                 }
 
-                if (candidats.isEmpty()){
+                if(candidats.isEmpty()){
                     resteCandidats = false;
                 }
-                else {
+                else{
                     maladie = maladiePlusProche(candidats);
-
                     getCibles().add(maladie);
                     setLigne(maladie.getLigne());
                     setColonne(maladie.getColonne());
