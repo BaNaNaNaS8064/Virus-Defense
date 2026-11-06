@@ -17,7 +17,9 @@ public class RizCocher extends Cellule {
     public RizCocher(int ligne, int colonne){
         super(ligne, colonne,
                 LecteurStatsCellules.getStatistique("RIZCOCHER").frequence(),
-                LecteurStatsCellules.getStatistique("RIZCOCHER").cout());
+                LecteurStatsCellules.getStatistique("RIZCOCHER").cout(),
+                LecteurStatsCellules.getStatistique("RIZCOCHER").coutsAmeliorations()
+        );
         initRec();
         initGestionnaireAttaque();
     }
@@ -36,16 +38,6 @@ public class RizCocher extends Cellule {
     @Override
     public String getNom() {
         return "Riz Co-cher";
-    }
-
-    @Override
-    public int coutNiveau2() {
-        return 950;
-    }
-
-    @Override
-    public int coutNiveau3() {
-        return 1000;
     }
 
     @Override

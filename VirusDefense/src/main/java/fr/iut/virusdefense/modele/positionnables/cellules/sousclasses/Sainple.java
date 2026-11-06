@@ -15,7 +15,8 @@ public class Sainple extends Cellule {
 
     public Sainple(int ligne, int colonne){
         super(ligne, colonne,              LecteurStatsCellules.getStatistique("SAINPLE").frequence(),
-                LecteurStatsCellules.getStatistique("SAINPLE").cout()
+                LecteurStatsCellules.getStatistique("SAINPLE").cout(),
+                LecteurStatsCellules.getStatistique("SAINPLE").coutsAmeliorations()
         );
         initRec();
         initGestionnaireAttaque();
@@ -36,15 +37,6 @@ public class Sainple extends Cellule {
         return "Sainple";
     }
 
-    @Override
-    public int coutNiveau2() {
-        return 75;
-    }
-
-    @Override
-    public int coutNiveau3() {
-        return 150;
-    }
 
     @Override
     public void ameliorerAuNiveau2(){

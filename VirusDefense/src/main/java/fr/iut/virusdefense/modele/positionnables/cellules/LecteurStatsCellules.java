@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class LecteurStatsCellules extends LecteurFichier {
 
-    public record StatsCellule(int cout, double degats, double portee, int frequence) {}
+    public record StatsCellule(int cout, double degats, double portee, int frequence, int[]coutsAmeliorations) {}
 
     public static HashMap<String, StatsCellule> statistiques;
 
@@ -22,13 +22,18 @@ public class LecteurStatsCellules extends LecteurFichier {
             String ligne = getScanner().nextLine();
             if(!ligne.startsWith("#") && !ligne.trim().isEmpty()){
                 String[] donnees = ligne.trim().split(" ");
-                if(donnees.length == 5){
+                if(donnees.length >= 5){
                     String nom = donnees[0].trim();
                     int cout = Integer.parseInt(donnees[1]);
                     double degats = Double.parseDouble(donnees[2]);
                     double portee = Double.parseDouble(donnees[3]);
                     int frequence = Integer.parseInt(donnees[4]);
-                    statistiques.put(nom, new StatsCellule(cout, degats, portee, frequence));
+                    int nbAmeliorations = donnees.length - 5;
+                    int[] coutsAmeliorations = new int[nbAmeliorations];
+                    for(int i=0;i<nbAmeliorations;i++){
+                        coutsAmeliorations[i] = Integer.parseInt(donnees[5+i]);
+                    }
+                    statistiques.put(nom, new StatsCellule(cout, degats, portee, frequence, coutsAmeliorations));
                 }
             }
 

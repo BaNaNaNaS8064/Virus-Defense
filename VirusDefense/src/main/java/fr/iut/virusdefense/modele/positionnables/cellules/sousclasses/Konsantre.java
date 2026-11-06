@@ -15,7 +15,9 @@ public class Konsantre extends Cellule {
     public Konsantre(int ligne, int colonne){
         super(ligne, colonne,
                 LecteurStatsCellules.getStatistique("KONSANTRE").frequence(),
-                LecteurStatsCellules.getStatistique("KONSANTRE").cout());
+                LecteurStatsCellules.getStatistique("KONSANTRE").cout(),
+                LecteurStatsCellules.getStatistique("KONSANTRE").coutsAmeliorations()
+                );
         initRec();
         initGestionnaireAttaque();
     }
@@ -33,16 +35,6 @@ public class Konsantre extends Cellule {
     @Override
     public String getNom() {
         return "Konsantré";
-    }
-
-    @Override
-    public int coutNiveau2() {
-        return 1300;
-    }
-
-    @Override
-    public int coutNiveau3() {
-        return 1500;
     }
 
     @Override

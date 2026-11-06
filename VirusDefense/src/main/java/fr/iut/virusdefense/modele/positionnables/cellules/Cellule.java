@@ -9,6 +9,7 @@ import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.Reconna
 public abstract class Cellule extends Positionnable implements Acteur {
     private Reconnaissance reconnaissance ;
     private GestionnaireAttaque gestionnaireAttaque;
+    private int[] coutsAmeliorations;
 
     private int frequenceAttaque;
     private int delai;
@@ -16,7 +17,7 @@ public abstract class Cellule extends Positionnable implements Acteur {
     private int niveau;
     private final int cout;
 
-    public Cellule(int ligne, int colonne, int frequenceAttaque, int cout){
+    public Cellule(int ligne, int colonne, int frequenceAttaque, int cout, int[] coutsAmeliorations) {
         super(ligne, colonne);
 
         this.frequenceAttaque = frequenceAttaque;
@@ -25,6 +26,7 @@ public abstract class Cellule extends Positionnable implements Acteur {
         this.niveau = 1;
 
         this.cout = cout;
+        this.coutsAmeliorations = coutsAmeliorations;
     }
 
     public abstract void initRec();
@@ -64,21 +66,16 @@ public abstract class Cellule extends Positionnable implements Acteur {
     }
 
     public int getCoutAmelioration() {
-        return switch (niveau){
-            case 1 -> coutNiveau2();
-            case 2 -> coutNiveau3();
-            default -> -1;
-        };
+        if(niveau <= coutsAmeliorations.length){
+            return coutsAmeliorations[niveau-1];
+        }
+        return -1;
     }
 
     public abstract String getNom();
 
-    public abstract int coutNiveau2();
-
-    public abstract int coutNiveau3();
-
     public boolean resteAmeliorations(){
-        return niveau <= 2;
+        return niveau <= coutsAmeliorations.length;
     }
 
     public void niveauSuperieur(){

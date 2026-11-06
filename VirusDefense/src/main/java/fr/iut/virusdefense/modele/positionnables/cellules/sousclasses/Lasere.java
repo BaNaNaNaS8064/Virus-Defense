@@ -15,7 +15,9 @@ public class Lasere extends Cellule {
     public Lasere(int ligne, int colonne){
         super(ligne, colonne
                 , LecteurStatsCellules.getStatistique("LASERE").frequence()
-                , LecteurStatsCellules.getStatistique("LASERE").cout());
+                , LecteurStatsCellules.getStatistique("LASERE").cout(),
+                LecteurStatsCellules.getStatistique("LASERE").coutsAmeliorations()
+                );
         initRec();
         initGestionnaireAttaque();
     }
@@ -33,16 +35,6 @@ public class Lasere extends Cellule {
     @Override
     public String getNom() {
         return "L'asère";
-    }
-
-    @Override
-    public int coutNiveau2() {
-        return 250;
-    }
-
-    @Override
-    public int coutNiveau3() {
-        return 275;
     }
 
     @Override

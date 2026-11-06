@@ -16,7 +16,9 @@ public class Brulhure extends Cellule {
     public Brulhure(int ligne, int colonne) {
         super(ligne, colonne,
                 LecteurStatsCellules.getStatistique("BRULHURE").frequence(),
-                LecteurStatsCellules.getStatistique("BRULHURE").cout());
+                LecteurStatsCellules.getStatistique("BRULHURE").cout(),
+                LecteurStatsCellules.getStatistique("BRULHURE").coutsAmeliorations()
+                );
         tempsZone=200;
         initRec();
         initGestionnaireAttaque();
@@ -35,16 +37,6 @@ public class Brulhure extends Cellule {
     @Override
     public String getNom() {
         return "Brul-hure";
-    }
-
-    @Override
-    public int coutNiveau2() {
-        return 1600;
-    }
-
-    @Override
-    public int coutNiveau3() {
-        return 2000;
     }
 
     @Override

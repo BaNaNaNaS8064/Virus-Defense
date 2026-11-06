@@ -15,7 +15,8 @@ public class Brouaieuse extends Cellule {
     public Brouaieuse(int ligne, int colonne){
         super(ligne, colonne,
                 LecteurStatsCellules.getStatistique("BROUAIEUSE").frequence(),
-                LecteurStatsCellules.getStatistique("BROUAIEUSE").cout()
+                LecteurStatsCellules.getStatistique("BROUAIEUSE").cout(),
+                LecteurStatsCellules.getStatistique("BROUAIEUSE").coutsAmeliorations()
         );
         initRec();
         initGestionnaireAttaque();
@@ -34,16 +35,6 @@ public class Brouaieuse extends Cellule {
     @Override
     public String getNom() {
         return "Brouaïlleuse";
-    }
-
-    @Override
-    public int coutNiveau2() {
-        return 350;
-    }
-
-    @Override
-    public int coutNiveau3() {
-        return 400;
     }
 
     @Override

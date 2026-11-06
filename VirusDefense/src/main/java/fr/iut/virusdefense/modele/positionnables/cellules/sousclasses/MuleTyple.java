@@ -16,7 +16,9 @@ public class MuleTyple extends Cellule {
     public MuleTyple(int ligne, int colonne){
         super(ligne, colonne,
                 LecteurStatsCellules.getStatistique("MULETYPLE").frequence(),
-                LecteurStatsCellules.getStatistique("MULETYPLE").cout());
+                LecteurStatsCellules.getStatistique("MULETYPLE").cout(),
+                LecteurStatsCellules.getStatistique("MULETYPLE").coutsAmeliorations()
+        );
 
         initRec();
         initGestionnaireAttaque();
@@ -35,16 +37,6 @@ public class MuleTyple extends Cellule {
     @Override
     public String getNom() {
         return "Mule-typle";
-    }
-
-    @Override
-    public int coutNiveau2() {
-        return 650;
-    }
-
-    @Override
-    public int coutNiveau3() {
-        return 800;
     }
 
     @Override

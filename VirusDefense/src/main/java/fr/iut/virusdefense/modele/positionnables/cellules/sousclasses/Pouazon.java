@@ -21,7 +21,10 @@ public class Pouazon extends Cellule {
     public Pouazon( int ligne, int colonne){
         super(ligne, colonne,
                 LecteurStatsCellules.getStatistique("POUAZON").frequence(),
-                LecteurStatsCellules.getStatistique("POUAZON").cout());
+                LecteurStatsCellules.getStatistique("POUAZON").cout(),
+                LecteurStatsCellules.getStatistique("POUAZON").coutsAmeliorations()
+
+        );
             initRec();
             initGestionnaireAttaque();
     }
@@ -41,16 +44,6 @@ public class Pouazon extends Cellule {
     @Override
     public String getNom() {
         return "Pouazon";
-    }
-
-    @Override
-    public int coutNiveau2() {
-        return 950;
-    }
-
-    @Override
-    public int coutNiveau3() {
-        return 1100;
     }
 
     @Override
