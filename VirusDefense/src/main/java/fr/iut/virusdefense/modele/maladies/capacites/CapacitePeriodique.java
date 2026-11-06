@@ -2,14 +2,16 @@ package fr.iut.virusdefense.modele.maladies.capacites;
 
 import fr.iut.virusdefense.modele.maladies.Maladie;
 
-public abstract class CapacitePeriodique implements Capacite {
+public class CapacitePeriodique implements Capacite {
+    private final Capacite capacite;
     private final int frequence;
     private final int variationFrequence;
     private int delai;
 
-    public CapacitePeriodique(int frequence, int variationFrequence) {
+    public CapacitePeriodique(Capacite capacite, int frequence, int variationFrequence) {
         this.frequence = frequence;
         this.variationFrequence = variationFrequence;
+        this.capacite = capacite;
         resetDelai();
     }
 
@@ -18,10 +20,11 @@ public abstract class CapacitePeriodique implements Capacite {
         delai = frequence + variation;
     }
 
-    public void agir(Maladie m) {
+    @Override
+    public void activer(Maladie m) {
         if (--delai <= 0) {
             resetDelai();
-            activer(m);
+            capacite.activer(m);
         }
     }
 }
