@@ -62,17 +62,16 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
             activerCapacitePeriodique();
             bouger();
 
-            if (aAtteintLObjectif()) {
+            if (aAtteintLObjectif())
                 infligerDegatsAuJoueur();
-                mourir();
-            }
+
             coefVitesse = 1;
         }
     }
 
     @Override
     public boolean doitEtreRetiré(){
-        return !estVivant();
+        return !estVivant() || aAtteintLObjectif();
     }
 
     public void bouger(){
@@ -95,7 +94,7 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     }
 
     public void activerCapaciteMort(){
-        if (capaciteMort != null && !estVivant() && !aAtteintLObjectif()) {
+        if (capaciteMort != null && !estVivant()) {
             this.capaciteMort.activer(this);
         }
     }

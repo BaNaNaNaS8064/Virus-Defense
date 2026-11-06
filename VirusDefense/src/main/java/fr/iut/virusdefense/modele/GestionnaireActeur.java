@@ -90,10 +90,10 @@ public class GestionnaireActeur {
                 if (acteur instanceof Maladie){
                     Maladie m = (Maladie) acteur;
 
-                    m.activerCapaciteMort();
-
-                    if (!m.aAtteintLObjectif())
+                    if (!m.aAtteintLObjectif()) {
                         j.ajouterPc(m.getRecompense());
+                        m.activerCapaciteMort();
+                    }
 
                     getMaladies().remove(m);
                 } else if (acteur instanceof Rayon){
