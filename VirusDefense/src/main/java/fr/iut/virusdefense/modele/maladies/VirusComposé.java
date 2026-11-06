@@ -11,7 +11,7 @@ public class VirusComposé extends Maladie{
         this.stade = stade;
 
         if (stade > 0 && stade < 3)
-            setCapaciteMort(new CapaciteDivision(CodeMaladie.valueOf("VIRUSCOMPOSE_" + stade+1)));
+            setCapaciteMort(new CapaciteDivision(CodeMaladie.valueOf("VIRUSCOMPOSE_" + (stade+1)), 2, 2));
     }
 
     public int getStade() {

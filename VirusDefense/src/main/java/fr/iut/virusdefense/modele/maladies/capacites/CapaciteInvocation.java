@@ -19,7 +19,7 @@ public class CapaciteInvocation extends CapacitePeriodique {
     }
 
     private int nombreAInvoquer(){
-        if (0 < minInvoque && minInvoque < maxInvoque)
+        if (0 <= minInvoque && minInvoque <= maxInvoque)
             return (int)(Math.random()*maxInvoque-minInvoque+1) + minInvoque;
 
         return 0;
