@@ -1,20 +1,21 @@
 package fr.iut.virusdefense.modele.maladies.capacites;
 
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.apparition.FabriqueMaladie;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 import fr.iut.virusdefense.modele.maladies.VirusComposé;
+import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
 
 public class CapaciteDivision implements CapaciteMort {
-    private final int stade;
+    private final CodeMaladie codeDivise;
 
-    public CapaciteDivision(int stade) {
-        this.stade = stade;
+    public CapaciteDivision(CodeMaladie codeDivise) {
+        this.codeDivise = codeDivise;
     }
 
     @Override
     public void activer(Maladie m){
-        if(stade<3)
-            for (int i=0; i<2; i++)
-                Environnement.getUniqueInstance().getGestionnaireActeur().getMaladies().add(new VirusComposé((int) m.getLigne(), (int) m.getColonne(), stade+1));
+        for (int i=0; i<2; i++)
+                Environnement.getUniqueInstance().getGestionnaireActeur().getMaladies().add(FabriqueMaladie.créerMaladie(codeDivise, (int) m .getLigne(), (int) m .getColonne()));
     }
 }
