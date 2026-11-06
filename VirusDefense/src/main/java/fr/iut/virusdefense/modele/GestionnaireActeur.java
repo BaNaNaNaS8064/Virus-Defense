@@ -90,7 +90,7 @@ public class GestionnaireActeur {
                 if (acteur instanceof Maladie){
                     Maladie m = (Maladie) acteur;
 
-                    m.capaciteALaMort();
+                    m.activationCapaciteMort();
 
                     if (!m.aAtteintLObjectif())
                         j.ajouterPc(m.getRecompense());

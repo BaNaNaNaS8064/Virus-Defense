@@ -11,4 +11,5 @@ public class Tumeur extends Maladie{
     public boolean peutSubirAlteration() {
         return false;
     }
+
 }

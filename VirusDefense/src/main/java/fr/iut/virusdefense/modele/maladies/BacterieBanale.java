@@ -12,4 +12,5 @@ public class BacterieBanale extends Maladie{
     public boolean peutSubirAlteration() {
         return true;
     }
+
 }
