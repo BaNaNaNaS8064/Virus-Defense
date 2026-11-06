@@ -23,12 +23,12 @@ public class Brouaileuse extends Cellule {
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getCoordonees(), 1.5, 1));
+        setReconnaissance(new RecSimple(getCoordonees(), LecteurStatistiques.getStatistique("BROUAILEUSE").getPortee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueZone(getCoordonees(), 90, getReconnaissance().getCibles(), getReconnaissance().getPortee()));
+        setGestionnaireAttaque(new GestionnaireAttaqueZone(getCoordonees(), LecteurStatistiques.getStatistique("BROUAILEUSE").getDegats(), getReconnaissance().getCibles(), getReconnaissance().getPortee()));
     }
 
     @Override

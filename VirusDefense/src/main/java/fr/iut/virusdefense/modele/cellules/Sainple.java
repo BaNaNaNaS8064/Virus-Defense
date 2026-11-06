@@ -23,12 +23,12 @@ public class Sainple extends Cellule {
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getCoordonees(), 3.0, 1), LecteurStatistiques.getStatistique("SAINPLE").getPortee(), 1));
+        setReconnaissance(new RecSimple(getCoordonees(), LecteurStatistiques.getStatistique("SAINPLE").getPortee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueProjectile(getCoordonees(), 40, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueProjectile(getCoordonees(), LecteurStatistiques.getStatistique("SAINPLE").getDegats(), getReconnaissance().getCibles()));
     }
 
     @Override

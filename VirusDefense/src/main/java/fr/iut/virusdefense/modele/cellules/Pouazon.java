@@ -18,8 +18,8 @@ public class Pouazon extends Cellule{
         return coutBase;
     }
 
-    private Pouazon(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne,
+    public Pouazon( int ligne, int colonne){
+        super(ligne, colonne,
                 LecteurStatistiques.getStatistique("POUAZON").getFrequence(),
                 LecteurStatistiques.getStatistique("POUAZON").getCout());
             initRec();

@@ -24,12 +24,12 @@ public class MuleTyple extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getCoordonees(), 3.0 , 3), LecteurStatistiques.getStatistique("MULETYPLE").getPortee() , 3);
+        setReconnaissance(new RecSimple(getCoordonees(),  LecteurStatistiques.getStatistique("MULETYPLE").getPortee() , 3));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getCoordonees(), 15, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getCoordonees(), LecteurStatistiques.getStatistique("MULETYPLE").getDegats() , getReconnaissance().getCibles()));
     }
 
     @Override
