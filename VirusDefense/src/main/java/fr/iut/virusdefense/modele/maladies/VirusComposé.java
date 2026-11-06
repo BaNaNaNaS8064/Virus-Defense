@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.modele.maladies;
 
-import fr.iut.virusdefense.modele.maladies.capacites.CapaciteDivision;
+import fr.iut.virusdefense.modele.maladies.capacites.CapaciteInvocation;
 import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
 
 public class VirusComposé extends Maladie{
@@ -11,7 +11,7 @@ public class VirusComposé extends Maladie{
         this.stade = stade;
 
         if (stade > 0 && stade < 3)
-            setCapaciteMort(new CapaciteDivision(CodeMaladie.valueOf("VIRUSCOMPOSE_" + (stade+1)), 2, 2));
+            setCapaciteMort(new CapaciteInvocation(CodeMaladie.valueOf("VIRUSCOMPOSE_" + (stade+1)), 2, 2));
     }
 
     public int getStade() {

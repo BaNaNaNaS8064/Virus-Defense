@@ -5,8 +5,8 @@ import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.Positionnable;
 import fr.iut.virusdefense.modele.deplacement.GestionnaireDeplacement;
+import fr.iut.virusdefense.modele.maladies.capacites.Capacite;
 import fr.iut.virusdefense.modele.maladies.capacites.CapacitePeriodique;
-import fr.iut.virusdefense.modele.maladies.capacites.CapaciteMort;
 
 public abstract class Maladie extends Positionnable implements ActeurRetirable {
     private double pv;
@@ -15,7 +15,7 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     private double coefVitesse;
     private GestionnaireDeplacement gestionnaireDeplacement;
     private CapacitePeriodique capacitePeriodique;
-    private CapaciteMort capaciteMort;
+    private Capacite capaciteMort;
 
     public Maladie(double ligne, double colonne, int pv, double vitesse, int recompense){
         super(ligne+0.5, colonne+0.5);
@@ -35,7 +35,7 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
         this.capacitePeriodique = capacitePeriodique;
     }
 
-    public void setCapaciteMort(CapaciteMort capaciteMort) {
+    public void setCapaciteMort(Capacite capaciteMort) {
         this.capaciteMort = capaciteMort;
     }
 
@@ -91,7 +91,7 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
 
     public void activerCapacitePeriodique(){
         if (capacitePeriodique != null)
-            capacitePeriodique.agir(this);
+            capacitePeriodique.activer(this);
     }
 
     public void activerCapaciteMort(){
