@@ -4,13 +4,14 @@ import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.maladies.Maladie;
 import fr.iut.virusdefense.modele.maladies.VirusComposé;
 
-public class CapaciteDivision extends CapaciteMort {
+public class CapaciteDivision implements CapaciteMort {
     private final int stade;
 
     public CapaciteDivision(int stade) {
         this.stade = stade;
     }
 
+    @Override
     public void activer(Maladie m){
         if(stade<3)
             for (int i=0; i<2; i++)
