@@ -5,7 +5,8 @@ import fr.iut.virusdefense.modele.maladies.capacites.CapaciteInvocation;
 
 public class GrandChampignon extends Maladie{
     public GrandChampignon(Environnement environnement, int ligne, int colonne) {
-        super(environnement, ligne, colonne, 1000, 0.015, 100, new CapaciteInvocation(300, 120, 3, 5), null);
+        super(environnement, ligne, colonne, 1000, 0.015, 100);
+        setCapacitePeriodique(new CapaciteInvocation(300, 120, 3, 5));
     }
 
     @Override

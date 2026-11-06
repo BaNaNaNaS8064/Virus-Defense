@@ -18,7 +18,7 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     private CapaciteMort capaciteMort;
 
 
-    public Maladie(Environnement environnement, double ligne, double colonne, int pv, double vitesse, int recompense, CapacitePeriodique capacitePeriodique, CapaciteMort capaciteMort) {
+    public Maladie(Environnement environnement, double ligne, double colonne, int pv, double vitesse, int recompense) {
         super(environnement, ligne+0.5, colonne+0.5);
 
         this.vitesse = vitesse;
@@ -26,12 +26,18 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
         this.recompense = recompense;
         coefVitesse = 1;
         this.gestionnaireDeplacement = new GestionnaireDeplacement();
-        this.capacitePeriodique = capacitePeriodique;
-        this.capaciteMort = capaciteMort;
     }
 
     public final int getRecompense(){
         return recompense;
+    }
+
+    public void setCapacitePeriodique(CapacitePeriodique capacitePeriodique) {
+        this.capacitePeriodique = capacitePeriodique;
+    }
+
+    public void setCapaciteMort(CapaciteMort capaciteMort) {
+        this.capaciteMort = capaciteMort;
     }
 
     public boolean estVivant(){
@@ -90,7 +96,7 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     }
 
     public void activationCapaciteMort(){
-        if (!aAtteintLObjectif() && !estVivant() && capaciteMort != null) {
+        if (capaciteMort != null && !estVivant() && !aAtteintLObjectif()) {
             this.capaciteMort.activer(this);
         }
     }

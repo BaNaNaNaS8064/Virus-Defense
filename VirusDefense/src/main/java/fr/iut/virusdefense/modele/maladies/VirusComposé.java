@@ -10,8 +10,9 @@ public class VirusComposé extends Maladie{
     }
 
     public VirusComposé(Environnement environnement, double ligne, double colonne, int stade){
-        super(environnement, ligne, colonne, 333/(int)(Math.pow(2,(stade-1))), 0.013, 24/(int)(Math.pow(2,(stade-1))), null, new CapaciteDivision(stade));
+        super(environnement, ligne, colonne, 333/(int)(Math.pow(2,(stade-1))), 0.013, 24/(int)(Math.pow(2,(stade-1))));
         this.stade = stade;
+        setCapaciteMort(new CapaciteDivision(stade));
     }
 
     public int getStade() {

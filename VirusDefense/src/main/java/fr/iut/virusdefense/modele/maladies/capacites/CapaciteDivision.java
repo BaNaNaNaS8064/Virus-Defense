@@ -13,6 +13,6 @@ public class CapaciteDivision extends CapaciteMort {
     public void activer(Maladie m){
         if(stade<3)
             for (int i=0; i<2; i++)
-                m.getEnvironnement().getGestionnaireActeur().getMaladies().add(new VirusComposé(m.getEnvironnement(), m.getLigne(), m.getColonne(), stade+1));
+                m.getEnvironnement().getGestionnaireActeur().getMaladies().add(new VirusComposé(m.getEnvironnement(), (int) m.getLigne(), (int) m.getColonne(), stade+1));
     }
 }
