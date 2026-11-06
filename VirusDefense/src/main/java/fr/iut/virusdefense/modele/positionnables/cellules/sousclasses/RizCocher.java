@@ -2,10 +2,10 @@ package fr.iut.virusdefense.modele.positionnables.cellules.sousclasses;
 
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonRicochet;
-import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.RecRicochet;
-import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.RecSimple;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceRicochet;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceSimple;
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.Reconnaissance;
-import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatistiques;
+import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 
 public class RizCocher extends Cellule {
     private static int coutBase = 900;
@@ -16,21 +16,21 @@ public class RizCocher extends Cellule {
 
     public RizCocher(int ligne, int colonne){
         super(ligne, colonne,
-                LecteurStatistiques.getStatistique("RIZCOCHER").getFrequence(),
-                LecteurStatistiques.getStatistique("RIZCOCHER").getCout());
+                LecteurStatsCellules.getStatistique("RIZCOCHER").frequence(),
+                LecteurStatsCellules.getStatistique("RIZCOCHER").cout());
         initRec();
         initGestionnaireAttaque();
     }
 
     @Override
     public void initRec() {
-        Reconnaissance base = new RecSimple(getCoordonees(), LecteurStatistiques.getStatistique("RIZCOCHER").getPortee(),1);
-        setReconnaissance(new RecRicochet(base,3));
+        Reconnaissance base = new ReconnaissanceSimple(getCoordonees(), LecteurStatsCellules.getStatistique("RIZCOCHER").portee(),1);
+        setReconnaissance(new ReconnaissanceRicochet(base,3));
     }
 
     @Override
     public void initGestionnaireAttaque() {
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonRicochet(getCoordonees(), LecteurStatistiques.getStatistique("RIZCOCHER").getDegats(), getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonRicochet(getCoordonees(), LecteurStatsCellules.getStatistique("RIZCOCHER").degats(), getReconnaissance().getCibles()));
     }
 
     @Override
@@ -55,6 +55,6 @@ public class RizCocher extends Cellule {
 
     @Override
     public void ameliorerAuNiveau3() {
-        ((RecRicochet)getReconnaissance()).setNbRicochets(((RecRicochet)getReconnaissance()).getNbRicochets()+2);
+        ((ReconnaissanceRicochet)getReconnaissance()).setNbRicochets(((ReconnaissanceRicochet)getReconnaissance()).getNbRicochets()+2);
     }
 }

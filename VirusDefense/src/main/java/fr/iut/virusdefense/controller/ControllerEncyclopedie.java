@@ -203,9 +203,9 @@ public class ControllerEncyclopedie implements Initializable{
                 frequenceFrame[2] = "50";
 
                 special = "Special :\n" +
-                        "\nNiveau 1 :\n\tDot : 4\n\tDurée (frame) : 15" +
-                        "\nNiveau 2 :\n\tDot : 4\n\tDurée (frame) : 15" +
-                        "\nNiveau 3 :\n\tDot : 4\n\tDurée (frame) : 15\n\t-10% de vitesse par tir\n\tDurée (frame) : 5";
+                        "\nNiveau 1 :\n\tDegatsSurDuree : 4\n\tDurée (frame) : 15" +
+                        "\nNiveau 2 :\n\tDegatsSurDuree : 4\n\tDurée (frame) : 15" +
+                        "\nNiveau 3 :\n\tDegatsSurDuree : 4\n\tDurée (frame) : 15\n\t-10% de vitesse par tir\n\tDurée (frame) : 5";
                 break;
 
             case "RbEncBrulHure":

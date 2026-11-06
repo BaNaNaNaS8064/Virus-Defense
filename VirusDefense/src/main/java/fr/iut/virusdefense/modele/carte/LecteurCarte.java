@@ -1,15 +1,14 @@
 package fr.iut.virusdefense.modele.carte;
 
-import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.utilitaires.LecteurFichier;
 
-public class LecteurDeCarte extends LecteurFichier{
+public class LecteurCarte extends LecteurFichier{
 
-    private final ConstructeurDeCarte constructeurDeCarte;
+    private final ConstructeurCarte constructeurCarte;
 
-    public LecteurDeCarte(String idNiveau){
+    public LecteurCarte(String idNiveau){
         super("niveaux/" + idNiveau + "/carte.txt");
-        constructeurDeCarte = new ConstructeurDeCarte();
+        constructeurCarte = new ConstructeurCarte();
         lire();
     }
 
@@ -32,23 +31,23 @@ public class LecteurDeCarte extends LecteurFichier{
         ligne = prochaineLigne();
         hauteur = ligne[0];
         largeur = ligne[1];
-        constructeurDeCarte.setTaille(hauteur, largeur);
+        constructeurCarte.setTaille(hauteur, largeur);
 
-        constructeurDeCarte.setObjectif(prochaineLigne());
+        constructeurCarte.setObjectif(prochaineLigne());
 
         nbPointsApparitions = Integer.parseInt(getScanner().nextLine());
         for (int i=0; i<nbPointsApparitions; i++)
-            constructeurDeCarte.ajouterPointApparition(prochaineLigne());
+            constructeurCarte.ajouterPointApparition(prochaineLigne());
 
         for (int indLigne = 0; indLigne < hauteur; indLigne++){
             ligne = prochaineLigne();
 
             for (int indColonne = 0; indColonne < largeur; indColonne++)
-                constructeurDeCarte.changerValeur(indLigne, indColonne, ligne[indColonne] == 1);
+                constructeurCarte.changerValeur(indLigne, indColonne, ligne[indColonne] == 1);
         }
     }
 
     public Carte creer(){
-        return constructeurDeCarte.recupCarte();
+        return constructeurCarte.recupCarte();
     }
 }

@@ -2,8 +2,8 @@ package fr.iut.virusdefense.modele.positionnables.cellules.sousclasses;
 
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaqueProjectileExplosif;
-import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.RecBrulure;
-import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatistiques;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceSansMurs;
+import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 
 public class Brulhure extends Cellule {
     private static int coutBase = 1300;
@@ -15,8 +15,8 @@ public class Brulhure extends Cellule {
 
     public Brulhure(int ligne, int colonne) {
         super(ligne, colonne,
-                LecteurStatistiques.getStatistique("BRULHURE").getFrequence(),
-                LecteurStatistiques.getStatistique("BRULHURE").getCout());
+                LecteurStatsCellules.getStatistique("BRULHURE").frequence(),
+                LecteurStatsCellules.getStatistique("BRULHURE").cout());
         tempsZone=200;
         initRec();
         initGestionnaireAttaque();
@@ -24,12 +24,12 @@ public class Brulhure extends Cellule {
 
     @Override
     public void initRec() {
-        setReconnaissance(new RecBrulure(getCoordonees(), LecteurStatistiques.getStatistique("BRULHURE").getPortee(), 1));
+        setReconnaissance(new ReconnaissanceSansMurs(getCoordonees(), LecteurStatsCellules.getStatistique("BRULHURE").portee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque() {
-        setGestionnaireAttaque(new GestionnaireAttaqueProjectileExplosif(getCoordonees(), LecteurStatistiques.getStatistique("BRULHURE").getDegats(),getReconnaissance().getCibles(),1.5,400,0.5 ,tempsZone));
+        setGestionnaireAttaque(new GestionnaireAttaqueProjectileExplosif(getCoordonees(), LecteurStatsCellules.getStatistique("BRULHURE").degats(),getReconnaissance().getCibles(),1.5,400,0.5 ,tempsZone));
     }
 
     @Override

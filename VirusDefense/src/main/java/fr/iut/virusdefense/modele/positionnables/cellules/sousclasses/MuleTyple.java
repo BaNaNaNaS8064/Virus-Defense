@@ -2,8 +2,8 @@ package fr.iut.virusdefense.modele.positionnables.cellules.sousclasses;
 
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonSimple;
-import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.RecSimple;
-import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatistiques;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceSimple;
+import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 
 public class MuleTyple extends Cellule {
 
@@ -15,8 +15,8 @@ public class MuleTyple extends Cellule {
 
     public MuleTyple(int ligne, int colonne){
         super(ligne, colonne,
-                LecteurStatistiques.getStatistique("MULETYPLE").getFrequence(),
-                LecteurStatistiques.getStatistique("MULETYPLE").getCout());
+                LecteurStatsCellules.getStatistique("MULETYPLE").frequence(),
+                LecteurStatsCellules.getStatistique("MULETYPLE").cout());
 
         initRec();
         initGestionnaireAttaque();
@@ -24,12 +24,12 @@ public class MuleTyple extends Cellule {
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getCoordonees(),  LecteurStatistiques.getStatistique("MULETYPLE").getPortee() , 3));
+        setReconnaissance(new ReconnaissanceSimple(getCoordonees(),  LecteurStatsCellules.getStatistique("MULETYPLE").portee() , 3));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getCoordonees(), LecteurStatistiques.getStatistique("MULETYPLE").getDegats() , getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getCoordonees(), LecteurStatsCellules.getStatistique("MULETYPLE").degats() , getReconnaissance().getCibles()));
     }
 
     @Override

@@ -2,8 +2,8 @@ package fr.iut.virusdefense.modele.positionnables.cellules.sousclasses;
 
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonSimple;
-import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.RecSimple;
-import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatistiques;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceSimple;
+import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 
 public class Lasere extends Cellule {
     private static int coutBase = 200;
@@ -14,20 +14,20 @@ public class Lasere extends Cellule {
 
     public Lasere(int ligne, int colonne){
         super(ligne, colonne
-                , LecteurStatistiques.getStatistique("LASERE").getFrequence()
-                , LecteurStatistiques.getStatistique("LASERE").getCout());
+                , LecteurStatsCellules.getStatistique("LASERE").frequence()
+                , LecteurStatsCellules.getStatistique("LASERE").cout());
         initRec();
         initGestionnaireAttaque();
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getCoordonees(), LecteurStatistiques.getStatistique("LASERE").getPortee(), 1));
+        setReconnaissance(new ReconnaissanceSimple(getCoordonees(), LecteurStatsCellules.getStatistique("LASERE").portee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getCoordonees(), LecteurStatistiques.getStatistique("LASERE").getDegats(), getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getCoordonees(), LecteurStatsCellules.getStatistique("LASERE").degats(), getReconnaissance().getCibles()));
     }
 
     @Override

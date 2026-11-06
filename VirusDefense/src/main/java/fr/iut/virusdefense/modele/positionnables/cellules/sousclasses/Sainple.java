@@ -2,8 +2,8 @@ package fr.iut.virusdefense.modele.positionnables.cellules.sousclasses;
 
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaqueProjectile;
-import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.RecSimple;
-import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatistiques;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceSimple;
+import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 
 public class Sainple extends Cellule {
 
@@ -14,8 +14,8 @@ public class Sainple extends Cellule {
     }
 
     public Sainple(int ligne, int colonne){
-        super(ligne, colonne,              LecteurStatistiques.getStatistique("SAINPLE").getFrequence(),
-                LecteurStatistiques.getStatistique("SAINPLE").getCout()
+        super(ligne, colonne,              LecteurStatsCellules.getStatistique("SAINPLE").frequence(),
+                LecteurStatsCellules.getStatistique("SAINPLE").cout()
         );
         initRec();
         initGestionnaireAttaque();
@@ -23,12 +23,12 @@ public class Sainple extends Cellule {
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getCoordonees(), LecteurStatistiques.getStatistique("SAINPLE").getPortee(), 1));
+        setReconnaissance(new ReconnaissanceSimple(getCoordonees(), LecteurStatsCellules.getStatistique("SAINPLE").portee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueProjectile(getCoordonees(), LecteurStatistiques.getStatistique("SAINPLE").getDegats(), getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueProjectile(getCoordonees(), LecteurStatsCellules.getStatistique("SAINPLE").degats(), getReconnaissance().getCibles()));
     }
 
     @Override

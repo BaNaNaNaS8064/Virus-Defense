@@ -9,7 +9,7 @@ public class LecteurVagues extends LecteurFichier {
     private int nbPointsApparition;
 
     public LecteurVagues(int nbPointsApparition, String idNiveau){
-        super("niveaux/" + idNiveau + "/vagues.txt"); // Correction : vagues au pluriel
+        super("niveaux/" + idNiveau + "/vagues.txt");
         this.nbPointsApparition = nbPointsApparition;
         lire();
     }

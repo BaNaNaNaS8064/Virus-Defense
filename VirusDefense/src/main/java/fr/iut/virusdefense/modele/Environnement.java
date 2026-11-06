@@ -3,7 +3,7 @@ package fr.iut.virusdefense.modele;
 import fr.iut.virusdefense.modele.apparition.Niveau;
 import fr.iut.virusdefense.modele.apparition.PointApparition;
 import fr.iut.virusdefense.modele.carte.Carte;
-import fr.iut.virusdefense.modele.carte.LecteurDeCarte;
+import fr.iut.virusdefense.modele.carte.LecteurCarte;
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.modele.positionnables.cellules.attaques.Projectile;
 import fr.iut.virusdefense.modele.positionnables.cellules.attaques.Rayon;
@@ -12,6 +12,7 @@ import fr.iut.virusdefense.modele.deplacement.Deplacement;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 import fr.iut.virusdefense.modele.acteurs.GestionnaireActeur;
 import fr.iut.virusdefense.modele.enums.StatutPartie;
+import fr.iut.virusdefense.modele.utilitaires.Joueur;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 
@@ -33,7 +34,7 @@ public class Environnement {
      * Créé un terrain sans maladies
      */
     private Environnement(String idNiveau) {
-        carte = new LecteurDeCarte(idNiveau).creer();
+        carte = new LecteurCarte(idNiveau).creer();
         deplacement = new Deplacement(carte);
         joueur = new Joueur();
         gestionnaireActeur = new GestionnaireActeur(carte.getCellules(), carte.getPointsApparitions());

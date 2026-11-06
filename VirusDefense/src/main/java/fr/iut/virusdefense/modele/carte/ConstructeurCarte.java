@@ -1,18 +1,17 @@
 package fr.iut.virusdefense.modele.carte;
 
-import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.apparition.PointApparition;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConstructeurDeCarte {
+public class ConstructeurCarte {
 
     private boolean[][] carteStatique;
     private List<Integer> objectif;
     private ArrayList<PointApparition> pointApparitions;
 
-    public ConstructeurDeCarte(){
+    public ConstructeurCarte(){
         pointApparitions = new ArrayList<>();
     }
 

@@ -2,8 +2,8 @@ package fr.iut.virusdefense.modele.positionnables.cellules.sousclasses;
 
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaqueZone;
-import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.RecSimple;
-import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatistiques;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceSimple;
+import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 
 public class Brouaieuse extends Cellule {
     private static int coutBase = 300;
@@ -14,8 +14,8 @@ public class Brouaieuse extends Cellule {
 
     public Brouaieuse(int ligne, int colonne){
         super(ligne, colonne,
-                LecteurStatistiques.getStatistique("BROUAIEUSE").getFrequence(),
-                LecteurStatistiques.getStatistique("BROUAIEUSE").getCout()
+                LecteurStatsCellules.getStatistique("BROUAIEUSE").frequence(),
+                LecteurStatsCellules.getStatistique("BROUAIEUSE").cout()
         );
         initRec();
         initGestionnaireAttaque();
@@ -23,12 +23,12 @@ public class Brouaieuse extends Cellule {
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getCoordonees(), LecteurStatistiques.getStatistique("BROUAIEUSE").getPortee(), 1));
+        setReconnaissance(new ReconnaissanceSimple(getCoordonees(), LecteurStatsCellules.getStatistique("BROUAIEUSE").portee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueZone(getCoordonees(), LecteurStatistiques.getStatistique("BROUAIEUSE").getDegats(), getReconnaissance().getCibles(), getReconnaissance().getPortee()));
+        setGestionnaireAttaque(new GestionnaireAttaqueZone(getCoordonees(), LecteurStatsCellules.getStatistique("BROUAIEUSE").degats(), getReconnaissance().getCibles(), getReconnaissance().getPortee()));
     }
 
     @Override

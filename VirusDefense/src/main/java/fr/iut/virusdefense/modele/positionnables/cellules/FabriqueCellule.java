@@ -1,6 +1,5 @@
 package fr.iut.virusdefense.modele.positionnables.cellules;
 
-import fr.iut.virusdefense.modele.cellules.sousclasses.*;
 import fr.iut.virusdefense.modele.enums.CodeTuile;
 import fr.iut.virusdefense.modele.positionnables.cellules.sousclasses.*;
 

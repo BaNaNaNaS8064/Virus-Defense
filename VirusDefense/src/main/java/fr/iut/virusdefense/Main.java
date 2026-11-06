@@ -1,7 +1,7 @@
 package fr.iut.virusdefense;
 
 import fr.iut.virusdefense.controller.ControllerMenuPrincipal;
-import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatistiques;
+import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,7 +15,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        new LecteurStatistiques("stats/stats_cellules.txt");
+        new LecteurStatsCellules("stats/stats_cellules.txt");
 
         paneEnsemble = new StackPane();
         Scene scene = initScene();

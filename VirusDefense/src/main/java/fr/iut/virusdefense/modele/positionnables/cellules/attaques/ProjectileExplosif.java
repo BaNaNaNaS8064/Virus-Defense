@@ -3,7 +3,7 @@ package fr.iut.virusdefense.modele.positionnables.cellules.attaques;
 import fr.iut.virusdefense.modele.utilitaires.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.positionnables.cellules.alteration.Alteration;
-import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.RecSimple;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceSimple;
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.Reconnaissance;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 
@@ -23,7 +23,7 @@ public class ProjectileExplosif extends Projectile {
 
     @Override
     public void attaquer(){
-        Reconnaissance reconnaissance = new RecSimple(getCoordonees(), rayonZonePortee, Integer.MAX_VALUE);
+        Reconnaissance reconnaissance = new ReconnaissanceSimple(getCoordonees(), rayonZonePortee, Integer.MAX_VALUE);
         Zone explosion = new ZoneSimple(getCoordonees(), getCibles(), degatsInstantane, 30, getAlteration(), rayonInstantane);
         Environnement.getUniqueInstance().ajouterZone(explosion);
         Zone explosionDuree = new ZonePersistante(getCoordonees(), getCibles(), getDegats(), tempsZone, getAlteration(), rayonZonePortee, reconnaissance);

@@ -6,11 +6,11 @@ import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecRicochet extends Reconnaissance{
+public class ReconnaissanceRicochet extends Reconnaissance{
     private int nbRicochets;
     private Reconnaissance reconnaissanceBasique;
 
-    public RecRicochet(Reconnaissance reconnaissanceBasique, int nbRicochets) {
+    public ReconnaissanceRicochet(Reconnaissance reconnaissanceBasique, int nbRicochets) {
         super(reconnaissanceBasique.getCoordonees(), reconnaissanceBasique.getPortee(), 1);
         this.reconnaissanceBasique = reconnaissanceBasique;
         this.nbRicochets = nbRicochets;

@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.modele.cellules.reconnaissance;
 
-import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.RecSimple;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceSimple;
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.Reconnaissance;
 import fr.iut.virusdefense.modele.utilitaires.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RecSimpleTest {
+class ReconnaissanceSimpleTest {
     /* Voici la carte utilise pour essayer la Reconnaissance les 1 represente un mur.
     1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
     1 0 1 0 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0 1 1 1 0 0 0 0 0 0 0 1
@@ -36,7 +36,7 @@ class RecSimpleTest {
 
     @Test
     void aPortee(){
-        Reconnaissance recSimple = new RecSimple(new Coordonees(2,2), 3,1);
+        Reconnaissance recSimple = new ReconnaissanceSimple(new Coordonees(2,2), 3,1);
         assertTrue(recSimple.aPortee(new Virus(2,3)),"La cible est a portée");
         assertFalse(recSimple.aPortee(new Virus(2,9)), "La maladie est hors de portée");
 
@@ -45,7 +45,7 @@ class RecSimpleTest {
 
     @Test
     void estValide(){
-        Reconnaissance recSimple = new RecSimple(new Coordonees(2,2),3,1);
+        Reconnaissance recSimple = new ReconnaissanceSimple(new Coordonees(2,2),3,1);
         assertTrue(recSimple.estValide(new Virus(2,3)),"La Cellule voit la maladie");
         assertFalse(recSimple.estValide(new Virus(10,10)),"Maladie hors de portée");
 
@@ -57,7 +57,7 @@ class RecSimpleTest {
 
     @Test
     void aAuMoinsUneCible(){
-        Reconnaissance recSimple = new RecSimple(new Coordonees(2,2),3,1);
+        Reconnaissance recSimple = new ReconnaissanceSimple(new Coordonees(2,2),3,1);
         Environnement.getUniqueInstance().ajouterMaladie(new Virus(2,3));
         recSimple.actualiser();
         assertTrue(recSimple.aAuMoinsUneCible(), "Il y a exactement une cible valide");
@@ -71,14 +71,14 @@ class RecSimpleTest {
         recSimple.actualiser();
         assertTrue(recSimple.aAuMoinsUneCible(),"Plusieurs cibles valides");
 
-        recSimple = new RecSimple(new Coordonees(-1,1),3,1);
+        recSimple = new ReconnaissanceSimple(new Coordonees(-1,1),3,1);
         recSimple.actualiser();
         assertFalse(recSimple.aAuMoinsUneCible(),"La reconnaissance est en dehors de la carte");
     }
 
     @Test
     void aAssezDeCibles(){
-        Reconnaissance recSimple = new RecSimple(new Coordonees(2,2),3,1);
+        Reconnaissance recSimple = new ReconnaissanceSimple(new Coordonees(2,2),3,1);
         Environnement.getUniqueInstance().ajouterMaladie(new Virus(2,3));
         recSimple.actualiser();
         assertTrue(recSimple.aAssezDeCibles(), "Il y a exactement une cible valide");
@@ -93,7 +93,7 @@ class RecSimpleTest {
         assertTrue(recSimple.aAssezDeCibles(),"Plusieurs cibles valides");
 
 
-        recSimple = new RecSimple(new Coordonees(-1,1),3,1);
+        recSimple = new ReconnaissanceSimple(new Coordonees(-1,1),3,1);
         recSimple.actualiser();
         assertFalse(recSimple.aAssezDeCibles(),"La reconnaissance est en dehors de la carte");
     }
@@ -101,7 +101,7 @@ class RecSimpleTest {
 
     @Test
     void valide(){
-        Reconnaissance recSimple = new RecSimple(new Coordonees(2,2),3,1);
+        Reconnaissance recSimple = new ReconnaissanceSimple(new Coordonees(2,2),3,1);
         Environnement.getUniqueInstance().ajouterMaladie(new Virus(2,3));
         recSimple.actualiser();
         assertTrue(recSimple.valide(), "Il y a exactement une cible valide");
@@ -115,7 +115,7 @@ class RecSimpleTest {
         recSimple.actualiser();
         assertTrue(recSimple.valide(),"Plusieurs cibles valides");
         
-        recSimple = new RecSimple(new Coordonees(-1,1),3,1);
+        recSimple = new ReconnaissanceSimple(new Coordonees(-1,1),3,1);
         recSimple.actualiser();
         assertFalse(recSimple.valide(),"La reconnaissance est en dehors de la carte");
     }

@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.modele.acteurs;
 
-import fr.iut.virusdefense.modele.Joueur;
+import fr.iut.virusdefense.modele.utilitaires.Joueur;
 import fr.iut.virusdefense.modele.apparition.PointApparition;
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.modele.positionnables.cellules.alteration.Alteration;

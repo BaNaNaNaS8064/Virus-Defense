@@ -4,40 +4,13 @@ import fr.iut.virusdefense.modele.utilitaires.LecteurFichier;
 
 import java.util.HashMap;
 
-public class LecteurStatistiques extends LecteurFichier {
+public class LecteurStatsCellules extends LecteurFichier {
+
+    public record StatsCellule(int cout, double degats, double portee, int frequence) {}
 
     public static HashMap<String, StatsCellule> statistiques;
 
-    public static class StatsCellule{
-        private int cout;
-        private double degats;
-        private double portee;
-        private int frequence;
-
-        public StatsCellule(int cout, double degats, double portee, int frequence){
-            this.cout = cout;
-            this.degats = degats;
-            this.portee = portee;
-            this.frequence = frequence;
-        }
-        public int getCout() {
-            return cout;
-        }
-
-        public double getDegats() {
-            return degats;
-        }
-
-        public double getPortee() {
-            return portee;
-        }
-
-        public int getFrequence() {
-            return frequence;
-        }
-    }
-
-    public LecteurStatistiques(String cheminRelatif){
+    public LecteurStatsCellules(String cheminRelatif){
         super(cheminRelatif);
         statistiques = new HashMap<>();
         lire();

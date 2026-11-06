@@ -1,4 +1,4 @@
-package fr.iut.virusdefense.modele;
+package fr.iut.virusdefense.modele.utilitaires;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;

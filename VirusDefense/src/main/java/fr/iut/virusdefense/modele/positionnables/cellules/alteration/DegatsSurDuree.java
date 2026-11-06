@@ -1,9 +1,9 @@
 package fr.iut.virusdefense.modele.positionnables.cellules.alteration;
 
-public class Dot extends Alteration {
+public class DegatsSurDuree extends Alteration {
     private final int degats;
 
-    public Dot(int duree, int degats) {
+    public DegatsSurDuree(int duree, int degats) {
         super(duree);
         this.degats = degats;
     }
@@ -15,7 +15,7 @@ public class Dot extends Alteration {
 
     @Override
     public Alteration copy() {
-        Alteration temp = new Dot(getDuree(), degats);
+        Alteration temp = new DegatsSurDuree(getDuree(), degats);
         temp.setMaladie(this.getMaladie());
         return temp;
     }
