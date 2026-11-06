@@ -3,6 +3,7 @@ package fr.iut.virusdefense.modele.cellules;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonSimple;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
+import fr.iut.virusdefense.modele.utilitaires.LecteurStatistiques;
 
 public class MuleTyple extends Cellule{
 
@@ -13,14 +14,17 @@ public class MuleTyple extends Cellule{
     }
 
     public MuleTyple(int ligne, int colonne){
-        super(ligne, colonne, 50, coutBase);
+        super(ligne, colonne,
+                LecteurStatistiques.getStatistique("MULETYPLE").getFrequence(),
+                LecteurStatistiques.getStatistique("MULETYPLE").getCout());
+
         initRec();
         initGestionnaireAttaque();
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getCoordonees(), 3.0 , 3));
+        setReconnaissance(new RecSimple(getCoordonees(), 3.0 , 3), LecteurStatistiques.getStatistique("MULETYPLE").getPortee() , 3);
     }
 
     @Override

@@ -3,6 +3,7 @@ package fr.iut.virusdefense.modele.cellules;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueZone;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
+import fr.iut.virusdefense.modele.utilitaires.LecteurStatistiques;
 
 public class Brouaileuse extends Cellule {
     private static int coutBase = 300;
@@ -12,7 +13,10 @@ public class Brouaileuse extends Cellule {
     }
 
     public Brouaileuse(int ligne, int colonne){
-        super(ligne, colonne, 200, coutBase);
+        super(ligne, colonne,
+                LecteurStatistiques.getStatistique("BROUAIEUSE").getFrequence(),
+                LecteurStatistiques.getStatistique("BROUAIEUSE").getCout()
+        );
         initRec();
         initGestionnaireAttaque();
     }

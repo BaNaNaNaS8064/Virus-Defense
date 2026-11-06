@@ -3,6 +3,7 @@ package fr.iut.virusdefense.modele.cellules;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonConcentre;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
+import fr.iut.virusdefense.modele.utilitaires.LecteurStatistiques;
 
 public class Konsantre extends Cellule{
     private static int coutBase = 1000;
@@ -12,19 +13,21 @@ public class Konsantre extends Cellule{
     }
 
     public Konsantre(int ligne, int colonne){
-        super(ligne, colonne, 1, coutBase);
+        super(ligne, colonne,
+                LecteurStatistiques.getStatistique("KONSANTRE").getFrequence(),
+                LecteurStatistiques.getStatistique("KONSANTRE").getCout());
         initRec();
         initGestionnaireAttaque();
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getCoordonees(), 3.0, 1));
+        setReconnaissance(new RecSimple(getCoordonees(), 3.0, 1), LecteurStatistiques.getStatistique("KONSANTE").getPortee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonConcentre(getCoordonees(), 1, 60, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonConcentre(getCoordonees(), 1, 60, getReconnaissance().getCibles(), LecteurStatistiques.getStatistique("KONSANTE").getDegats(), 60, getReconnaissance().getCibles()));
     }
 
     @Override

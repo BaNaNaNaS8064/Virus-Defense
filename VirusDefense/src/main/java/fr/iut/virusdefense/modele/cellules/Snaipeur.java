@@ -3,6 +3,7 @@ package fr.iut.virusdefense.modele.cellules;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonSimple;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
+import fr.iut.virusdefense.modele.utilitaires.LecteurStatistiques;
 
 public class Snaipeur extends Cellule{
     private static int coutBase = 500;
@@ -12,19 +13,21 @@ public class Snaipeur extends Cellule{
     }
 
     public Snaipeur(int ligne, int colonne){
-        super(ligne, colonne, 250, coutBase);
+        super(ligne, colonne,
+                LecteurStatistiques.getStatistique("SNAIPEUR").getFrequence(),
+                LecteurStatistiques.getStatistique("SNAIPEUR").getCout());
         initRec();
         initGestionnaireAttaque();
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getCoordonees(), 12.0, 1));
+        setReconnaissance(new RecSimple(getCoordonees(), 12.0, 1), LecteurStatistiques.getStatistique("SNAIPLEUR").getPortee(), 1);
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getCoordonees(), 100, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getCoordonees(), 100, getReconnaissance().getCibles(), LecteurStatistiques.getStatistique("SNAIPEUR").getDegats(), getReconnaissance().getCibles())));
     }
 
     @Override

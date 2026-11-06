@@ -4,6 +4,7 @@ import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueProjectileExplosif;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecBrulure;
+import fr.iut.virusdefense.modele.utilitaires.LecteurStatistiques;
 
 public class Brulhure extends Cellule{
     private static int coutBase = 1300;
@@ -14,7 +15,9 @@ public class Brulhure extends Cellule{
     }
 
     public Brulhure(int ligne, int colonne) {
-        super(ligne, colonne, 720, coutBase);
+        super(ligne, colonne,
+                LecteurStatistiques.getStatistique("BRULHURE").getFrequence(),
+                LecteurStatistiques.getStatistique("BRULHURE").getCout());
         tempsZone=200;
         initRec();
         initGestionnaireAttaque();
@@ -22,12 +25,12 @@ public class Brulhure extends Cellule{
 
     @Override
     public void initRec() {
-        setReconnaissance(new RecBrulure(getCoordonees(), 5, 1));
+        setReconnaissance(new RecBrulure(getCoordonees(), 5, 1), LecteurStatistiques.getStatistique("BRULHURE").getPortee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque() {
-        setGestionnaireAttaque(new GestionnaireAttaqueProjectileExplosif(getCoordonees(),25,getReconnaissance().getCibles(),1.5,400,0.5 ,tempsZone));
+        setGestionnaireAttaque(new GestionnaireAttaqueProjectileExplosif(getCoordonees(),25,getReconnaissance().getCibles(),1.5,400,0.5 ,tempsZone), LecteurStatistiques.getStatistique("BRULHURE").getDegats(), getReconnaissance().getCibles(),1.5,400,0.5 ,tempsZone));
     }
 
     @Override

@@ -3,6 +3,7 @@ package fr.iut.virusdefense.modele.cellules;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonRicochet;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecRicochet;
+import fr.iut.virusdefense.modele.utilitaires.LecteurStatistiques;
 
 public class RizCocher extends Cellule{
     private static int coutBase = 900;
@@ -12,19 +13,21 @@ public class RizCocher extends Cellule{
     }
 
     public RizCocher(int ligne, int colonne){
-        super(ligne, colonne, 120, coutBase);
+        super(ligne, colonne,
+                LecteurStatistiques.getStatistique("RIZCOCHER").getFrequence(),
+                LecteurStatistiques.getStatistique("RIZCOCHER").getCout());
         initRec();
         initGestionnaireAttaque();
     }
 
     @Override
     public void initRec() {
-        setReconnaissance(new RecRicochet(getCoordonees(), 3.0, 3));
+        setReconnaissance(new RecRicochet(getCoordonees(), 3.0, 3), LecteurStatistiques.getStatistique("RIZCOCHER").getPortee(), 3));
     }
 
     @Override
     public void initGestionnaireAttaque() {
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonRicochet(getCoordonees(), 75, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonRicochet(getCoordonees(), 75, getReconnaissance().getCibles(), LecteurStatistiques.getStatistique("RIZCOCHER").getDegats(), getReconnaissance().getCibles()));
     }
 
     @Override

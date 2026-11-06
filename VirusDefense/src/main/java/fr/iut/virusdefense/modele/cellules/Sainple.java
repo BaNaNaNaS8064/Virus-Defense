@@ -3,6 +3,7 @@ package fr.iut.virusdefense.modele.cellules;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueProjectile;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
+import fr.iut.virusdefense.modele.utilitaires.LecteurStatistiques;
 
 public class Sainple extends Cellule {
 
@@ -13,14 +14,16 @@ public class Sainple extends Cellule {
     }
 
     public Sainple(int ligne, int colonne){
-        super(ligne, colonne, 60, coutBase);
+        super(ligne, colonne,              LecteurStatistiques.getStatistique("SAINPLE").getFrequence(),
+                LecteurStatistiques.getStatistique("SAINPLE").getCout()
+        );
         initRec();
         initGestionnaireAttaque();
     }
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getCoordonees(), 3.0, 1));
+        setReconnaissance(new RecSimple(getCoordonees(), 3.0, 1), LecteurStatistiques.getStatistique("SAINPLE").getPortee(), 1));
     }
 
     @Override
