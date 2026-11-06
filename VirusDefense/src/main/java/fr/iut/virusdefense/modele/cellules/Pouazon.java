@@ -18,8 +18,8 @@ public class Pouazon extends Cellule{
         return coutBase;
     }
 
-    private Pouazon(Environnement env, int ligne, int colonne){
-        super(env, ligne, colonne,
+    public Pouazon( int ligne, int colonne){
+        super(ligne, colonne,
                 LecteurStatistiques.getStatistique("POUAZON").getFrequence(),
                 LecteurStatistiques.getStatistique("POUAZON").getCout());
             initRec();
@@ -28,12 +28,12 @@ public class Pouazon extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getCoordonees(), 3.0, 1));
+        setReconnaissance(new RecSimple(getCoordonees(), LecteurStatistiques.getStatistique("POUAZON").getPortee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        GestionnaireAttaqueRayon temp = new GestionnaireAttaqueRayonSimple(getCoordonees(), 15, getReconnaissance().getCibles());
+        GestionnaireAttaqueRayon temp = new GestionnaireAttaqueRayonSimple(getCoordonees(), LecteurStatistiques.getStatistique("POUAZON").getDegats(), getReconnaissance().getCibles());
         temp.setAlteration(new Dot(15,4));
         setGestionnaireAttaque(temp);
     }

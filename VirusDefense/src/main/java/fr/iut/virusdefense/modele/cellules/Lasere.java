@@ -22,12 +22,12 @@ public class Lasere extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getCoordonees(), 3.0, 1));
+        setReconnaissance(new RecSimple(getCoordonees(), LecteurStatistiques.getStatistique("LASERE").getPortee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getCoordonees(), 1, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getCoordonees(), LecteurStatistiques.getStatistique("LASERE").getDegats(), getReconnaissance().getCibles()));
     }
 
     @Override

@@ -22,12 +22,12 @@ public class RizCocher extends Cellule{
 
     @Override
     public void initRec() {
-        setReconnaissance(new RecRicochet(getCoordonees(), 3.0, 3), LecteurStatistiques.getStatistique("RIZCOCHER").getPortee(), 3));
+        setReconnaissance(new RecRicochet(getCoordonees(), LecteurStatistiques.getStatistique("RIZCOCHER").getPortee(), 3));
     }
 
     @Override
     public void initGestionnaireAttaque() {
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonRicochet(getCoordonees(), 75, getReconnaissance().getCibles(), LecteurStatistiques.getStatistique("RIZCOCHER").getDegats(), getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonRicochet(getCoordonees(), LecteurStatistiques.getStatistique("RIZCOCHER").getDegats(), getReconnaissance().getCibles()));
     }
 
     @Override

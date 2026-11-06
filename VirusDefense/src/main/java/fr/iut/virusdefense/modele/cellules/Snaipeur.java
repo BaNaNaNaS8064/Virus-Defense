@@ -22,12 +22,12 @@ public class Snaipeur extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getCoordonees(), 12.0, 1), LecteurStatistiques.getStatistique("SNAIPLEUR").getPortee(), 1);
+        setReconnaissance(new RecSimple(getCoordonees(), LecteurStatistiques.getStatistique("SNAIPLEUR").getPortee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getCoordonees(), 100, getReconnaissance().getCibles(), LecteurStatistiques.getStatistique("SNAIPEUR").getDegats(), getReconnaissance().getCibles())));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonSimple(getCoordonees(), LecteurStatistiques.getStatistique("SNAIPEUR").getDegats(), getReconnaissance().getCibles()));
     }
 
     @Override

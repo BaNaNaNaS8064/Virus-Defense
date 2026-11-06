@@ -25,12 +25,12 @@ public class Brulhure extends Cellule{
 
     @Override
     public void initRec() {
-        setReconnaissance(new RecBrulure(getCoordonees(), 5, 1), LecteurStatistiques.getStatistique("BRULHURE").getPortee(), 1));
+        setReconnaissance(new RecBrulure(getCoordonees(), LecteurStatistiques.getStatistique("BRULHURE").getPortee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque() {
-        setGestionnaireAttaque(new GestionnaireAttaqueProjectileExplosif(getCoordonees(),25,getReconnaissance().getCibles(),1.5,400,0.5 ,tempsZone), LecteurStatistiques.getStatistique("BRULHURE").getDegats(), getReconnaissance().getCibles(),1.5,400,0.5 ,tempsZone));
+        setGestionnaireAttaque(new GestionnaireAttaqueProjectileExplosif(getCoordonees(), LecteurStatistiques.getStatistique("BRULHURE").getDegats(),getReconnaissance().getCibles(),1.5,400,0.5 ,tempsZone));
     }
 
     @Override

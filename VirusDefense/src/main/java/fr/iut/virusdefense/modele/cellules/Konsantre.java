@@ -22,12 +22,12 @@ public class Konsantre extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getCoordonees(), 3.0, 1), LecteurStatistiques.getStatistique("KONSANTE").getPortee(), 1));
+        setReconnaissance(new RecSimple(getCoordonees(), LecteurStatistiques.getStatistique("KONSANTRE").getPortee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueRayonConcentre(getCoordonees(), 1, 60, getReconnaissance().getCibles(), LecteurStatistiques.getStatistique("KONSANTE").getDegats(), 60, getReconnaissance().getCibles()));
+        setGestionnaireAttaque(new GestionnaireAttaqueRayonConcentre(getCoordonees(),  LecteurStatistiques.getStatistique("KONSANTRE").getDegats(), 60, getReconnaissance().getCibles()));
     }
 
     @Override
