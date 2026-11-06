@@ -43,7 +43,7 @@ public class RecRicochet extends Reconnaissance{
     }
 
     @Override
-    public void actualiser() { //override changerCible
+    public void actualiser() {
         reconnaissanceBasique.actualiser();
         getCibles().clear();
         if(reconnaissanceBasique.aAuMoinsUneCible()){

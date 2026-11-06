@@ -8,7 +8,7 @@ public class FabriqueCellule {
         return switch (codeCellule) {
             case SAINPLE -> new Sainple(ligne, colonne);
             case LASERE -> new Lasere(ligne, colonne);
-            case BROUAIEUSE -> new Brouaileuse(ligne, colonne);
+            case BROUAIEUSE -> new Brouaieuse(ligne, colonne);
             case MULETYPLE -> new MuleTyple(ligne, colonne);
             case SNAIPEUR -> new Snaipeur(ligne, colonne);
             case RIZCOCHER -> new RizCocher(ligne, colonne);

@@ -1,18 +1,17 @@
 package fr.iut.virusdefense.modele.cellules;
 
-import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.cellules.gestionnaireAttaque.GestionnaireAttaqueZone;
 import fr.iut.virusdefense.modele.cellules.reconnaissance.RecSimple;
 import fr.iut.virusdefense.modele.utilitaires.LecteurStatistiques;
 
-public class Brouaileuse extends Cellule {
+public class Brouaieuse extends Cellule {
     private static int coutBase = 300;
 
     public static int getCoutBase() {
         return coutBase;
     }
 
-    public Brouaileuse(int ligne, int colonne){
+    public Brouaieuse(int ligne, int colonne){
         super(ligne, colonne,
                 LecteurStatistiques.getStatistique("BROUAIEUSE").getFrequence(),
                 LecteurStatistiques.getStatistique("BROUAIEUSE").getCout()
@@ -23,12 +22,12 @@ public class Brouaileuse extends Cellule {
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getCoordonees(), LecteurStatistiques.getStatistique("BROUAILEUSE").getPortee(), 1));
+        setReconnaissance(new RecSimple(getCoordonees(), LecteurStatistiques.getStatistique("BROUAIEUSE").getPortee(), 1));
     }
 
     @Override
     public void initGestionnaireAttaque(){
-        setGestionnaireAttaque(new GestionnaireAttaqueZone(getCoordonees(), LecteurStatistiques.getStatistique("BROUAILEUSE").getDegats(), getReconnaissance().getCibles(), getReconnaissance().getPortee()));
+        setGestionnaireAttaque(new GestionnaireAttaqueZone(getCoordonees(), LecteurStatistiques.getStatistique("BROUAIEUSE").getDegats(), getReconnaissance().getCibles(), getReconnaissance().getPortee()));
     }
 
     @Override

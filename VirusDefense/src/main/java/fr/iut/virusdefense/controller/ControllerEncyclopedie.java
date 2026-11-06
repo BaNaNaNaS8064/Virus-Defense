@@ -88,7 +88,7 @@ public class ControllerEncyclopedie implements Initializable{
                 break;
             case "RbEncBrouaieuse":
                 labelTitre.setText("Brouaïeuse");
-                cout[0] = "" + Brouaileuse.getCoutBase();
+                cout[0] = "" + Brouaieuse.getCoutBase();
                 degat[0] = "90";
                 portee[0] = "1.5";
                 frequenceFrame[0] = "200";

@@ -22,7 +22,7 @@ public class Snaipeur extends Cellule{
 
     @Override
     public void initRec(){
-        setReconnaissance(new RecSimple(getCoordonees(), LecteurStatistiques.getStatistique("SNAIPLEUR").getPortee(), 1));
+        setReconnaissance(new RecSimple(getCoordonees(), LecteurStatistiques.getStatistique("SNAIPEUR").getPortee(), 1));
     }
 
     @Override

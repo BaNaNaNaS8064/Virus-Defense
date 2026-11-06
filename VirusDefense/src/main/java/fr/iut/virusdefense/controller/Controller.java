@@ -117,7 +117,7 @@ public class Controller implements Initializable {
 
         labelCoutSainple.setText("" + Sainple.getCoutBase());
         labelCoutLasere.setText("" + Lasere.getCoutBase());
-        labelCoutBrouaieuse.setText("" + Brouaileuse.getCoutBase());
+        labelCoutBrouaieuse.setText("" + Brouaieuse.getCoutBase());
         labelCoutMuleTyple.setText("" + MuleTyple.getCoutBase());
         labelCoutSnaipeur.setText("" + Snaipeur.getCoutBase());
         labelCoutRizCoCher.setText("" + RizCocher.getCoutBase());

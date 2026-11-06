@@ -47,7 +47,7 @@ public enum CodeTuile {
         if (c instanceof Lasere)
             return LASERE;
 
-        if (c instanceof Brouaileuse)
+        if (c instanceof Brouaieuse)
             return BROUAIEUSE;
 
         if (c instanceof MuleTyple)
