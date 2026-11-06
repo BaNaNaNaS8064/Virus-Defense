@@ -8,14 +8,26 @@ import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
 
 public class CapaciteDivision implements CapaciteMort {
     private final CodeMaladie codeDivise;
+    private final int minInvoque;
+    private final int maxInvoque;
 
-    public CapaciteDivision(CodeMaladie codeDivise) {
+    public CapaciteDivision(CodeMaladie codeDivise, int minInvoque, int maxInvoque) {
         this.codeDivise = codeDivise;
+        this.minInvoque = minInvoque;
+        this.maxInvoque = maxInvoque;
+    }
+
+    private int nombreAInvoquer(){
+        if (0 < minInvoque && minInvoque < maxInvoque)
+            return (int)(Math.random()*maxInvoque-minInvoque+1) + minInvoque;
+
+        return 0;
     }
 
     @Override
     public void activer(Maladie m){
-        for (int i=0; i<2; i++)
+        int n = nombreAInvoquer();
+        for (int i=0; i<n; i++)
                 Environnement.getUniqueInstance().getGestionnaireActeur().getMaladies().add(FabriqueMaladie.créerMaladie(codeDivise, (int) m .getLigne(), (int) m .getColonne()));
     }
 }
