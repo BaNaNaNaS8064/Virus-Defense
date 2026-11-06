@@ -15,7 +15,8 @@ public class Snaipeur extends Cellule {
     public Snaipeur(int ligne, int colonne){
         super(ligne, colonne,
                 LecteurStatsCellules.getStatistique("SNAIPEUR").frequence(),
-                LecteurStatsCellules.getStatistique("SNAIPEUR").cout());
+                LecteurStatsCellules.getStatistique("SNAIPEUR").cout(),
+                LecteurStatsCellules.getStatistique("SNAIPEUR").coutsAmeliorations());
         initRec();
         initGestionnaireAttaque();
     }
@@ -33,16 +34,6 @@ public class Snaipeur extends Cellule {
     @Override
     public String getNom() {
         return "Snaï-peur";
-    }
-
-    @Override
-    public int coutNiveau2() {
-        return 550;
-    }
-
-    @Override
-    public int coutNiveau3() {
-        return 600;
     }
 
     @Override
