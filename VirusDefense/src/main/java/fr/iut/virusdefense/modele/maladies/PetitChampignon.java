@@ -11,4 +11,5 @@ public class PetitChampignon extends Maladie{
     public boolean peutSubirAlteration() {
         return true;
     }
+
 }

@@ -5,8 +5,8 @@ import fr.iut.virusdefense.modele.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.Positionnable;
 import fr.iut.virusdefense.modele.deplacement.GestionnaireDeplacement;
-
-import java.util.List;
+import fr.iut.virusdefense.modele.maladies.capacites.CapacitePeriodique;
+import fr.iut.virusdefense.modele.maladies.capacites.CapaciteMort;
 
 public abstract class Maladie extends Positionnable implements ActeurRetirable {
     private double pv;
@@ -14,6 +14,8 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     private final int recompense;
     private double coefVitesse;
     private GestionnaireDeplacement gestionnaireDeplacement;
+    private CapacitePeriodique capacitePeriodique;
+    private CapaciteMort capaciteMort;
 
     public Maladie(double ligne, double colonne, int pv, double vitesse, int recompense){
         super(ligne+0.5, colonne+0.5);
@@ -29,6 +31,13 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
         return recompense;
     }
 
+    public void setCapacitePeriodique(CapacitePeriodique capacitePeriodique) {
+        this.capacitePeriodique = capacitePeriodique;
+    }
+
+    public void setCapaciteMort(CapaciteMort capaciteMort) {
+        this.capaciteMort = capaciteMort;
+    }
 
     public boolean estVivant(){
         return pv > 0;
@@ -50,7 +59,7 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     @Override
     public final void agir(){
         if (estVivant()) {
-            capaciteActive();
+            activationCapaciteActive();
             bouger();
 
             if (aAtteintLObjectif()) {
@@ -80,7 +89,14 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
         coefVitesse *= coefRalentissement;
     }
 
-    public void capaciteActive(){}
+    public void activationCapaciteActive(){
+        if (capacitePeriodique != null)
+            capacitePeriodique.agir(this);
+    }
 
-    public void capaciteALaMort(){}
+    public void activationCapaciteMort(){
+        if (capaciteMort != null && !estVivant() && !aAtteintLObjectif()) {
+            this.capaciteMort.activer(this);
+        }
+    }
 }

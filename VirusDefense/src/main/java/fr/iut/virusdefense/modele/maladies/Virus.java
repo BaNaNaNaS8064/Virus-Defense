@@ -11,4 +11,5 @@ public class Virus extends Maladie{
     public boolean peutSubirAlteration() {
         return true;
     }
+
 }

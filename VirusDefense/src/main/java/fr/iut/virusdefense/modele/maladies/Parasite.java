@@ -12,4 +12,5 @@ public class Parasite extends Maladie{
     public boolean peutSubirAlteration() {
         return true;
     }
+
 }
