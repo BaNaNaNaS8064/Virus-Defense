@@ -12,12 +12,14 @@ public abstract class Reconnaissance extends Positionnable {
 
     private int nombreCiblesMax;
     private final ArrayList<Maladie> cibles;
+    private PrioriteCible prioriteCible;
 
-    public Reconnaissance(Coordonees coordonees, double portee, int nombreCiblesMax){
+    public Reconnaissance(Coordonees coordonees, double portee, int nombreCiblesMax) {
         super(coordonees);
         this.portee = portee;
         this.nombreCiblesMax = nombreCiblesMax;
         cibles = new ArrayList<>();
+        this.prioriteCible = new PrioPlusPV();
     }
 
     public ArrayList<Maladie> getCibles() {
@@ -53,25 +55,18 @@ public abstract class Reconnaissance extends Positionnable {
     }
 
     public boolean valide(){
-        return ciblesValides() && aAssezDeCibles();
+        return ciblesValides() && aAssezDeCibles() ;
     }
 
     public abstract boolean estValide(Maladie m);
 
     public void actualiser(){
-        int i = 0;
-        Maladie m;
-
         cibles.clear();
-
-        while (!aAssezDeCibles() && i < Environnement.getUniqueInstance().getGestionnaireActeur().getMaladies().size()) {
-            m = Environnement.getUniqueInstance().getGestionnaireActeur().getMaladies().get(i);
-
-            if (estValide(m))
-                cibles.add(m);
-
-            i++;
-        }
+        cibles.addAll(Environnement.getUniqueInstance().getGestionnaireActeur().getMaladies());
+        cibles.removeIf(cible -> !estValide(cible));
+        ArrayList<Maladie> ciblesSelectionnees = prioriteCible.selectionnerCibles(cibles, nombreCiblesMax);
+        cibles.clear();
+        cibles.addAll(ciblesSelectionnees);
     }
 
 

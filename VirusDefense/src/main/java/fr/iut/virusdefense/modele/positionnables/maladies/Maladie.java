@@ -31,6 +31,10 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
         return recompense;
     }
 
+    public double getPv() {
+        return pv;
+    }
+
     public void setCapacitePeriodique(CapacitePeriodique capacitePeriodique) {
         this.capacitePeriodique = capacitePeriodique;
     }
