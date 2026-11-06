@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance;
 
-import fr.iut.virusdefense.modele.utilitaires.Coordonees;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
+import fr.iut.virusdefense.modele.utilitaires.Coordonees;
 
 public class ReconnaissanceSansMurs extends Reconnaissance{
 

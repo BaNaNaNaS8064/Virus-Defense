@@ -1,6 +1,5 @@
 package fr.iut.virusdefense.modele.positionnables.maladies;
 
-import fr.iut.virusdefense.modele.maladies.sousclasses.*;
 import fr.iut.virusdefense.modele.enums.CodeMaladie;
 import fr.iut.virusdefense.modele.positionnables.maladies.sousclasses.*;
 

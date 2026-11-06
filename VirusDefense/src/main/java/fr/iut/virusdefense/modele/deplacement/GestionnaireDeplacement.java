@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.modele.deplacement;
 
-import fr.iut.virusdefense.modele.utilitaires.Coordonees;
 import fr.iut.virusdefense.modele.positionnables.Positionnable;
+import fr.iut.virusdefense.modele.utilitaires.Coordonees;
 
 public class GestionnaireDeplacement {
     public Coordonees prochainEmplacement(Positionnable positionnable, double vitesse, Coordonees destination) {

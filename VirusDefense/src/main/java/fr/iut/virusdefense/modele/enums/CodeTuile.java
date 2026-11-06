@@ -1,6 +1,5 @@
 package fr.iut.virusdefense.modele.enums;
 
-import fr.iut.virusdefense.modele.cellules.*;
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.modele.positionnables.cellules.sousclasses.*;
 

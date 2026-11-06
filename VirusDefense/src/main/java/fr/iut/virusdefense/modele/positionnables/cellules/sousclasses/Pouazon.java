@@ -1,13 +1,13 @@
 package fr.iut.virusdefense.modele.positionnables.cellules.sousclasses;
 
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
+import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 import fr.iut.virusdefense.modele.positionnables.cellules.alteration.AlterationComposite;
 import fr.iut.virusdefense.modele.positionnables.cellules.alteration.DegatsSurDuree;
 import fr.iut.virusdefense.modele.positionnables.cellules.alteration.Ralentissement;
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaqueRayon;
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonSimple;
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceSimple;
-import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 
 import java.util.List;
 

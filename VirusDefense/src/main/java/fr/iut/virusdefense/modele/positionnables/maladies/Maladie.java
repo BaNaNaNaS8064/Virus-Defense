@@ -1,12 +1,12 @@
 package fr.iut.virusdefense.modele.positionnables.maladies;
 
-import fr.iut.virusdefense.modele.acteurs.ActeurRetirable;
-import fr.iut.virusdefense.modele.utilitaires.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.positionnables.Positionnable;
+import fr.iut.virusdefense.modele.acteurs.ActeurRetirable;
 import fr.iut.virusdefense.modele.deplacement.GestionnaireDeplacement;
+import fr.iut.virusdefense.modele.positionnables.Positionnable;
 import fr.iut.virusdefense.modele.positionnables.maladies.capacites.Capacite;
 import fr.iut.virusdefense.modele.positionnables.maladies.capacites.CapacitePeriodique;
+import fr.iut.virusdefense.modele.utilitaires.Coordonees;
 
 public abstract class Maladie extends Positionnable implements ActeurRetirable {
     private double pv;

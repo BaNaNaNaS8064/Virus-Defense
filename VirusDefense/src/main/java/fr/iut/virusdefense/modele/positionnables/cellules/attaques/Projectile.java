@@ -1,9 +1,9 @@
 package fr.iut.virusdefense.modele.positionnables.cellules.attaques;
 
-import fr.iut.virusdefense.modele.utilitaires.Coordonees;
-import fr.iut.virusdefense.modele.positionnables.cellules.alteration.Alteration;
 import fr.iut.virusdefense.modele.deplacement.GestionnaireDeplacement;
+import fr.iut.virusdefense.modele.positionnables.cellules.alteration.Alteration;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
+import fr.iut.virusdefense.modele.utilitaires.Coordonees;
 
 public class Projectile extends Attaque {
     private boolean cibleTouché;

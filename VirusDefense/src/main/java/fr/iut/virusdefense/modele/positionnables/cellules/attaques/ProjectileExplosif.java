@@ -1,11 +1,11 @@
 package fr.iut.virusdefense.modele.positionnables.cellules.attaques;
 
-import fr.iut.virusdefense.modele.utilitaires.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.positionnables.cellules.alteration.Alteration;
-import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceSimple;
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.Reconnaissance;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceSimple;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
+import fr.iut.virusdefense.modele.utilitaires.Coordonees;
 
 public class ProjectileExplosif extends Projectile {
     private final double rayonZonePortee;

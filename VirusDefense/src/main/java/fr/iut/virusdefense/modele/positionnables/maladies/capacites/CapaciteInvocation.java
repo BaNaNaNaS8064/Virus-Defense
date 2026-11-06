@@ -1,9 +1,9 @@
 package fr.iut.virusdefense.modele.positionnables.maladies.capacites;
 
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.enums.CodeMaladie;
 import fr.iut.virusdefense.modele.positionnables.maladies.FabriqueMaladie;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
-import fr.iut.virusdefense.modele.enums.CodeMaladie;
 
 public class CapaciteInvocation implements Capacite {
     private final CodeMaladie invoque;

@@ -1,8 +1,8 @@
 package fr.iut.virusdefense.modele.positionnables.maladies.sousclasses;
 
+import fr.iut.virusdefense.modele.enums.CodeMaladie;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 import fr.iut.virusdefense.modele.positionnables.maladies.capacites.CapaciteInvocation;
-import fr.iut.virusdefense.modele.enums.CodeMaladie;
 
 public class VirusComposé extends Maladie {
     private final int stade;

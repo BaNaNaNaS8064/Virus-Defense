@@ -1,6 +1,5 @@
 package fr.iut.virusdefense.modele.acteurs;
 
-import fr.iut.virusdefense.modele.utilitaires.Joueur;
 import fr.iut.virusdefense.modele.apparition.PointApparition;
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.modele.positionnables.cellules.alteration.Alteration;
@@ -8,6 +7,7 @@ import fr.iut.virusdefense.modele.positionnables.cellules.attaques.Projectile;
 import fr.iut.virusdefense.modele.positionnables.cellules.attaques.Rayon;
 import fr.iut.virusdefense.modele.positionnables.cellules.attaques.Zone;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
+import fr.iut.virusdefense.modele.utilitaires.Joueur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

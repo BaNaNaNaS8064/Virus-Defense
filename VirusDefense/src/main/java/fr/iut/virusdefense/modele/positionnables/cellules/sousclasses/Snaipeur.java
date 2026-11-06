@@ -1,9 +1,9 @@
 package fr.iut.virusdefense.modele.positionnables.cellules.sousclasses;
 
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
+import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonSimple;
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceSimple;
-import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 
 public class Snaipeur extends Cellule {
     private static int coutBase = 500;

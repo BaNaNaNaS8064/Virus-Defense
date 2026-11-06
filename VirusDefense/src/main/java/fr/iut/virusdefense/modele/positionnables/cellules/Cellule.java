@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.modele.positionnables.cellules;
 
-import fr.iut.virusdefense.modele.acteurs.Acteur;
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.acteurs.Acteur;
 import fr.iut.virusdefense.modele.positionnables.Positionnable;
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaque;
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.Reconnaissance;

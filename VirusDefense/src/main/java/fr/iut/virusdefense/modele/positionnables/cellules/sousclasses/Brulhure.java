@@ -1,9 +1,9 @@
 package fr.iut.virusdefense.modele.positionnables.cellules.sousclasses;
 
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
+import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaqueProjectileExplosif;
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceSansMurs;
-import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 
 public class Brulhure extends Cellule {
     private static int coutBase = 1300;

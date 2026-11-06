@@ -2,7 +2,6 @@ package fr.iut.virusdefense.vue;
 
 import fr.iut.virusdefense.Main;
 import fr.iut.virusdefense.controller.ControllerMenuClick;
-import fr.iut.virusdefense.modele.Environnement;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 

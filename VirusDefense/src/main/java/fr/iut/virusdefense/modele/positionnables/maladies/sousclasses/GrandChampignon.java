@@ -1,10 +1,10 @@
 package fr.iut.virusdefense.modele.positionnables.maladies.sousclasses;
 
+import fr.iut.virusdefense.modele.enums.CodeMaladie;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 import fr.iut.virusdefense.modele.positionnables.maladies.capacites.Capacite;
 import fr.iut.virusdefense.modele.positionnables.maladies.capacites.CapaciteInvocation;
 import fr.iut.virusdefense.modele.positionnables.maladies.capacites.CapacitePeriodique;
-import fr.iut.virusdefense.modele.enums.CodeMaladie;
 
 public class GrandChampignon extends Maladie {
     public GrandChampignon(int ligne, int colonne){
