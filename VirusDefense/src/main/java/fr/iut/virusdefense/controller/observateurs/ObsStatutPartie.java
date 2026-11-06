@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.controller.observateurs;
 
-import fr.iut.virusdefense.modele.utilitaires.StatutPartie;
+import fr.iut.virusdefense.modele.enums.StatutPartie;
 import fr.iut.virusdefense.vue.GestionnaireEcranDeFin;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

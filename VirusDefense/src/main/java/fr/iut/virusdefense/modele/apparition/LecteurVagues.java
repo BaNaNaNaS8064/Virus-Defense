@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.modele.apparition;
 
 import fr.iut.virusdefense.modele.utilitaires.LecteurFichier;
-import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
+import fr.iut.virusdefense.modele.enums.CodeMaladie;
 
 public class LecteurVagues extends LecteurFichier {
     private Vague[] vagues;

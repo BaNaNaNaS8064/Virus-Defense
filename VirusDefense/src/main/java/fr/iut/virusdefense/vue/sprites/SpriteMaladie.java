@@ -1,8 +1,8 @@
 package fr.iut.virusdefense.vue.sprites;
 
 import fr.iut.virusdefense.controller.AssociationImage;
-import fr.iut.virusdefense.modele.maladies.Maladie;
-import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
+import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
+import fr.iut.virusdefense.modele.enums.CodeMaladie;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 

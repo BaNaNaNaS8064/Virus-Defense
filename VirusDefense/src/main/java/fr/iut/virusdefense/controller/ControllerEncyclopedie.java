@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.controller;
 
-import fr.iut.virusdefense.modele.cellules.*;
+import fr.iut.virusdefense.modele.positionnables.cellules.sousclasses.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;

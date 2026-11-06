@@ -1,10 +1,11 @@
 package fr.iut.virusdefense.modele.apparition;
 
-import fr.iut.virusdefense.modele.Acteur;
+import fr.iut.virusdefense.modele.acteurs.Acteur;
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.Positionnable;
-import fr.iut.virusdefense.modele.maladies.*;
-import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
+import fr.iut.virusdefense.modele.positionnables.Positionnable;
+import fr.iut.virusdefense.modele.enums.CodeMaladie;
+import fr.iut.virusdefense.modele.positionnables.maladies.FabriqueMaladie;
+import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 
 import java.util.ArrayList;
 

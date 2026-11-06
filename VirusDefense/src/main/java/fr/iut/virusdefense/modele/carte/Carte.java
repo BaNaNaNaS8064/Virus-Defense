@@ -1,8 +1,8 @@
 package fr.iut.virusdefense.modele.carte;
 
 import fr.iut.virusdefense.modele.apparition.PointApparition;
-import fr.iut.virusdefense.modele.cellules.Cellule;
-import fr.iut.virusdefense.modele.utilitaires.CodeTuile;
+import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
+import fr.iut.virusdefense.modele.enums.CodeTuile;
 
 import java.util.ArrayList;
 import java.util.List;

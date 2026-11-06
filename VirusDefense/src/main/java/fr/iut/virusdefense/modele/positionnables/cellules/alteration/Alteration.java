@@ -1,0 +1,40 @@
+package fr.iut.virusdefense.modele.positionnables.cellules.alteration;
+
+import fr.iut.virusdefense.modele.acteurs.ActeurRetirable;
+import fr.iut.virusdefense.modele.positionnables.Identifiable;
+import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
+
+public abstract class Alteration extends Identifiable implements ActeurRetirable {
+    private int duree;
+    private Maladie maladie;
+
+    public Alteration(int duree){
+        super();
+        this.duree = duree;
+    }
+
+    public Maladie getMaladie() {
+        return maladie;
+    }
+
+    public void setMaladie(Maladie m) {
+        this.maladie = m;
+    }
+
+    public int getDuree() {return duree;}
+
+    @Override
+    public boolean doitEtreRetiré(){
+        return (0 >= duree || !maladie.estVivant());
+    }
+
+    @Override
+    public final void agir(){
+        duree--;
+        affecter();
+    }
+
+    public abstract void affecter();
+
+    public abstract Alteration copy();
+}

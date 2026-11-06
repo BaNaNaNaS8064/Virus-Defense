@@ -1,8 +1,10 @@
 package fr.iut.virusdefense.modele.cellules.reconnaissance;
 
-import fr.iut.virusdefense.modele.Coordonees;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.RecSimple;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.Reconnaissance;
+import fr.iut.virusdefense.modele.utilitaires.Coordonees;
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.maladies.Virus;
+import fr.iut.virusdefense.modele.positionnables.maladies.sousclasses.Virus;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

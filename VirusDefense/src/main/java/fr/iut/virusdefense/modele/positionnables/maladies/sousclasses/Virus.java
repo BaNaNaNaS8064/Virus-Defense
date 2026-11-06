@@ -1,0 +1,15 @@
+package fr.iut.virusdefense.modele.positionnables.maladies.sousclasses;
+
+import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
+
+public class Virus extends Maladie {
+    public Virus(int ligne, int colonne){
+        super(ligne, colonne, 500, 0.015, 30);
+    }
+
+    @Override
+    public boolean peutSubirAlteration() {
+        return true;
+    }
+
+}

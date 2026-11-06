@@ -1,7 +1,7 @@
 package fr.iut.virusdefense;
 
 import fr.iut.virusdefense.controller.ControllerMenuPrincipal;
-import fr.iut.virusdefense.modele.utilitaires.LecteurStatistiques;
+import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatistiques;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

@@ -1,7 +1,7 @@
 package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.modele.Environnement;
-import fr.iut.virusdefense.modele.cellules.Cellule;
+import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.vue.GestionnaireMenuClick;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

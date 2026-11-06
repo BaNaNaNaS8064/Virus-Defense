@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.vue.sprites;
 
-import fr.iut.virusdefense.modele.cellules.attaques.Rayon;
+import fr.iut.virusdefense.modele.positionnables.cellules.attaques.Rayon;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 

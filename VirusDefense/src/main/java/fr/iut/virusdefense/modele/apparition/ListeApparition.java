@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.modele.apparition;
 
-import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
+import fr.iut.virusdefense.modele.enums.CodeMaladie;
 
 import java.util.ArrayList;
 

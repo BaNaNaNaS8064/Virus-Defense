@@ -1,0 +1,32 @@
+package fr.iut.virusdefense.modele.positionnables.cellules.attaques;
+
+import fr.iut.virusdefense.modele.utilitaires.Coordonees;
+import fr.iut.virusdefense.modele.positionnables.cellules.alteration.Alteration;
+import fr.iut.virusdefense.modele.deplacement.GestionnaireDeplacement;
+import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
+
+public class Projectile extends Attaque {
+    private boolean cibleTouché;
+    private GestionnaireDeplacement gestionnaireDeplacement;
+
+    public Projectile(Coordonees coordonees, Maladie cible, double degats, Alteration alteration){
+        super(new Coordonees(coordonees), degats, alteration, cible);
+        this.cibleTouché = false;
+        this.gestionnaireDeplacement = new GestionnaireDeplacement();
+    }
+
+    @Override
+    public boolean doitEtreRetiré(){
+        return cibleTouché;
+    }
+
+    @Override
+    public void agir(){
+        getCoordonees().copier(gestionnaireDeplacement.prochainEmplacement(this, 0.15, getCibles().get(0).getCoordonees()));
+
+        if(Math.abs(getCibles().get(0).getLigne() - getLigne()) <= 0.5 && Math.abs(getCibles().get(0).getColonne() - getColonne()) <= 0.5){
+            attaquer();
+            cibleTouché = true;
+        }
+    }
+}

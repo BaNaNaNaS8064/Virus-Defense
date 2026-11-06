@@ -1,6 +1,6 @@
 package fr.iut.virusdefense.vue.sprites;
 
-import fr.iut.virusdefense.modele.cellules.attaques.Projectile;
+import fr.iut.virusdefense.modele.positionnables.cellules.attaques.Projectile;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 

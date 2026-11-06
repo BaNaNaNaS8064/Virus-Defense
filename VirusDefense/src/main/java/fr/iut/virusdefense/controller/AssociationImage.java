@@ -1,8 +1,8 @@
 package fr.iut.virusdefense.controller;
 
 import fr.iut.virusdefense.Main;
-import fr.iut.virusdefense.modele.utilitaires.CodeMaladie;
-import fr.iut.virusdefense.modele.utilitaires.CodeTuile;
+import fr.iut.virusdefense.modele.enums.CodeMaladie;
+import fr.iut.virusdefense.modele.enums.CodeTuile;
 
 import java.util.HashMap;
 
