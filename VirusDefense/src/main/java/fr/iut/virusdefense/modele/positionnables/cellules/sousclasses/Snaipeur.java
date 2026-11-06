@@ -15,8 +15,7 @@ public class Snaipeur extends Cellule {
     public Snaipeur(int ligne, int colonne){
         super(ligne, colonne,
                 LecteurStatsCellules.getStatistique("SNAIPEUR").frequence(),
-                LecteurStatsCellules.getStatistique("SNAIPEUR").cout(),
-                LecteurStatsCellules.getStatistique("SNAIPEUR").coutsAmeliorations());
+                LecteurStatsCellules.getStatistique("SNAIPEUR").couts());
         initRec();
         initGestionnaireAttaque();
     }

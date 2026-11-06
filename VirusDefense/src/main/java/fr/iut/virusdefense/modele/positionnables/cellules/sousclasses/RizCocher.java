@@ -17,8 +17,7 @@ public class RizCocher extends Cellule {
     public RizCocher(int ligne, int colonne){
         super(ligne, colonne,
                 LecteurStatsCellules.getStatistique("RIZCOCHER").frequence(),
-                LecteurStatsCellules.getStatistique("RIZCOCHER").cout(),
-                LecteurStatsCellules.getStatistique("RIZCOCHER").coutsAmeliorations()
+                LecteurStatsCellules.getStatistique("RIZCOCHER").couts()
         );
         initRec();
         initGestionnaireAttaque();

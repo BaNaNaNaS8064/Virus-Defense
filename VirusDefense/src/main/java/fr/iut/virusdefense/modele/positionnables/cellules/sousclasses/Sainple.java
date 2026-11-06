@@ -15,8 +15,7 @@ public class Sainple extends Cellule {
 
     public Sainple(int ligne, int colonne){
         super(ligne, colonne,              LecteurStatsCellules.getStatistique("SAINPLE").frequence(),
-                LecteurStatsCellules.getStatistique("SAINPLE").cout(),
-                LecteurStatsCellules.getStatistique("SAINPLE").coutsAmeliorations()
+                LecteurStatsCellules.getStatistique("SAINPLE").couts()
         );
         initRec();
         initGestionnaireAttaque();

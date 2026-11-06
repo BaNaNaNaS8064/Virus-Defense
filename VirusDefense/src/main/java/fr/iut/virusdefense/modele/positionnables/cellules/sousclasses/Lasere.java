@@ -15,8 +15,7 @@ public class Lasere extends Cellule {
     public Lasere(int ligne, int colonne){
         super(ligne, colonne
                 , LecteurStatsCellules.getStatistique("LASERE").frequence()
-                , LecteurStatsCellules.getStatistique("LASERE").cout(),
-                LecteurStatsCellules.getStatistique("LASERE").coutsAmeliorations()
+                , LecteurStatsCellules.getStatistique("LASERE").couts()
                 );
         initRec();
         initGestionnaireAttaque();

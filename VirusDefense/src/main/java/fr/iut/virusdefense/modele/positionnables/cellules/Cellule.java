@@ -15,9 +15,9 @@ public abstract class Cellule extends Positionnable implements Acteur {
     private int delai;
 
     private int niveau;
-    private final int cout;
+    private final int[] couts;
 
-    public Cellule(int ligne, int colonne, int frequenceAttaque, int cout, int[] coutsAmeliorations) {
+    public Cellule(int ligne, int colonne, int frequenceAttaque, int[] couts) {
         super(ligne, colonne);
 
         this.frequenceAttaque = frequenceAttaque;
@@ -25,8 +25,7 @@ public abstract class Cellule extends Positionnable implements Acteur {
 
         this.niveau = 1;
 
-        this.cout = cout;
-        this.coutsAmeliorations = coutsAmeliorations;
+        this.couts = couts;
     }
 
     public abstract void initRec();
@@ -46,7 +45,7 @@ public abstract class Cellule extends Positionnable implements Acteur {
     }
 
     public int getCout() {
-        return cout;
+        return couts[0];
     }
 
     public int getNiveau() {
@@ -66,8 +65,8 @@ public abstract class Cellule extends Positionnable implements Acteur {
     }
 
     public int getCoutAmelioration() {
-        if(niveau <= coutsAmeliorations.length){
-            return coutsAmeliorations[niveau-1];
+        if(resteAmeliorations()){
+            return couts[niveau];
         }
         return -1;
     }
@@ -75,7 +74,7 @@ public abstract class Cellule extends Positionnable implements Acteur {
     public abstract String getNom();
 
     public boolean resteAmeliorations(){
-        return niveau <= coutsAmeliorations.length;
+        return niveau < couts.length;
     }
 
     public void niveauSuperieur(){

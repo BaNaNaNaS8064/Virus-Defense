@@ -21,8 +21,7 @@ public class Pouazon extends Cellule {
     public Pouazon( int ligne, int colonne){
         super(ligne, colonne,
                 LecteurStatsCellules.getStatistique("POUAZON").frequence(),
-                LecteurStatsCellules.getStatistique("POUAZON").cout(),
-                LecteurStatsCellules.getStatistique("POUAZON").coutsAmeliorations()
+                LecteurStatsCellules.getStatistique("POUAZON").couts()
 
         );
             initRec();
