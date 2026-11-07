@@ -99,7 +99,9 @@ public abstract class Cellule extends Positionnable implements Acteur {
     @Override
     public void agir(){
         if (--delai <= 0){
-            reconnaissance.actualiser();
+            if (!reconnaissance.valide()) {
+                reconnaissance.actualiser();
+            }
 
             if (reconnaissance.aAuMoinsUneCible()) {
                 gestionnaireAttaque.attaqueCibles();

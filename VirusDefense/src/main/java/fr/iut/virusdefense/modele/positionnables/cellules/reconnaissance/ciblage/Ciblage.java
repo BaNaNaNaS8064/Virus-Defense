@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public abstract class Ciblage {
     private final ArrayList<Maladie> ciblesSelectionnees;
     private final ArrayList<Maladie> maladiesDisponibles;
+    private  Maladie meilleureMaladie;
 
 
     public Ciblage() {
@@ -20,6 +21,14 @@ public abstract class Ciblage {
 
     public ArrayList<Maladie> getMaladiesDisponibles() {
         return maladiesDisponibles;
+    }
+
+    public Maladie getMeilleureMaladie(){
+        return meilleureMaladie;
+    }
+
+    public void setMeilleureMaladie(Maladie meilleureMaladie) {
+        this.meilleureMaladie = meilleureMaladie;
     }
 
     public void addAllMaladiesDisponibles(ArrayList<Maladie> maladiesDisponibles) {
@@ -56,8 +65,21 @@ public abstract class Ciblage {
     public boolean cibleSelectionneesComplete(int nombreCiblesMax){
         return (!getMaladiesDisponibles().isEmpty() && getCiblesSelectionnees().size() < nombreCiblesMax);
     }
+    
+    public ArrayList<Maladie> selectionnerCibles(ArrayList<Maladie> cibles, int nombreCiblesMax){
+        initCiblesMaladies(cibles);
 
-    public abstract ArrayList<Maladie> selectionnerCibles(ArrayList<Maladie> cibles, int nombreCiblesMax);
+        while (cibleSelectionneesComplete(nombreCiblesMax)) {
+            meilleureMaladie = getMaladiesDisponibles().get(0);
+
+            for (int i = 1; i < getMaladiesDisponibles().size(); i++) {
+                Maladie maladie = getMaladiesDisponibles().get(i);
+                remplacerSiConditionRempli(maladie);
+            }
+            triCiblesMaladie(meilleureMaladie);
+        }
+        return getCiblesSelectionnees();
+    }
 
     public abstract void remplacerSiConditionRempli(Maladie maladie);
 }
