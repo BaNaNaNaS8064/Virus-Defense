@@ -2,6 +2,8 @@ package fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.positionnables.Positionnable;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.priorite.PrioProcheObjectif;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.priorite.PrioriteCible;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 import fr.iut.virusdefense.modele.utilitaires.Coordonees;
 
@@ -19,7 +21,7 @@ public abstract class Reconnaissance extends Positionnable {
         this.portee = portee;
         this.nombreCiblesMax = nombreCiblesMax;
         cibles = new ArrayList<>();
-        this.prioriteCible = new PrioPlusPV();
+        this.prioriteCible = new PrioProcheObjectif();
     }
 
     public ArrayList<Maladie> getCibles() {

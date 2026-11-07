@@ -1,4 +1,4 @@
-package fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance;
+package fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.priorite;
 
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 
