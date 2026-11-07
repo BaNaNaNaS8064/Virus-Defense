@@ -2,7 +2,6 @@ package fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.positionnables.Positionnable;
-import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.priorite.CiblageProcheObjectif;
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.priorite.Ciblage;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 import fr.iut.virusdefense.modele.utilitaires.Coordonees;
@@ -16,12 +15,12 @@ public abstract class Reconnaissance extends Positionnable {
     private final ArrayList<Maladie> cibles;
     private final Ciblage ciblage;
 
-    public Reconnaissance(Coordonees coordonees, double portee, int nombreCiblesMax) {
+    public Reconnaissance(Coordonees coordonees, double portee, int nombreCiblesMax, Ciblage ciblage) {
         super(coordonees);
         this.portee = portee;
         this.nombreCiblesMax = nombreCiblesMax;
         cibles = new ArrayList<>();
-        this.ciblage = new CiblageProcheObjectif();
+        this.ciblage = ciblage;
     }
 
     public ArrayList<Maladie> getCibles() {
@@ -34,6 +33,10 @@ public abstract class Reconnaissance extends Positionnable {
 
     public double getPortee() {
         return portee;
+    }
+
+    public Ciblage getCiblage() {
+        return ciblage;
     }
 
     public void setPortee(double portee) {

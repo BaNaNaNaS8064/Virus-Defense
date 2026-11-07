@@ -1,6 +1,7 @@
 package fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance;
 
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.priorite.CiblageProche;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ public class ReconnaissanceRicochet extends Reconnaissance{
     private Reconnaissance reconnaissanceBasique;
 
     public ReconnaissanceRicochet(Reconnaissance reconnaissanceBasique, int nbRicochets) {
-        super(reconnaissanceBasique.getCoordonees(), reconnaissanceBasique.getPortee(), 1);
+        super(reconnaissanceBasique.getCoordonees(), reconnaissanceBasique.getPortee(), 1, new CiblageProche(reconnaissanceBasique.getCoordonees()));
         this.reconnaissanceBasique = reconnaissanceBasique;
         this.nbRicochets = nbRicochets;
     }
