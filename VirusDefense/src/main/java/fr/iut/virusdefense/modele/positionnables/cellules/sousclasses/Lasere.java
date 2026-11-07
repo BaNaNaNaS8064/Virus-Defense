@@ -19,6 +19,12 @@ public class Lasere extends Cellule {
                 );
         initRec();
         initGestionnaireAttaque();
+        this.ameliorations.add(() -> {
+            getAttaque().setDegats(getAttaque().getDegats() + 30);
+        });
+        this.ameliorations.add(() -> {
+            getReconnaissance().setPortee(getReconnaissance().getPortee() + 1.5);
+        });
     }
 
     @Override
@@ -36,13 +42,4 @@ public class Lasere extends Cellule {
         return "L'asère";
     }
 
-    @Override
-    public void ameliorerAuNiveau2() {
-        getAttaque().setDegats(getAttaque().getDegats()+0.5);
-    }
-
-    @Override
-    public void ameliorerAuNiveau3() {
-        getReconnaissance().setPortee(getReconnaissance().getPortee()+1);
-    }
 }

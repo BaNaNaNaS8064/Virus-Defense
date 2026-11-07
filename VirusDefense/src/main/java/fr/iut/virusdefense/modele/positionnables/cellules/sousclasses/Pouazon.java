@@ -26,6 +26,12 @@ public class Pouazon extends Cellule {
         );
             initRec();
             initGestionnaireAttaque();
+        this.ameliorations.add(() -> {
+            getAttaque().setDegats(getAttaque().getDegats() + 5);
+        });
+        this.ameliorations.add(() -> {
+            getReconnaissance().setPortee(getReconnaissance().getPortee() + 1.5);
+        });
     }
 
     @Override
@@ -43,15 +49,5 @@ public class Pouazon extends Cellule {
     @Override
     public String getNom() {
         return "Pouazon";
-    }
-
-    @Override
-    public void ameliorerAuNiveau2() {
-        getAttaque().setDegats(getAttaque().getDegats() + 15);
-    }
-
-    @Override
-    public void ameliorerAuNiveau3() {
-        getAttaque().setAlteration(new AlterationComposite(List.of(new Ralentissement(5,0.9), getAttaque().getAlteration())));
     }
 }

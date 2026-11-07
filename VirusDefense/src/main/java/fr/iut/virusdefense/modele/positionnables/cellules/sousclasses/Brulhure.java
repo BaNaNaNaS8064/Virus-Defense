@@ -21,6 +21,14 @@ public class Brulhure extends Cellule {
         tempsZone=200;
         initRec();
         initGestionnaireAttaque();
+
+        this.ameliorations.add(() -> {
+            getAttaque().setDegats(getAttaque().getDegats() + 100);
+        });
+
+        this.ameliorations.add(() -> {
+            getReconnaissance().setPortee(getReconnaissance().getPortee() + 2.0);
+        });
     }
 
     @Override
@@ -38,13 +46,4 @@ public class Brulhure extends Cellule {
         return "Brul-hure";
     }
 
-    @Override
-    public void ameliorerAuNiveau2() {
-        ((GestionnaireAttaqueProjectileExplosif)getAttaque()).setTempsZone(((GestionnaireAttaqueProjectileExplosif) getAttaque()).getTempsZone() + 100);
-    }
-
-    @Override
-    public void ameliorerAuNiveau3() {
-        setFrequenceAttaque(getFrequenceAttaque()-150);
-    }
 }

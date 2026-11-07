@@ -19,6 +19,12 @@ public class Brouaieuse extends Cellule {
         );
         initRec();
         initGestionnaireAttaque();
+        this.ameliorations.add(() -> {
+            getAttaque().setDegats(getAttaque().getDegats() + 20);
+        });
+        this.ameliorations.add(() -> {
+            setFrequenceAttaque((int)(getFrequenceAttaque() * 0.8));
+        });
     }
 
     @Override
@@ -36,13 +42,4 @@ public class Brouaieuse extends Cellule {
         return "Brouaïlleuse";
     }
 
-    @Override
-    public void ameliorerAuNiveau2() {
-        setFrequenceAttaque(getFrequenceAttaque()-50);
-    }
-
-    @Override
-    public void ameliorerAuNiveau3() {
-        getReconnaissance().setPortee(getReconnaissance().getPortee()+1);
-    }
 }

@@ -19,6 +19,12 @@ public class Konsantre extends Cellule {
                 );
         initRec();
         initGestionnaireAttaque();
+        this.ameliorations.add(() -> {
+            getAttaque().setDegats(getAttaque().getDegats() + 1.0);
+        });
+        this.ameliorations.add(() -> {
+            getReconnaissance().setPortee(getReconnaissance().getPortee() + 1.0);
+        });
     }
 
     @Override
@@ -36,13 +42,4 @@ public class Konsantre extends Cellule {
         return "Konsantré";
     }
 
-    @Override
-    public void ameliorerAuNiveau2() {
-        getAttaque().setDegats(getAttaque().getDegats()+0.5);
-    }
-
-    @Override
-    public void ameliorerAuNiveau3() {
-        ((GestionnaireAttaqueRayonConcentre)getAttaque()).setDelaiAugmentation(((GestionnaireAttaqueRayonConcentre)getAttaque()).getDelaiAugmentation()-50);
-    }
 }

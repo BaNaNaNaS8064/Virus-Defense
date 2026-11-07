@@ -19,6 +19,12 @@ public class Sainple extends Cellule {
         );
         initRec();
         initGestionnaireAttaque();
+        this.ameliorations.add(() -> {
+            getAttaque().setDegats(getAttaque().getDegats() + 30);
+        });
+        this.ameliorations.add(() -> {
+            getReconnaissance().setPortee(getReconnaissance().getPortee() + 1.5);
+        });
     }
 
     @Override
@@ -36,14 +42,4 @@ public class Sainple extends Cellule {
         return "Sainple";
     }
 
-
-    @Override
-    public void ameliorerAuNiveau2(){
-        getAttaque().setDegats(getAttaque().getDegats() + 30);
-    }
-
-    @Override
-    public void ameliorerAuNiveau3(){
-        getReconnaissance().setPortee(getReconnaissance().getPortee()+1.5);
-    }
 }

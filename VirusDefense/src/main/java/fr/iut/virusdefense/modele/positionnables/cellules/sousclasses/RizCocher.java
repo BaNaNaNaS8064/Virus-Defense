@@ -6,7 +6,6 @@ import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.Ge
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.Reconnaissance;
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceRicochet;
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceSimple;
-
 public class RizCocher extends Cellule {
     private static int coutBase = 900;
 
@@ -21,6 +20,15 @@ public class RizCocher extends Cellule {
         );
         initRec();
         initGestionnaireAttaque();
+        this.ameliorations.add(() -> {
+            getAttaque().setDegats(getAttaque().getDegats() + 15);
+        });
+
+        this.ameliorations.add(() -> {
+            if (getReconnaissance() instanceof ReconnaissanceRicochet rec) {
+                rec.setNbRicochets(rec.getNbRicochets() + 1);
+            }
+        });
     }
 
     @Override
@@ -39,13 +47,4 @@ public class RizCocher extends Cellule {
         return "Riz Co-cher";
     }
 
-    @Override
-    public void ameliorerAuNiveau2() {
-        getReconnaissance().setPortee(getReconnaissance().getPortee()+0.5);
-    }
-
-    @Override
-    public void ameliorerAuNiveau3() {
-        ((ReconnaissanceRicochet)getReconnaissance()).setNbRicochets(((ReconnaissanceRicochet)getReconnaissance()).getNbRicochets()+2);
-    }
 }

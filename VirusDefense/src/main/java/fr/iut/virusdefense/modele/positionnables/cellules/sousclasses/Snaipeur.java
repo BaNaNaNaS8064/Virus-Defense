@@ -18,6 +18,13 @@ public class Snaipeur extends Cellule {
                 LecteurStatsCellules.getStatistique("SNAIPEUR").couts());
         initRec();
         initGestionnaireAttaque();
+        this.ameliorations.add(() -> {
+            getAttaque().setDegats(getAttaque().getDegats() + 50);
+        });
+
+        this.ameliorations.add(() -> {
+            getReconnaissance().setPortee(getReconnaissance().getPortee() + 3.0);
+        });
     }
 
     @Override
@@ -35,13 +42,5 @@ public class Snaipeur extends Cellule {
         return "Snaï-peur";
     }
 
-    @Override
-    public void ameliorerAuNiveau2() {
-        setFrequenceAttaque(getFrequenceAttaque()-25);
-    }
 
-    @Override
-    public void ameliorerAuNiveau3() {
-        setFrequenceAttaque(getFrequenceAttaque()-50);
-    }
 }

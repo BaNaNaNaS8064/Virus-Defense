@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.controller;
 
+import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 import fr.iut.virusdefense.modele.positionnables.cellules.sousclasses.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -54,7 +55,7 @@ public class ControllerEncyclopedie implements Initializable{
         switch (boutonSelectionne) {
             case "RbEncSainple":
                 labelTitre.setText("Sainple");
-                cout[0] = "" + Sainple.getCoutBase();
+                cout[0] = "" + LecteurStatsCellules.getStatistique("SAINPLE").couts()[0];
                 degat[0] = "40";
                 portee[0] = "3.0";
                 frequenceFrame[0] = "60";
@@ -71,7 +72,7 @@ public class ControllerEncyclopedie implements Initializable{
                 break;
             case "RbEncLasere":
                 labelTitre.setText("L'asère");
-                cout[0] = "" + Lasere.getCoutBase();
+                cout[0] = "" + LecteurStatsCellules.getStatistique("LASERE").couts()[0];
                 degat[0] = "1";
                 portee[0] = "3.0";
                 frequenceFrame[0] = "1";
@@ -88,7 +89,7 @@ public class ControllerEncyclopedie implements Initializable{
                 break;
             case "RbEncBrouaieuse":
                 labelTitre.setText("Brouaïeuse");
-                cout[0] = "" + Brouaieuse.getCoutBase();
+                cout[0] = "" + LecteurStatsCellules.getStatistique("BROUAIEUSE").couts()[0];
                 degat[0] = "90";
                 portee[0] = "1.5";
                 frequenceFrame[0] = "200";
@@ -105,7 +106,7 @@ public class ControllerEncyclopedie implements Initializable{
                 break;
             case "RbEncMuleTyple":
                 labelTitre.setText("Mule-typle");
-                cout[0] = "" + MuleTyple.getCoutBase();
+                cout[0] = "" + LecteurStatsCellules.getStatistique("MULETYPLE").couts()[0];
                 degat[0] = "15";
                 portee[0] = "3.0";
                 frequenceFrame[0] = "50";
@@ -127,7 +128,7 @@ public class ControllerEncyclopedie implements Initializable{
                 break;
             case "RbEncSnaipeur":
                 labelTitre.setText("Snaï-peur");
-                cout[0] = "" + Snaipeur.getCoutBase();
+                cout[0] = "" + LecteurStatsCellules.getStatistique("SNAIPEUR").couts()[0];
                 degat[0] = "100";
                 portee[0] = "12.0";
                 frequenceFrame[0] = "250";
@@ -144,7 +145,7 @@ public class ControllerEncyclopedie implements Initializable{
                 break;
             case "RbEncRizCoCher":
                 labelTitre.setText("Riz co-cher");
-                cout[0] = "" + RizCocher.getCoutBase();
+                cout[0] = "" + LecteurStatsCellules.getStatistique("RIZCOCHER").couts()[0];
                 degat[0] = "75";
                 portee[0] = "3.0";
                 frequenceFrame[0] = "120";
@@ -165,7 +166,7 @@ public class ControllerEncyclopedie implements Initializable{
                 break;
             case "RbEncKonsantre":
                 labelTitre.setText("Konsantre");
-                cout[0] = "" + Konsantre.getCoutBase();
+                cout[0] = "" + LecteurStatsCellules.getStatistique("KONSANTRE").couts()[0];
                 degat[0] = "1";
                 portee[0] = "3.0";
                 frequenceFrame[0] = "1";
@@ -187,7 +188,7 @@ public class ControllerEncyclopedie implements Initializable{
                 break;
             case "RbEncPouazon":
                 labelTitre.setText("Pouazon");
-                cout[0] = "" + Pouazon.getCoutBase();
+                cout[0] = "" + LecteurStatsCellules.getStatistique("POUAZON").couts()[0];
                 degat[0] = "15";
                 portee[0] = "3.0";
                 frequenceFrame[0] = "50";
@@ -210,7 +211,7 @@ public class ControllerEncyclopedie implements Initializable{
 
             case "RbEncBrulHure":
                 labelTitre.setText("Brul-hure");
-                cout[0] = "" + Brulhure.getCoutBase();
+                cout[0] = "" + LecteurStatsCellules.getStatistique("BRULHURE").couts()[0];
                 degat[0] = "400";
                 portee[0] = "5.0";
                 frequenceFrame[0] = "720";

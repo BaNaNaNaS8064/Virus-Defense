@@ -20,6 +20,12 @@ public class MuleTyple extends Cellule {
 
         initRec();
         initGestionnaireAttaque();
+        this.ameliorations.add(() -> {
+            getAttaque().setDegats(getAttaque().getDegats() + 5);
+        });
+        this.ameliorations.add(() -> {
+            getReconnaissance().setPortee(getReconnaissance().getPortee() + 1.0);
+        });
     }
 
     @Override
@@ -37,13 +43,4 @@ public class MuleTyple extends Cellule {
         return "Mule-typle";
     }
 
-    @Override
-    public void ameliorerAuNiveau2() {
-        getReconnaissance().setPortee(getReconnaissance().getPortee()+0.5);
-    }
-
-    @Override
-    public void ameliorerAuNiveau3() {
-        getReconnaissance().setNombreCiblesMax(5);
-    }
 }

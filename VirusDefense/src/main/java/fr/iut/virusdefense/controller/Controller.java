@@ -5,6 +5,7 @@ import fr.iut.virusdefense.controller.observateurs.*;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.apparition.Niveau;
 import fr.iut.virusdefense.modele.enums.StatutPartie;
+import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 import fr.iut.virusdefense.modele.positionnables.cellules.sousclasses.*;
 import fr.iut.virusdefense.vue.*;
 import javafx.animation.KeyFrame;
@@ -115,15 +116,15 @@ public class Controller implements Initializable {
         labelVagueActuelle.textProperty().bind(Niveau.getUniqueInstance().numVagueProperty().add(1).asString());
         labelVagueMax.setText("/" + Niveau.getUniqueInstance().nombreDeVagues());
 
-        labelCoutSainple.setText("" + Sainple.getCoutBase());
-        labelCoutLasere.setText("" + Lasere.getCoutBase());
-        labelCoutBrouaieuse.setText("" + Brouaieuse.getCoutBase());
-        labelCoutMuleTyple.setText("" + MuleTyple.getCoutBase());
-        labelCoutSnaipeur.setText("" + Snaipeur.getCoutBase());
-        labelCoutRizCoCher.setText("" + RizCocher.getCoutBase());
-        labelCoutKonsantre.setText("" + Konsantre.getCoutBase());
-        labelCoutPouazon.setText("" + Pouazon.getCoutBase());
-        labelCoutBrulHure.setText("" + Brulhure.getCoutBase());
+        labelCoutSainple.setText("" + LecteurStatsCellules.getStatistique("SAINPLE").couts()[0]);
+        labelCoutLasere.setText("" + LecteurStatsCellules.getStatistique("LASERE").couts()[0]);
+        labelCoutBrouaieuse.setText("" + LecteurStatsCellules.getStatistique("BROUAIEUSE").couts()[0]);
+        labelCoutMuleTyple.setText("" + LecteurStatsCellules.getStatistique("MULETYPLE").couts()[0]);
+        labelCoutSnaipeur.setText("" + LecteurStatsCellules.getStatistique("SNAIPEUR").couts()[0]);
+        labelCoutRizCoCher.setText("" + LecteurStatsCellules.getStatistique("RIZCOCHER").couts()[0]);
+        labelCoutKonsantre.setText("" + LecteurStatsCellules.getStatistique("KONSANTRE").couts()[0]);
+        labelCoutPouazon.setText("" + LecteurStatsCellules.getStatistique("POUAZON").couts()[0]);
+        labelCoutBrulHure.setText("" + LecteurStatsCellules.getStatistique("BRULHURE").couts()[0]);
     }
 
     /**
