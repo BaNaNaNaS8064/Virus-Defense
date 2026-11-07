@@ -6,7 +6,7 @@ import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CiblageProcheObjectif implements PrioriteCiblage {
+public class CiblageProcheObjectif implements Ciblage {
 
     public CiblageProcheObjectif() {}
 

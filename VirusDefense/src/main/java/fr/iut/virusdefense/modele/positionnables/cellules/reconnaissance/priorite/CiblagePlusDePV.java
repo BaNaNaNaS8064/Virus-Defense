@@ -4,7 +4,7 @@ import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 
 import java.util.ArrayList;
 
-public class CiblagePlusDePV implements PrioriteCiblage {
+public class CiblagePlusDePV implements Ciblage {
 
     public CiblagePlusDePV() {}
 
