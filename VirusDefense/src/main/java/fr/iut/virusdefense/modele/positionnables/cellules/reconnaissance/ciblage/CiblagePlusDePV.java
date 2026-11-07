@@ -1,4 +1,4 @@
-package fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.priorite;
+package fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ciblage;
 
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 
@@ -25,4 +25,6 @@ public class CiblagePlusDePV implements Ciblage {
         }
         return ciblesSelectionnees;
     }
+
+
 }

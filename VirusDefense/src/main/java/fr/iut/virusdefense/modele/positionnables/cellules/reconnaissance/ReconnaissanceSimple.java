@@ -1,13 +1,13 @@
 package fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance;
 
-import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.priorite.CiblageProche;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ciblage.Ciblage;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 import fr.iut.virusdefense.modele.utilitaires.Coordonees;
 
 public class ReconnaissanceSimple extends Reconnaissance{
 
-    public ReconnaissanceSimple(Coordonees coordonees, double portee, int nombreCiblesMax){
-        super(coordonees, portee, nombreCiblesMax, new CiblageProche(coordonees));
+    public ReconnaissanceSimple(Coordonees coordonees, double portee, int nombreCiblesMax, Ciblage ciblage){
+        super(coordonees, portee, nombreCiblesMax, ciblage);
     }
 
     @Override

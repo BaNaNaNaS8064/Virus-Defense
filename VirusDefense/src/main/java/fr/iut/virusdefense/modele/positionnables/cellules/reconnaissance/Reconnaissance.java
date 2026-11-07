@@ -2,7 +2,7 @@ package fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.positionnables.Positionnable;
-import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.priorite.Ciblage;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ciblage.Ciblage;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 import fr.iut.virusdefense.modele.utilitaires.Coordonees;
 
