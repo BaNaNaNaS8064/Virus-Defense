@@ -4,6 +4,7 @@ import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonSimple;
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceSimple;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ciblage.CiblagePlusDePV;
 
 public class Snaipeur extends Cellule {
     private static int coutBase = 500;
@@ -22,7 +23,7 @@ public class Snaipeur extends Cellule {
 
     @Override
     public void initRec(){
-        setReconnaissance(new ReconnaissanceSimple(getCoordonees(), LecteurStatsCellules.getStatistique("SNAIPEUR").portee(), 1));
+        setReconnaissance(new ReconnaissanceSimple(getCoordonees(), LecteurStatsCellules.getStatistique("SNAIPEUR").portee(), 1, new CiblagePlusDePV()));
     }
 
     @Override

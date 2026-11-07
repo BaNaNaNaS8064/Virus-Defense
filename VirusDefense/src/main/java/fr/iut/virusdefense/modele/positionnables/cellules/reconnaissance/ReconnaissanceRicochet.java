@@ -1,17 +1,17 @@
 package fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance;
 
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ciblage.Ciblage;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ReconnaissanceRicochet extends Reconnaissance{
     private int nbRicochets;
     private Reconnaissance reconnaissanceBasique;
 
-    public ReconnaissanceRicochet(Reconnaissance reconnaissanceBasique, int nbRicochets) {
-        super(reconnaissanceBasique.getCoordonees(), reconnaissanceBasique.getPortee(), 1);
+    public ReconnaissanceRicochet(Reconnaissance reconnaissanceBasique, int nbRicochets, Ciblage ciblage) {
+        super(reconnaissanceBasique.getCoordonees(), reconnaissanceBasique.getPortee(), 1, ciblage);
         this.reconnaissanceBasique = reconnaissanceBasique;
         this.nbRicochets = nbRicochets;
     }
@@ -71,7 +71,7 @@ public class ReconnaissanceRicochet extends Reconnaissance{
                     resteCandidats = false;
                 }
                 else{
-                    maladie = maladiePlusProche(candidats);
+                    maladie = reconnaissanceBasique.getCiblage().selectionnerCibles(candidats, 1).get(0);
                     getCibles().add(maladie);
                     setLigne(maladie.getLigne());
                     setColonne(maladie.getColonne());
@@ -82,24 +82,4 @@ public class ReconnaissanceRicochet extends Reconnaissance{
             setColonne(posColonne);
         }
     }
-
-    private Maladie maladiePlusProche(List<Maladie> candidats){
-        double distanceMin;
-        double distance;
-        int indMaladiePlusProche;
-
-        indMaladiePlusProche = 0;
-        distanceMin = candidats.get(0).getCoordonees().distanceEuclidienne(getLigne(), getColonne());
-
-        for (int i = 1; i < candidats.size(); i++){
-            distance = candidats.get(i).getCoordonees().distanceEuclidienne(getLigne(), getColonne());
-            if (distance < distanceMin){
-                indMaladiePlusProche = i;
-                distanceMin = distance;
-            }
-        }
-
-        return candidats.get(indMaladiePlusProche);
-    }
-
 }

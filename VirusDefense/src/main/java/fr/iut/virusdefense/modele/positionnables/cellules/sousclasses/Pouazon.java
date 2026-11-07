@@ -8,6 +8,7 @@ import fr.iut.virusdefense.modele.positionnables.cellules.alteration.Ralentissem
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaqueRayon;
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonSimple;
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceSimple;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ciblage.CiblageProche;
 
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class Pouazon extends Cellule {
 
     @Override
     public void initRec(){
-        setReconnaissance(new ReconnaissanceSimple(getCoordonees(), LecteurStatsCellules.getStatistique("POUAZON").portee(), 1));
+        setReconnaissance(new ReconnaissanceSimple(getCoordonees(), LecteurStatsCellules.getStatistique("POUAZON").portee(), 1, new CiblageProche(getCoordonees())));
     }
 
     @Override

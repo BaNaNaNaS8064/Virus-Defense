@@ -6,6 +6,7 @@ import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.Ge
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.Reconnaissance;
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceRicochet;
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceSimple;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ciblage.CiblageProche;
 
 public class RizCocher extends Cellule {
     private static int coutBase = 900;
@@ -25,8 +26,8 @@ public class RizCocher extends Cellule {
 
     @Override
     public void initRec() {
-        Reconnaissance base = new ReconnaissanceSimple(getCoordonees(), LecteurStatsCellules.getStatistique("RIZCOCHER").portee(),1);
-        setReconnaissance(new ReconnaissanceRicochet(base,3));
+        Reconnaissance base = new ReconnaissanceSimple(getCoordonees(), LecteurStatsCellules.getStatistique("RIZCOCHER").portee(),1, new CiblageProche(getCoordonees()));
+        setReconnaissance(new ReconnaissanceRicochet(base,3, new CiblageProche(getCoordonees())));
     }
 
     @Override
