@@ -19,10 +19,12 @@ public class Lasere extends Cellule {
                 );
         initRec();
         initGestionnaireAttaque();
-        this.ameliorations.add(() -> {
+
+        ajouterAmelioration(() -> {
             getAttaque().setDegats(getAttaque().getDegats() + 30);
         });
-        this.ameliorations.add(() -> {
+
+        ajouterAmelioration(() -> {
             getReconnaissance().setPortee(getReconnaissance().getPortee() + 1.5);
         });
     }

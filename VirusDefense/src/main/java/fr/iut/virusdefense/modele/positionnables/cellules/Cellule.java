@@ -17,11 +17,7 @@ public abstract class Cellule extends Positionnable implements Acteur {
     private int niveau;
     private final int[] couts;
 
-    protected final List <Amelioration> ameliorations; // mettre ca en dehors de cellule et créer une classe amélioration a part et donc mettre en
-
-    public interface Amelioration{
-        void appliquer();
-    }
+    private final List <Amelioration> ameliorations;
 
     public Cellule(int ligne, int colonne, int frequenceAttaque, int[] couts) {
         super(ligne, colonne);
@@ -80,6 +76,10 @@ public abstract class Cellule extends Positionnable implements Acteur {
     }
 
     public abstract String getNom();
+
+    protected void ajouterAmelioration(Amelioration amelioration){
+        this.ameliorations.add(amelioration);
+    }
 
     public boolean resteAmeliorations(){
         return niveau < couts.length && niveau <= ameliorations.size();

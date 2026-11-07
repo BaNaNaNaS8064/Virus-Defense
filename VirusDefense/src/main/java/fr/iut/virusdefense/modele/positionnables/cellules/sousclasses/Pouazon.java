@@ -24,12 +24,14 @@ public class Pouazon extends Cellule {
                 LecteurStatsCellules.getStatistique("POUAZON").couts()
 
         );
-            initRec();
-            initGestionnaireAttaque();
-        this.ameliorations.add(() -> {
+        initRec();
+        initGestionnaireAttaque();
+
+        ajouterAmelioration(() -> {
             getAttaque().setDegats(getAttaque().getDegats() + 5);
         });
-        this.ameliorations.add(() -> {
+
+        ajouterAmelioration(() -> {
             getReconnaissance().setPortee(getReconnaissance().getPortee() + 1.5);
         });
     }

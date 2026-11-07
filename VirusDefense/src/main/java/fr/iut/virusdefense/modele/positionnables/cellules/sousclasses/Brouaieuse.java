@@ -19,10 +19,12 @@ public class Brouaieuse extends Cellule {
         );
         initRec();
         initGestionnaireAttaque();
-        this.ameliorations.add(() -> {
+
+        ajouterAmelioration(() -> {
             getAttaque().setDegats(getAttaque().getDegats() + 20);
         });
-        this.ameliorations.add(() -> {
+
+        ajouterAmelioration(() -> {
             setFrequenceAttaque((int)(getFrequenceAttaque() * 0.8));
         });
     }

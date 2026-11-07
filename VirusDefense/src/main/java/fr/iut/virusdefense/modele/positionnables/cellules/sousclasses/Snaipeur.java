@@ -18,11 +18,12 @@ public class Snaipeur extends Cellule {
                 LecteurStatsCellules.getStatistique("SNAIPEUR").couts());
         initRec();
         initGestionnaireAttaque();
-        this.ameliorations.add(() -> {
+
+        ajouterAmelioration(() -> {
             getAttaque().setDegats(getAttaque().getDegats() + 50);
         });
 
-        this.ameliorations.add(() -> {
+        ajouterAmelioration(() -> {
             getReconnaissance().setPortee(getReconnaissance().getPortee() + 3.0);
         });
     }

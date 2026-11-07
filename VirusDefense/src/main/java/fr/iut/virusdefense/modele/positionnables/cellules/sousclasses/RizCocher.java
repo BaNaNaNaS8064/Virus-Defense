@@ -20,11 +20,12 @@ public class RizCocher extends Cellule {
         );
         initRec();
         initGestionnaireAttaque();
-        this.ameliorations.add(() -> {
+
+        ajouterAmelioration(() -> {
             getAttaque().setDegats(getAttaque().getDegats() + 15);
         });
 
-        this.ameliorations.add(() -> {
+        ajouterAmelioration(() -> {
             if (getReconnaissance() instanceof ReconnaissanceRicochet rec) {
                 rec.setNbRicochets(rec.getNbRicochets() + 1);
             }
