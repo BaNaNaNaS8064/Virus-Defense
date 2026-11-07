@@ -16,17 +16,14 @@ public class CiblageProche extends Ciblage{
 
     @Override
     public ArrayList<Maladie> selectionnerCibles(ArrayList<Maladie> cibles, int nombreCiblesMax) {
-        toutRetirerMaladieDisponibles();
-        toutRetirerCiblesSelectionnees();
-        addAllMaladiesDisponibles(cibles);
+        initCiblesMaladies(cibles);
 
-        while (!getMaladiesDisponibles().isEmpty() && getCiblesSelectionnees().size() < nombreCiblesMax) {
+        while (cibleSelectionneesComplete(nombreCiblesMax)) {
             Maladie maladiePlusProche = getMaladiesDisponibles().get(0);
             double distanceMinMaladie = maladiePlusProche.getCoordonees().distanceEuclidienne(coordonees.getLigne(), coordonees.getColonne());
 
             for (int i = 1; i < getMaladiesDisponibles().size(); i++) {
                 Maladie maladie = getMaladiesDisponibles().get(i);
-
                 double distanceMaladie = maladie.getCoordonees().distanceEuclidienne(coordonees.getLigne(), coordonees.getColonne());
 
                 if (distanceMaladie < distanceMinMaladie) {
@@ -34,9 +31,7 @@ public class CiblageProche extends Ciblage{
                     distanceMinMaladie = distanceMaladie;
                 }
             }
-
-            ajouterCiblesSelectionnees(maladiePlusProche);
-            retirerMaladieDisponible(maladiePlusProche);
+            triCiblesMaladie(maladiePlusProche);
         }
 
         return getCiblesSelectionnees();

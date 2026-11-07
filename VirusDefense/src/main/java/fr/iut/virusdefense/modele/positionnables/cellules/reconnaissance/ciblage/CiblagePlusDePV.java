@@ -12,19 +12,17 @@ public class CiblagePlusDePV extends Ciblage {
 
     @Override
     public ArrayList<Maladie> selectionnerCibles(ArrayList<Maladie> cibles, int nombreCiblesMax) {
-        toutRetirerMaladieDisponibles();
-        toutRetirerCiblesSelectionnees();
-        addAllMaladiesDisponibles(cibles);
+        initCiblesMaladies(cibles);
 
-        while (!getMaladiesDisponibles().isEmpty() && getCiblesSelectionnees().size() < nombreCiblesMax) {
+        while (cibleSelectionneesComplete(nombreCiblesMax)){
             Maladie maladiePVMax = getMaladiesDisponibles().get(0);
+
             for (Maladie maladie : getMaladiesDisponibles()) {
                 if (maladiePVMax.getPv() < maladie.getPv()) {
                     maladiePVMax = maladie;
                 }
             }
-            ajouterCiblesSelectionnees(maladiePVMax);
-            retirerMaladieDisponible(maladiePVMax);
+            triCiblesMaladie(maladiePVMax);
         }
         return getCiblesSelectionnees();
     }

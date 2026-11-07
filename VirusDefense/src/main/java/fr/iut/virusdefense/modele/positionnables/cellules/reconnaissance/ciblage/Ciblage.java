@@ -5,8 +5,8 @@ import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 import java.util.ArrayList;
 
 public abstract class Ciblage {
-    private ArrayList<Maladie> ciblesSelectionnees;
-    private ArrayList<Maladie> maladiesDisponibles;
+    private final ArrayList<Maladie> ciblesSelectionnees;
+    private final ArrayList<Maladie> maladiesDisponibles;
 
 
     public Ciblage() {
@@ -40,6 +40,21 @@ public abstract class Ciblage {
 
     public void toutRetirerMaladieDisponibles(){
         this.maladiesDisponibles.clear();
+    }
+
+    public void initCiblesMaladies(ArrayList<Maladie> cibles){
+        toutRetirerMaladieDisponibles();
+        toutRetirerCiblesSelectionnees();
+        addAllMaladiesDisponibles(cibles);
+    }
+
+    public void triCiblesMaladie(Maladie maladie){
+        ajouterCiblesSelectionnees(maladie);
+        retirerMaladieDisponible(maladie);
+    }
+
+    public boolean cibleSelectionneesComplete(int nombreCiblesMax){
+        return (!getMaladiesDisponibles().isEmpty() && getCiblesSelectionnees().size() < nombreCiblesMax);
     }
 
     public abstract ArrayList<Maladie> selectionnerCibles(ArrayList<Maladie> cibles, int nombreCiblesMax);
