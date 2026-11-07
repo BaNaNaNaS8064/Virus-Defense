@@ -4,26 +4,29 @@ import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 
 import java.util.ArrayList;
 
-public class CiblagePlusDePV implements Ciblage {
+public class CiblagePlusDePV extends Ciblage {
 
-    public CiblagePlusDePV() {}
+    public CiblagePlusDePV() {
+        super();
+    }
 
     @Override
     public ArrayList<Maladie> selectionnerCibles(ArrayList<Maladie> cibles, int nombreCiblesMax) {
-        ArrayList<Maladie> ciblesSelectionnees = new ArrayList<>();
-        ArrayList<Maladie> maladiesDisponibles = new ArrayList<>(cibles);
+        toutRetirerMaladieDisponibles();
+        toutRetirerCiblesSelectionnees();
+        addAllMaladiesDisponibles(cibles);
 
-        while (!maladiesDisponibles.isEmpty() && ciblesSelectionnees.size() < nombreCiblesMax) {
-            Maladie maladiePVMax = maladiesDisponibles.get(0);
-            for (Maladie maladie : maladiesDisponibles) {
+        while (!getMaladiesDisponibles().isEmpty() && getCiblesSelectionnees().size() < nombreCiblesMax) {
+            Maladie maladiePVMax = getMaladiesDisponibles().get(0);
+            for (Maladie maladie : getMaladiesDisponibles()) {
                 if (maladiePVMax.getPv() < maladie.getPv()) {
                     maladiePVMax = maladie;
                 }
             }
-            ciblesSelectionnees.add(maladiePVMax);
-            maladiesDisponibles.remove(maladiePVMax);
+            ajouterCiblesSelectionnees(maladiePVMax);
+            retirerMaladieDisponible(maladiePVMax);
         }
-        return ciblesSelectionnees;
+        return getCiblesSelectionnees();
     }
 
 

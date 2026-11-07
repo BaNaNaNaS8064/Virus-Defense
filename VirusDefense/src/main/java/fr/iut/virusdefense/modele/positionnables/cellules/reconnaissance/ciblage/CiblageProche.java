@@ -5,25 +5,27 @@ import fr.iut.virusdefense.modele.utilitaires.Coordonees;
 
 import java.util.ArrayList;
 
-public class CiblageProche implements Ciblage{
+public class CiblageProche extends Ciblage{
     private final Coordonees coordonees;
 
-    public CiblageProche(Coordonees coordCellule) {
-        this.coordonees = coordCellule;
+    public CiblageProche(Coordonees coordonees) {
+        super();
+        this.coordonees = coordonees;
     }
 
 
     @Override
     public ArrayList<Maladie> selectionnerCibles(ArrayList<Maladie> cibles, int nombreCiblesMax) {
-        ArrayList<Maladie> ciblesSelectionnees = new ArrayList<>();
-        ArrayList<Maladie> maladiessDisponibles = new ArrayList<>(cibles);
+        toutRetirerMaladieDisponibles();
+        toutRetirerCiblesSelectionnees();
+        addAllMaladiesDisponibles(cibles);
 
-        while (!maladiessDisponibles.isEmpty() && ciblesSelectionnees.size() < nombreCiblesMax) {
-            Maladie maladiePlusProche = maladiessDisponibles.get(0);
+        while (!getMaladiesDisponibles().isEmpty() && getCiblesSelectionnees().size() < nombreCiblesMax) {
+            Maladie maladiePlusProche = getMaladiesDisponibles().get(0);
             double distanceMinMaladie = maladiePlusProche.getCoordonees().distanceEuclidienne(coordonees.getLigne(), coordonees.getColonne());
 
-            for (int i = 1; i < maladiessDisponibles.size(); i++) {
-                Maladie maladie = maladiessDisponibles.get(i);
+            for (int i = 1; i < getMaladiesDisponibles().size(); i++) {
+                Maladie maladie = getMaladiesDisponibles().get(i);
 
                 double distanceMaladie = maladie.getCoordonees().distanceEuclidienne(coordonees.getLigne(), coordonees.getColonne());
 
@@ -33,11 +35,11 @@ public class CiblageProche implements Ciblage{
                 }
             }
 
-            ciblesSelectionnees.add(maladiePlusProche);
-            maladiessDisponibles.remove(maladiePlusProche);
+            ajouterCiblesSelectionnees(maladiePlusProche);
+            retirerMaladieDisponible(maladiePlusProche);
         }
 
-        return ciblesSelectionnees;
+        return getCiblesSelectionnees();
     }
 }
 
