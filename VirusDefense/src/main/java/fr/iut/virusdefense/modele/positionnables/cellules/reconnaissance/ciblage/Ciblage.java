@@ -58,4 +58,6 @@ public abstract class Ciblage {
     }
 
     public abstract ArrayList<Maladie> selectionnerCibles(ArrayList<Maladie> cibles, int nombreCiblesMax);
+
+    public abstract void remplacerSiConditionRempli(Maladie maladie);
 }

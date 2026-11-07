@@ -6,6 +6,8 @@ import fr.iut.virusdefense.modele.utilitaires.Coordonees;
 import java.util.ArrayList;
 
 public class CiblageProche extends Ciblage{
+    private Maladie maladiePlusProche;
+    private double distanceMinMaladie;
     private final Coordonees coordonees;
 
     public CiblageProche(Coordonees coordonees) {
@@ -19,22 +21,25 @@ public class CiblageProche extends Ciblage{
         initCiblesMaladies(cibles);
 
         while (cibleSelectionneesComplete(nombreCiblesMax)) {
-            Maladie maladiePlusProche = getMaladiesDisponibles().get(0);
-            double distanceMinMaladie = maladiePlusProche.getCoordonees().distanceEuclidienne(coordonees.getLigne(), coordonees.getColonne());
+            this.maladiePlusProche = getMaladiesDisponibles().get(0);
+            this.distanceMinMaladie = this.maladiePlusProche.getCoordonees().distanceEuclidienne(this.coordonees.getLigne(), this.coordonees.getColonne());
 
             for (int i = 1; i < getMaladiesDisponibles().size(); i++) {
                 Maladie maladie = getMaladiesDisponibles().get(i);
-                double distanceMaladie = maladie.getCoordonees().distanceEuclidienne(coordonees.getLigne(), coordonees.getColonne());
-
-                if (distanceMaladie < distanceMinMaladie) {
-                    maladiePlusProche = maladie;
-                    distanceMinMaladie = distanceMaladie;
-                }
+                remplacerSiConditionRempli(maladie);
             }
-            triCiblesMaladie(maladiePlusProche);
+            triCiblesMaladie(this.maladiePlusProche);
         }
-
         return getCiblesSelectionnees();
+    }
+
+    @Override
+    public void remplacerSiConditionRempli(Maladie maladie) {
+        double distanceMaladie = maladie.getCoordonees().distanceEuclidienne(coordonees.getLigne(), coordonees.getColonne());
+        if (distanceMaladie < this.distanceMinMaladie) {
+            this.maladiePlusProche = maladie;
+            this.distanceMinMaladie = distanceMaladie;
+        }
     }
 }
 

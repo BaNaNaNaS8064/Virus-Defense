@@ -5,6 +5,7 @@ import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 import java.util.ArrayList;
 
 public class CiblagePlusDePV extends Ciblage {
+    private Maladie maladiePVMax;
 
     public CiblagePlusDePV() {
         super();
@@ -15,17 +16,19 @@ public class CiblagePlusDePV extends Ciblage {
         initCiblesMaladies(cibles);
 
         while (cibleSelectionneesComplete(nombreCiblesMax)){
-            Maladie maladiePVMax = getMaladiesDisponibles().get(0);
-
+            this.maladiePVMax = getMaladiesDisponibles().get(0);
             for (Maladie maladie : getMaladiesDisponibles()) {
-                if (maladiePVMax.getPv() < maladie.getPv()) {
-                    maladiePVMax = maladie;
-                }
+               remplacerSiConditionRempli(maladie);
             }
             triCiblesMaladie(maladiePVMax);
         }
         return getCiblesSelectionnees();
     }
 
-
+    @Override
+    public void remplacerSiConditionRempli(Maladie maladie) {
+        if (maladiePVMax.getPv() < maladie.getPv()) {
+            maladiePVMax = maladie;
+        }
+    }
 }
