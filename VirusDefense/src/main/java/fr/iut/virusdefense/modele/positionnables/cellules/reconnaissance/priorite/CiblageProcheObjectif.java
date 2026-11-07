@@ -6,9 +6,11 @@ import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrioProcheObjectif implements PrioriteCible {
-    public PrioProcheObjectif() {}
+public class CiblageProcheObjectif implements PrioriteCiblage {
 
+    public CiblageProcheObjectif() {}
+
+    @Override
     public ArrayList<Maladie> selectionnerCibles(ArrayList<Maladie> cibles, int nombreCiblesMax) {
         ArrayList<Maladie> ciblesSelectionnees = new ArrayList<>();
         ArrayList<Maladie> maladiesDisponibles = new ArrayList<>(cibles);

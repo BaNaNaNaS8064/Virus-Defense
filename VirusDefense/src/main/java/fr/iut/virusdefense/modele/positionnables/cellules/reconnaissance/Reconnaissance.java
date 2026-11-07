@@ -2,8 +2,8 @@ package fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance;
 
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.positionnables.Positionnable;
-import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.priorite.PrioProcheObjectif;
-import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.priorite.PrioriteCible;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.priorite.CiblageProcheObjectif;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.priorite.PrioriteCiblage;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 import fr.iut.virusdefense.modele.utilitaires.Coordonees;
 
@@ -14,14 +14,14 @@ public abstract class Reconnaissance extends Positionnable {
 
     private int nombreCiblesMax;
     private final ArrayList<Maladie> cibles;
-    private PrioriteCible prioriteCible;
+    private final PrioriteCiblage prioriteCiblage;
 
     public Reconnaissance(Coordonees coordonees, double portee, int nombreCiblesMax) {
         super(coordonees);
         this.portee = portee;
         this.nombreCiblesMax = nombreCiblesMax;
         cibles = new ArrayList<>();
-        this.prioriteCible = new PrioProcheObjectif();
+        this.prioriteCiblage = new CiblageProcheObjectif();
     }
 
     public ArrayList<Maladie> getCibles() {
@@ -66,7 +66,7 @@ public abstract class Reconnaissance extends Positionnable {
         cibles.clear();
         cibles.addAll(Environnement.getUniqueInstance().getGestionnaireActeur().getMaladies());
         cibles.removeIf(cible -> !estValide(cible));
-        ArrayList<Maladie> ciblesSelectionnees = prioriteCible.selectionnerCibles(cibles, nombreCiblesMax);
+        ArrayList<Maladie> ciblesSelectionnees = prioriteCiblage.selectionnerCibles(cibles, nombreCiblesMax);
         cibles.clear();
         cibles.addAll(ciblesSelectionnees);
     }
