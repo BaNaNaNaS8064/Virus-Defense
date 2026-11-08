@@ -28,10 +28,10 @@ public class GestionnaireClick {
         int ligne = (int)(mouseEvent.getY()/32);
         int colonne = (int)(mouseEvent.getX()/32);
 
-        if (mouseEvent.getButton().equals(MouseButton.PRIMARY) && Environnement.getUniqueInstance().getCarte().emplacementVide(ligne, colonne))
+        if (mouseEvent.getButton().equals(MouseButton.PRIMARY) && Environnement.getInstance().getCarte().emplacementVide(ligne, colonne))
             poser(ligne, colonne);
 
-        else if (mouseEvent.getButton().equals(MouseButton.SECONDARY) && Environnement.getUniqueInstance().getCarte().estCellule(ligne, colonne))
+        else if (mouseEvent.getButton().equals(MouseButton.SECONDARY) && Environnement.getInstance().getCarte().estCellule(ligne, colonne))
             creerMenu(ligne,colonne);
 
         afficheurDeCarte.rechargerEmplacement(ligne, colonne);
@@ -41,11 +41,11 @@ public class GestionnaireClick {
         String boutonSelectionne = ((RadioButton) toggleGrpCellules.getSelectedToggle()).getId();
         Cellule c = FabriqueCellule.créer(CodeTuile.valueOf(boutonSelectionne.substring(2).toUpperCase()), ligne, colonne);
         if (c != null)
-            Environnement.getUniqueInstance().ajouterSiConforme(c);
+            Environnement.getInstance().ajouterSiConforme(c);
     }
 
     public void creerMenu(int ligne, int colonne){
-        for (Cellule c : Environnement.getUniqueInstance().getCarte().getCellules()){
+        for (Cellule c : Environnement.getInstance().getCarte().getCellules()){
             if ((int) c.getLigne() == ligne && (int) c.getColonne() == colonne) {
                 new GestionnaireMenuClick(ligne, colonne, paneCentre, afficheurDeCarte);
             }

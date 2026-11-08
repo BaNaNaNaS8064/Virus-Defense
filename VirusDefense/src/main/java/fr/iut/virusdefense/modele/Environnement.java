@@ -41,7 +41,7 @@ public class Environnement {
         statutPartieProperty = new SimpleObjectProperty<>(StatutPartie.PASTERMINEE);
     }
 
-    public static Environnement getUniqueInstance(){
+    public static Environnement getInstance(){
         return uniqueInstance;
     }
 
@@ -140,14 +140,14 @@ public class Environnement {
      */
     public void unTour() {
         if (getStatutPartie() == StatutPartie.PASTERMINEE) {
-            if (joueur.getPv() <= 0 || (Niveau.getUniqueInstance().estTermine() && gestionnaireActeur.getMaladies().isEmpty())) {
+            if (joueur.getPv() <= 0 || (Niveau.getInstance().estTermine() && gestionnaireActeur.getMaladies().isEmpty())) {
                 if(joueur.getPv()>0)
                     setStatutPartie(StatutPartie.GAGNEE);
                 else
                     setStatutPartie(StatutPartie.PERDUE);
             }
             else{
-                Niveau.getUniqueInstance().update();
+                Niveau.getInstance().update();
 
                 gestionnaireActeur.acteursARetiré(getJoueur());
 

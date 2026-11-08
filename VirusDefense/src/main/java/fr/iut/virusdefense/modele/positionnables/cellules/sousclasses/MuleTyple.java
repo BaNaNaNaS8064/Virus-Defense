@@ -4,6 +4,7 @@ import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonSimple;
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceSimple;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ciblage.CiblageProche;
 
 public class MuleTyple extends Cellule {
 
@@ -32,7 +33,7 @@ public class MuleTyple extends Cellule {
 
     @Override
     public void initRec(){
-        setReconnaissance(new ReconnaissanceSimple(getCoordonees(),  LecteurStatsCellules.getStatistique("MULETYPLE").portee() , 3));
+        setReconnaissance(new ReconnaissanceSimple(getCoordonees(),  LecteurStatsCellules.getStatistique("MULETYPLE").portee() , 3, new CiblageProche(getCoordonees())));
     }
 
     @Override

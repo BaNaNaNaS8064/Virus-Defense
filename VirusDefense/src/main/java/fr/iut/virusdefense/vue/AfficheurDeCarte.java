@@ -28,16 +28,16 @@ public class AfficheurDeCarte {
 
         carte.getChildren().clear();
 
-        for (int i = 0; i< Environnement.getUniqueInstance().getCarte().getHauteur(); i++)
-            for (int j = 0; j < Environnement.getUniqueInstance().getCarte().getLargeur(); j++) {
-                carte.getChildren().add(new Tuile(AssociationImage.imageDe(Environnement.getUniqueInstance().getCarte().getCode(i, j)), i, j));
+        for (int i = 0; i< Environnement.getInstance().getCarte().getHauteur(); i++)
+            for (int j = 0; j < Environnement.getInstance().getCarte().getLargeur(); j++) {
+                carte.getChildren().add(new Tuile(AssociationImage.imageDe(Environnement.getInstance().getCarte().getCode(i, j)), i, j));
             }
         afficheurDeChemin.dessinerChemin();
     }
 
     public void rechargerEmplacement(int ligne, int colonne){
-        Tuile emplacement = (Tuile) carte.getChildren().get(ligne * Environnement.getUniqueInstance().getCarte().getLargeur() + colonne);
-        emplacement.setImage(AssociationImage.imageDe(Environnement.getUniqueInstance().getCarte().getCode(ligne, colonne)));
+        Tuile emplacement = (Tuile) carte.getChildren().get(ligne * Environnement.getInstance().getCarte().getLargeur() + colonne);
+        emplacement.setImage(AssociationImage.imageDe(Environnement.getInstance().getCarte().getCode(ligne, colonne)));
         afficheurDeChemin.dessinerChemin();
     }
 
@@ -45,11 +45,11 @@ public class AfficheurDeCarte {
      * Fixe la taille de la carte dans la vue
      */
     private void resetTailleCarte(){
-        double largeurVoulue = 32 * Environnement.getUniqueInstance().getCarte().getLargeur();
+        double largeurVoulue = 32 * Environnement.getInstance().getCarte().getLargeur();
         carte.setMaxWidth(largeurVoulue);
         carte.setMinWidth(largeurVoulue);
 
-        double hauteurVoulue = 32 * Environnement.getUniqueInstance().getCarte().getHauteur();
+        double hauteurVoulue = 32 * Environnement.getInstance().getCarte().getHauteur();
         carte.setMaxHeight(hauteurVoulue);
         carte.setMinHeight(hauteurVoulue);
     }

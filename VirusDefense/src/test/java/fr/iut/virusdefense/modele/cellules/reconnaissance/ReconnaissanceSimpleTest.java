@@ -58,16 +58,16 @@ class ReconnaissanceSimpleTest {
     @Test
     void aAuMoinsUneCible(){
         Reconnaissance recSimple = new ReconnaissanceSimple(new Coordonees(2,2),3,1);
-        Environnement.getUniqueInstance().ajouterMaladie(new Virus(2,3));
+        Environnement.getInstance().ajouterMaladie(new Virus(2,3));
         recSimple.actualiser();
         assertTrue(recSimple.aAuMoinsUneCible(), "Il y a exactement une cible valide");
 
-        Environnement.getUniqueInstance().getGestionnaireActeur().getMaladies().clear();
+        Environnement.getInstance().getGestionnaireActeur().getMaladies().clear();
         recSimple.actualiser();
         assertFalse(recSimple.aAuMoinsUneCible(),"Il y a pas de cibles");
 
-        Environnement.getUniqueInstance().ajouterMaladie(new Virus(2,3));
-        Environnement.getUniqueInstance().ajouterMaladie(new Virus(2,1));
+        Environnement.getInstance().ajouterMaladie(new Virus(2,3));
+        Environnement.getInstance().ajouterMaladie(new Virus(2,1));
         recSimple.actualiser();
         assertTrue(recSimple.aAuMoinsUneCible(),"Plusieurs cibles valides");
 
@@ -79,16 +79,16 @@ class ReconnaissanceSimpleTest {
     @Test
     void aAssezDeCibles(){
         Reconnaissance recSimple = new ReconnaissanceSimple(new Coordonees(2,2),3,1);
-        Environnement.getUniqueInstance().ajouterMaladie(new Virus(2,3));
+        Environnement.getInstance().ajouterMaladie(new Virus(2,3));
         recSimple.actualiser();
         assertTrue(recSimple.aAssezDeCibles(), "Il y a exactement une cible valide");
 
-        Environnement.getUniqueInstance().getGestionnaireActeur().getMaladies().clear();
+        Environnement.getInstance().getGestionnaireActeur().getMaladies().clear();
         recSimple.actualiser();
         assertFalse(recSimple.aAssezDeCibles(),"Il y a pas de cibles");
 
-        Environnement.getUniqueInstance().ajouterMaladie(new Virus(2,3));
-        Environnement.getUniqueInstance().ajouterMaladie(new Virus(2,1));
+        Environnement.getInstance().ajouterMaladie(new Virus(2,3));
+        Environnement.getInstance().ajouterMaladie(new Virus(2,1));
         recSimple.actualiser();
         assertTrue(recSimple.aAssezDeCibles(),"Plusieurs cibles valides");
 
@@ -102,16 +102,16 @@ class ReconnaissanceSimpleTest {
     @Test
     void valide(){
         Reconnaissance recSimple = new ReconnaissanceSimple(new Coordonees(2,2),3,1);
-        Environnement.getUniqueInstance().ajouterMaladie(new Virus(2,3));
+        Environnement.getInstance().ajouterMaladie(new Virus(2,3));
         recSimple.actualiser();
         assertTrue(recSimple.valide(), "Il y a exactement une cible valide");
 
-        Environnement.getUniqueInstance().getGestionnaireActeur().getMaladies().clear();
+        Environnement.getInstance().getGestionnaireActeur().getMaladies().clear();
         recSimple.actualiser();
         assertFalse(recSimple.valide(),"Il y a pas de cibles");
 
-        Environnement.getUniqueInstance().ajouterMaladie(new Virus(2,3));
-        Environnement.getUniqueInstance().ajouterMaladie(new Virus(2,1));
+        Environnement.getInstance().ajouterMaladie(new Virus(2,3));
+        Environnement.getInstance().ajouterMaladie(new Virus(2,1));
         recSimple.actualiser();
         assertTrue(recSimple.valide(),"Plusieurs cibles valides");
         

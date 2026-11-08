@@ -25,6 +25,7 @@ public class ControllerMenuPrincipal implements Initializable {
         try {
             String[] niveaux = new File(Main.class.getResource("niveaux/").toURI()).list();
             menuChoixNiveau.getItems().addAll(niveaux);
+            menuChoixNiveau.getItems().sort(String::compareTo);
             menuChoixNiveau.setValue(menuChoixNiveau.getItems().get(0));
         } catch (Exception e) {
             throw new RuntimeException(e);

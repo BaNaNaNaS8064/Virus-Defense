@@ -4,6 +4,7 @@ import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaqueProjectileExplosif;
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ReconnaissanceSansMurs;
+import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ciblage.CiblagePlusDePV;
 
 public class Brulhure extends Cellule {
     private static int coutBase = 1300;
@@ -33,7 +34,7 @@ public class Brulhure extends Cellule {
 
     @Override
     public void initRec() {
-        setReconnaissance(new ReconnaissanceSansMurs(getCoordonees(), LecteurStatsCellules.getStatistique("BRULHURE").portee(), 1));
+        setReconnaissance(new ReconnaissanceSansMurs(getCoordonees(), LecteurStatsCellules.getStatistique("BRULHURE").portee(), 1, new CiblagePlusDePV()));
     }
 
     @Override
