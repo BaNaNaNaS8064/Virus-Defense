@@ -80,8 +80,8 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {}
 
     private void démarrerEnv(){
-        if (Environnement.getUniqueInstance() != null)
-            Environnement.getUniqueInstance().getGestionnaireActeur().toutVider();
+        if (Environnement.getInstance() != null)
+            Environnement.getInstance().getGestionnaireActeur().toutVider();
         GestionnaireMenuClick.fermerMenuActif();
         pause = false;
         imagePause.setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/play.png"))));
@@ -102,18 +102,18 @@ public class Controller implements Initializable {
     }
 
     private void initObservateurs(){
-        Environnement.getUniqueInstance().getGestionnaireActeur().getMaladies().addListener(new ObsListeMaladies(paneDessin));
-        Environnement.getUniqueInstance().getGestionnaireActeur().getRayons().addListener(new ObsListeRayons(paneDessin));
-        Environnement.getUniqueInstance().getGestionnaireActeur().getZones().addListener(new ObsListeZones(paneDessin));
-        Environnement.getUniqueInstance().getGestionnaireActeur().getProjectiles().addListener(new ObsListeProjectiles(paneDessin));
-        Environnement.getUniqueInstance().getJoueur().pvProperty().addListener(new ObsVieJoueur(new GestionnaireBarreDeVie(barreDeVie, labelPvActuels, labelPvMax, Environnement.getUniqueInstance().getJoueur().getPv())));
-        Environnement.getUniqueInstance().statutPartieProperty().addListener(new ObsStatutPartie(new GestionnaireEcranDeFin(paneDessin)));
+        Environnement.getInstance().getGestionnaireActeur().getMaladies().addListener(new ObsListeMaladies(paneDessin));
+        Environnement.getInstance().getGestionnaireActeur().getRayons().addListener(new ObsListeRayons(paneDessin));
+        Environnement.getInstance().getGestionnaireActeur().getZones().addListener(new ObsListeZones(paneDessin));
+        Environnement.getInstance().getGestionnaireActeur().getProjectiles().addListener(new ObsListeProjectiles(paneDessin));
+        Environnement.getInstance().getJoueur().pvProperty().addListener(new ObsVieJoueur(new GestionnaireBarreDeVie(barreDeVie, labelPvActuels, labelPvMax, Environnement.getInstance().getJoueur().getPv())));
+        Environnement.getInstance().statutPartieProperty().addListener(new ObsStatutPartie(new GestionnaireEcranDeFin(paneDessin)));
     }
 
     private void initLabels(){
-        labelSolde.textProperty().bind(Environnement.getUniqueInstance().getJoueur().pcProperty().asString());
-        labelVagueActuelle.textProperty().bind(Niveau.getUniqueInstance().numVagueProperty().add(1).asString());
-        labelVagueMax.setText("/" + Niveau.getUniqueInstance().nombreDeVagues());
+        labelSolde.textProperty().bind(Environnement.getInstance().getJoueur().pcProperty().asString());
+        labelVagueActuelle.textProperty().bind(Niveau.getInstance().numVagueProperty().add(1).asString());
+        labelVagueMax.setText("/" + Niveau.getInstance().nombreDeVagues());
 
         labelCoutSainple.setText("" + Sainple.getCoutBase());
         labelCoutLasere.setText("" + Lasere.getCoutBase());
@@ -139,7 +139,7 @@ public class Controller implements Initializable {
      * Méthode exécutée à chaque tour
      */
     private void uneFrame(){
-        Environnement.getUniqueInstance().unTour();
+        Environnement.getInstance().unTour();
     }
 
     @FXML
@@ -164,7 +164,7 @@ public class Controller implements Initializable {
     @FXML
     public void démarrerVague(MouseEvent mouseEvent) {
         if (!pause){
-            Niveau.getUniqueInstance().passerProchaineVague();
+            Niveau.getInstance().passerProchaineVague();
             ((ImageView) boutonVague.getGraphic()).setImage(new Image(String.valueOf(Main.class.getResource("images/utilitaires/next.png"))));
             boutonVague.setStyle("-fx-background-color: #2F4D1A");
             boutonVague.setOnMousePressed(this::passerVague);
@@ -172,8 +172,8 @@ public class Controller implements Initializable {
     }
 
     public void passerVague(MouseEvent mouseEvent){
-        if(Niveau.getUniqueInstance().resteVague() && !pause)
-            Niveau.getUniqueInstance().passerProchaineVague();
+        if(Niveau.getInstance().resteVague() && !pause)
+            Niveau.getInstance().passerProchaineVague();
     }
 
     @FXML
@@ -196,7 +196,7 @@ public class Controller implements Initializable {
 
     public void retourMenuPrincipal(){
         Main.changerScene();
-        Environnement.getUniqueInstance().setStatutPartie(StatutPartie.PASTERMINEE);
+        Environnement.getInstance().setStatutPartie(StatutPartie.PASTERMINEE);
         gameLoop.pause();
     }
 }

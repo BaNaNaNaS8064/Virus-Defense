@@ -67,7 +67,7 @@ public abstract class Reconnaissance extends Positionnable {
 
     public void actualiser(){
         cibles.clear();
-        cibles.addAll(Environnement.getUniqueInstance().getGestionnaireActeur().getMaladies());
+        cibles.addAll(Environnement.getInstance().getGestionnaireActeur().getMaladies());
         cibles.removeIf(cible -> !estValide(cible));
         ArrayList<Maladie> ciblesSelectionnees = ciblage.selectionnerCibles(cibles, nombreCiblesMax);
         cibles.clear();

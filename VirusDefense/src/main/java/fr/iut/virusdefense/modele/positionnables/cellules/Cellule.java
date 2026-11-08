@@ -78,8 +78,8 @@ public abstract class Cellule extends Positionnable implements Acteur {
     }
 
     public void niveauSuperieur(){
-        if (resteAmeliorations() && Environnement.getUniqueInstance().getJoueur().getPc() >= getCoutAmelioration()) {
-            Environnement.getUniqueInstance().getJoueur().retirerPc(getCoutAmelioration());
+        if (resteAmeliorations() && Environnement.getInstance().getJoueur().getPc() >= getCoutAmelioration()) {
+            Environnement.getInstance().getJoueur().retirerPc(getCoutAmelioration());
             switch (++niveau){
                 case 2:
                     ameliorerAuNiveau2();

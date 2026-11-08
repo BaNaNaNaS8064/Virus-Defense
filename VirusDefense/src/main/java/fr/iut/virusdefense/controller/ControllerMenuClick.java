@@ -33,9 +33,9 @@ public class ControllerMenuClick implements Initializable {
 
     public void setGestionnaireMenu(GestionnaireMenuClick gestionnaireMenu){
         this.gestionnaireMenu = gestionnaireMenu;
-        Environnement.getUniqueInstance().statutPartieProperty().addListener((observableValue, statutPartie, t1) -> this.gestionnaireMenu.retirerMenu());
+        Environnement.getInstance().statutPartieProperty().addListener((observableValue, statutPartie, t1) -> this.gestionnaireMenu.retirerMenu());
 
-        for (Cellule c : Environnement.getUniqueInstance().getCarte().getCellules()) {
+        for (Cellule c : Environnement.getInstance().getCarte().getCellules()) {
             if ((int) c.getLigne() == this.gestionnaireMenu.getLigne() && (int) c.getColonne() == this.gestionnaireMenu.getColonne()) {
                 initLabel(c);
                 desactiverBoutonAmeliorationSiNiveauMax(c);
@@ -67,7 +67,7 @@ public class ControllerMenuClick implements Initializable {
 
     @FXML
     public void clickBoutonAmelioration(){
-        for (Cellule c : Environnement.getUniqueInstance().getCarte().getCellules()){
+        for (Cellule c : Environnement.getInstance().getCarte().getCellules()){
             if ((int) c.getLigne() == gestionnaireMenu.getLigne() && (int) c.getColonne() == gestionnaireMenu.getColonne()) {
                 c.niveauSuperieur();
             }
@@ -77,7 +77,7 @@ public class ControllerMenuClick implements Initializable {
 
     @FXML
     public void clickBoutonSupprimer(){
-        Environnement.getUniqueInstance().retirerCelluleALEmplacement(gestionnaireMenu.getLigne(), gestionnaireMenu.getColonne(), false);
+        Environnement.getInstance().retirerCelluleALEmplacement(gestionnaireMenu.getLigne(), gestionnaireMenu.getColonne(), false);
         gestionnaireMenu.getAfficheurDeCarte().rechargerEmplacement(gestionnaireMenu.getLigne(), gestionnaireMenu.getColonne());
         gestionnaireMenu.retirerMenu();
     }

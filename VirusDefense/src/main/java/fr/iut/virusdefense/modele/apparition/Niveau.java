@@ -34,7 +34,7 @@ public class Niveau {
         initVagues(idNiveau);
     }
 
-    public static Niveau getUniqueInstance(){
+    public static Niveau getInstance(){
         return uniqueInstance;
     }
 
@@ -60,7 +60,7 @@ public class Niveau {
      * que le nombre de points d'apparition dans la carte de {@code environnnement}
      */
     private void initVagues(String idNiveau){
-        vagues = Arrays.asList(new LecteurVagues(Environnement.getUniqueInstance().getCarte().getPointsApparitions().size(), idNiveau).getVagues());
+        vagues = Arrays.asList(new LecteurVagues(Environnement.getInstance().getCarte().getPointsApparitions().size(), idNiveau).getVagues());
     }
 
     /**
@@ -70,8 +70,8 @@ public class Niveau {
      */
     public void passerProchaineVague(){
         numVagueProperty.setValue(getNumVague() + 1);
-        for (int i = 0; i<Environnement.getUniqueInstance().getCarte().getPointsApparitions().size(); i++)
-            Environnement.getUniqueInstance().getCarte().getPointsApparitions().get(i).ajouter(vagues.get(getNumVague()).getListeApparitions().get(i));
+        for (int i = 0; i<Environnement.getInstance().getCarte().getPointsApparitions().size(); i++)
+            Environnement.getInstance().getCarte().getPointsApparitions().get(i).ajouter(vagues.get(getNumVague()).getListeApparitions().get(i));
          delai = Integer.MAX_VALUE;
     }
 

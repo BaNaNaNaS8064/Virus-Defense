@@ -82,7 +82,7 @@ public abstract class Positionnable extends Identifiable {
             positionColonne += distColonne / nombreDePoints;
             positionLigne = pente * positionColonne + ordoneeOrigine;
 
-            if (!Environnement.getUniqueInstance().getCarte().peutVoirAuTravers((int)positionLigne, (int)positionColonne, ignorerCellules) && ((int)positionLigne != (int)getLigne() || (int)positionColonne != (int)getColonne()))
+            if (!Environnement.getInstance().getCarte().peutVoirAuTravers((int)positionLigne, (int)positionColonne, ignorerCellules) && ((int)positionLigne != (int)getLigne() || (int)positionColonne != (int)getColonne()))
                 bloque = true;
 
             i++;
@@ -99,13 +99,13 @@ public abstract class Positionnable extends Identifiable {
         else if (ligne > getLigne())
             direction = 1;
         else
-            return Environnement.getUniqueInstance().getCarte().peutVoirAuTravers((int)getLigne(), (int)getColonne(), ignorerCellules);
+            return Environnement.getInstance().getCarte().peutVoirAuTravers((int)getLigne(), (int)getColonne(), ignorerCellules);
 
         boolean bloque = false;
 
         while (!bloque && positionLigne != ligne){
             positionLigne += direction;
-            if (!Environnement.getUniqueInstance().getCarte().peutVoirAuTravers(positionLigne, (int)getColonne(), ignorerCellules))
+            if (!Environnement.getInstance().getCarte().peutVoirAuTravers(positionLigne, (int)getColonne(), ignorerCellules))
                 bloque = true;
         }
 

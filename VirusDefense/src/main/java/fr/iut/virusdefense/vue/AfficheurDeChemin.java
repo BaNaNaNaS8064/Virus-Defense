@@ -20,18 +20,18 @@ public class AfficheurDeChemin {
         paneLignes.getChildren().clear();
         List<Integer> caseActuelle;
         List<Integer> prochaineCase;
-        List<Integer> objectif = Environnement.getUniqueInstance().getCarte().getObjectif();
+        List<Integer> objectif = Environnement.getInstance().getCarte().getObjectif();
         Line ligne;
 
-        for (PointApparition p : Environnement.getUniqueInstance().getCarte().getPointsApparitions()) {
+        for (PointApparition p : Environnement.getInstance().getCarte().getPointsApparitions()) {
             caseActuelle = p.position();
-            prochaineCase = Environnement.getUniqueInstance().getDeplacement().prochaineCase(caseActuelle);
+            prochaineCase = Environnement.getInstance().getDeplacement().prochaineCase(caseActuelle);
             while (!caseActuelle.equals(objectif)){
                 ligne = new Line((caseActuelle.get(1)+0.5) * 32, (caseActuelle.get(0)+0.5) * 32, (prochaineCase.get(1)+0.5) * 32, (prochaineCase.get(0)+0.5) * 32);
                 ligne.setStroke(Color.GREEN);
                 paneLignes.getChildren().add(ligne);
                 caseActuelle = prochaineCase;
-                prochaineCase = Environnement.getUniqueInstance().getDeplacement().prochaineCase(caseActuelle);
+                prochaineCase = Environnement.getInstance().getDeplacement().prochaineCase(caseActuelle);
             }
         }
 

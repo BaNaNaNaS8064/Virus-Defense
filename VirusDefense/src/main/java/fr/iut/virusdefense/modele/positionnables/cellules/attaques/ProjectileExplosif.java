@@ -26,9 +26,9 @@ public class ProjectileExplosif extends Projectile {
     public void attaquer(){
         Reconnaissance reconnaissance = new ReconnaissanceSimple(getCoordonees(), rayonZonePortee, Integer.MAX_VALUE,new CiblageProche(getCoordonees()));
         Zone explosion = new ZoneSimple(getCoordonees(), getCibles(), degatsInstantane, 30, getAlteration(), rayonInstantane);
-        Environnement.getUniqueInstance().ajouterZone(explosion);
+        Environnement.getInstance().ajouterZone(explosion);
         Zone explosionDuree = new ZonePersistante(getCoordonees(), getCibles(), getDegats(), tempsZone, getAlteration(), rayonZonePortee, reconnaissance);
-        Environnement.getUniqueInstance().ajouterZone(explosionDuree);
+        Environnement.getInstance().ajouterZone(explosionDuree);
     }
 
 

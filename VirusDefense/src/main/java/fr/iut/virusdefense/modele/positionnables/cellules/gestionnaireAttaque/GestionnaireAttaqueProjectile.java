@@ -14,7 +14,7 @@ public class GestionnaireAttaqueProjectile extends GestionnaireAttaque {
     }
 
     public void attaque(Maladie m){
-        Environnement.getUniqueInstance().ajouterProjectile(new Projectile(getCoordonees(), m, getDegats(), getAlteration()));
+        Environnement.getInstance().ajouterProjectile(new Projectile(getCoordonees(), m, getDegats(), getAlteration()));
     }
 
     public void attaqueCibles(){

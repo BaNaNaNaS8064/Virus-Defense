@@ -27,6 +27,6 @@ public class CapaciteInvocation implements Capacite {
     public void activer(Maladie m) {
         int n = nombreAInvoquer();
         for (int i = 0; i < n; i++)
-            Environnement.getUniqueInstance().ajouterMaladie(FabriqueMaladie.créerMaladie(invoque, (int) m.getLigne(), (int) m.getColonne()));
+            Environnement.getInstance().ajouterMaladie(FabriqueMaladie.créerMaladie(invoque, (int) m.getLigne(), (int) m.getColonne()));
     }
 }

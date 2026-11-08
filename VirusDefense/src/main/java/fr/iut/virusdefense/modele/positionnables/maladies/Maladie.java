@@ -57,7 +57,7 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     }
 
     public boolean aAtteintLObjectif(){
-        return Environnement.getUniqueInstance().getCarte().getObjectif().equals(position());
+        return Environnement.getInstance().getCarte().getObjectif().equals(position());
     }
 
     @Override
@@ -79,13 +79,13 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
     }
 
     public void bouger(){
-        getCoordonees().copier(gestionnaireDeplacement.prochainEmplacement(this, vitesse * coefVitesse, new Coordonees(Environnement.getUniqueInstance().getDeplacement().prochaineCase(position()))));
+        getCoordonees().copier(gestionnaireDeplacement.prochainEmplacement(this, vitesse * coefVitesse, new Coordonees(Environnement.getInstance().getDeplacement().prochaineCase(position()))));
     }
 
     public abstract boolean peutSubirAlteration();
 
     public void infligerDegatsAuJoueur(){
-        Environnement.getUniqueInstance().getJoueur().retirerPv((int) pv);
+        Environnement.getInstance().getJoueur().retirerPv((int) pv);
     }
 
     public void ralentir(double coefRalentissement){

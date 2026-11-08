@@ -48,6 +48,6 @@ public class PointApparition extends Positionnable implements Acteur {
     private void ajouterDansLEnvironnement(CodeMaladie codeMaladie){
         Maladie m = FabriqueMaladie.créerMaladie(codeMaladie, (int) getLigne(), (int) getColonne());
         if (m != null)
-            Environnement.getUniqueInstance().ajouterMaladie(m);
+            Environnement.getInstance().ajouterMaladie(m);
     }
 }

@@ -14,6 +14,6 @@ public abstract class GestionnaireAttaqueRayon extends GestionnaireAttaque {
     }
 
     public final void attaque(Maladie m, double degats){
-        Environnement.getUniqueInstance().ajouterRayon(new Rayon(getCoordonees(), m, degats, 2, getAlteration()));
+        Environnement.getInstance().ajouterRayon(new Rayon(getCoordonees(), m, degats, 2, getAlteration()));
     }
 }
