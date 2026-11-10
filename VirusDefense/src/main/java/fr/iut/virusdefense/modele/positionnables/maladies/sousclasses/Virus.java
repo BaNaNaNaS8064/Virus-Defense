@@ -4,7 +4,7 @@ import fr.iut.virusdefense.modele.enums.CodeMaladie;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 
 public class Virus extends Maladie {
-    public Virus(int ligne, int colonne){
+    public Virus(double ligne, double colonne){
         super(ligne, colonne, 500, 0.015, 30);
     }
 

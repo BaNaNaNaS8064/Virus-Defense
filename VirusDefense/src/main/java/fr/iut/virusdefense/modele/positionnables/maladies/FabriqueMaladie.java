@@ -1,10 +1,13 @@
 package fr.iut.virusdefense.modele.positionnables.maladies;
 
 import fr.iut.virusdefense.modele.enums.CodeMaladie;
+import fr.iut.virusdefense.modele.positionnables.maladies.decorateurs.Blindee;
 import fr.iut.virusdefense.modele.positionnables.maladies.sousclasses.*;
 
 public class FabriqueMaladie {
-    public static Maladie créerMaladie(CodeMaladie codeMaladie, int ligne, int colonne) {
+    public static Maladie creerMaladie(CodeMaladie codeMaladie, double ligne, double colonne) {
+        ligne+=0.5;
+        colonne+=0.5;
         return switch (codeMaladie) {
             case BACTERIEBANALE -> new BacterieBanale(ligne, colonne);
             case PARASITE -> new Parasite(ligne, colonne);
@@ -19,5 +22,8 @@ public class FabriqueMaladie {
         };
     }
 
-
+    public static Maladie creerBlindee(CodeMaladie codeMaladie, double ligne, double colonne) {
+        Maladie maladieBase = creerMaladie(codeMaladie, ligne, colonne);
+        return maladieBase==null ? null : new Blindee(maladieBase);
+    }
 }

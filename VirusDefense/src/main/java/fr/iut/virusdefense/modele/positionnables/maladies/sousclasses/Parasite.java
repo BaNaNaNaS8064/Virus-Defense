@@ -5,7 +5,7 @@ import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 
 public class Parasite extends Maladie {
 
-    public Parasite(int ligne, int colonne){
+    public Parasite(double ligne, double colonne){
         super(ligne, colonne, 80, 0.022, 10);
     }
 

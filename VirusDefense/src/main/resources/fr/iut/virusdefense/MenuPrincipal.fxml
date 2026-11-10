@@ -16,6 +16,7 @@
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <ChoiceBox fx:id="menuChoixNiveau" prefWidth="150.0" translateY="20"/>
+         <ChoiceBox fx:id="menuChoixDifficulte" prefWidth="150.0" translateY="20"/>
 
          <Button mnemonicParsing="false" onMouseClicked="#commencerJeu" style="-fx-background-color: transparent" translateY="50">
             <graphic>

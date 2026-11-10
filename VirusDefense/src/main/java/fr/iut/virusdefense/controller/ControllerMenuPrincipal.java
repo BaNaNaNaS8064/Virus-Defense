@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 public class ControllerMenuPrincipal implements Initializable {
     @FXML public Pane paneMenuPrincipal;
     @FXML public ChoiceBox<String> menuChoixNiveau;
+    @FXML public ChoiceBox<String> menuChoixDifficulte;
 
     public FXMLLoader fxmlLoaderJeu;
     public Controller controller;
@@ -27,6 +28,10 @@ public class ControllerMenuPrincipal implements Initializable {
             menuChoixNiveau.getItems().addAll(niveaux);
             menuChoixNiveau.getItems().sort(String::compareTo);
             menuChoixNiveau.setValue(menuChoixNiveau.getItems().get(0));
+
+            menuChoixDifficulte.getItems().add("Normal");
+            menuChoixDifficulte.getItems().add("Difficile");
+            menuChoixDifficulte.setValue(menuChoixDifficulte.getItems().get(0));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -40,9 +45,9 @@ public class ControllerMenuPrincipal implements Initializable {
     }
 
     public void commencerJeu(){
-        if (menuChoixNiveau.getValue() != null){
+        if (menuChoixNiveau.getValue() != null && menuChoixDifficulte.getValue() != null){
             Main.changerScene();
-            controller.changerNiveauEtJouer(menuChoixNiveau.getValue());
+            controller.changerNiveauEtJouer(menuChoixNiveau.getValue(), menuChoixDifficulte.getValue());
         }
     }
 }

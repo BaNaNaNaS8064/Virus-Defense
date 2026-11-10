@@ -4,7 +4,7 @@ import fr.iut.virusdefense.modele.enums.CodeMaladie;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 
 public class PetitChampignon extends Maladie {
-    public PetitChampignon(int ligne, int colonne){
+    public PetitChampignon(double ligne, double colonne){
         super(ligne, colonne, 75, 0.02, 7);
     }
 
