@@ -19,7 +19,7 @@ public enum CodeMaladie {
         if (m == null) {
             return CodeMaladie.MALADIEINCONNUE;
         }
-        
+
         return m.getCodeMaladie();
     }
 }

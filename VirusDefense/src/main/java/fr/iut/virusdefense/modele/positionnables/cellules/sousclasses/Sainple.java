@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.modele.positionnables.cellules.sousclasses;
 
+import fr.iut.virusdefense.modele.enums.CodeTuile;
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaqueProjectile;
@@ -45,4 +46,8 @@ public class Sainple extends Cellule {
         return "Sainple";
     }
 
+    @Override
+    public CodeTuile getCodeTuile() {
+        return CodeTuile.SAINPLE;
+    }
 }
