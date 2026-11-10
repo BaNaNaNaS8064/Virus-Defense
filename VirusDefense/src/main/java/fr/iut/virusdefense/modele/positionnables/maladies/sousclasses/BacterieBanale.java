@@ -4,7 +4,7 @@ import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 
 public class BacterieBanale extends Maladie {
 
-    public BacterieBanale(int ligne, int colonne){
+    public BacterieBanale(double ligne, double colonne){
         super(ligne, colonne, 120, 0.02, 20);
     }
 

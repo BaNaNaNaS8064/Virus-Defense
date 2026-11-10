@@ -1,6 +1,7 @@
 package fr.iut.virusdefense.modele.enums;
 
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
+import fr.iut.virusdefense.modele.positionnables.maladies.decorateurs.DecorateurMaladie;
 import fr.iut.virusdefense.modele.positionnables.maladies.sousclasses.*;
 
 public enum CodeMaladie {
@@ -36,6 +37,9 @@ public enum CodeMaladie {
 
         if (m instanceof Tumeur)
             return TUMEUR;
+
+        if (m instanceof DecorateurMaladie)
+            return codeDe( ((DecorateurMaladie) m).getMaladie_origine());
 
         return MALADIEINCONNUE;
     }

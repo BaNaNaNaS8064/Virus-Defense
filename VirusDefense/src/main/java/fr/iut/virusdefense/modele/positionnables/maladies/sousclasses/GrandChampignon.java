@@ -7,7 +7,7 @@ import fr.iut.virusdefense.modele.positionnables.maladies.capacites.CapaciteInvo
 import fr.iut.virusdefense.modele.positionnables.maladies.capacites.CapacitePeriodique;
 
 public class GrandChampignon extends Maladie {
-    public GrandChampignon(int ligne, int colonne){
+    public GrandChampignon(double ligne, double colonne){
         super(ligne, colonne, 1000, 0.015, 100);
         Capacite capaciteInvocation = new CapaciteInvocation(CodeMaladie.PETITCHAMPIGNON, 3, 5);
         setCapacitePeriodique(new CapacitePeriodique(capaciteInvocation, 300, 120));
