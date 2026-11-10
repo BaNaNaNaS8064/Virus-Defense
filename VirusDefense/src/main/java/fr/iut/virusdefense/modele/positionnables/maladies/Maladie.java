@@ -93,8 +93,6 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
         coefVitesse *= coefRalentissement;
     }
 
-    public abstract CodeMaladie getCodeMaladie();
-
     public void activerCapacitePeriodique(){
         if (capacitePeriodique != null)
             capacitePeriodique.activer(this);
@@ -105,4 +103,6 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
             this.capaciteMort.activer(this);
         }
     }
+
+    public abstract CodeMaladie getCodeMaladie();
 }
