@@ -17,4 +17,9 @@ public class GrandChampignon extends Maladie {
     public boolean peutSubirAlteration() {
         return true;
     }
+
+    @Override
+    public CodeMaladie getCodeMaladie() {
+        return CodeMaladie.GRANDCHAMPIGNON;
+    }
 }

@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.modele.positionnables.cellules.sousclasses;
 
+import fr.iut.virusdefense.modele.enums.CodeTuile;
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonSimple;
@@ -45,4 +46,9 @@ public class Lasere extends Cellule {
         return "L'asère";
     }
 
+
+    @Override
+    public CodeTuile getCodeTuile() {
+        return CodeTuile.LASERE;
+    }
 }

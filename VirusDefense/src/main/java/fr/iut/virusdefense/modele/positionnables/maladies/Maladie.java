@@ -3,6 +3,7 @@ package fr.iut.virusdefense.modele.positionnables.maladies;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.acteurs.ActeurRetirable;
 import fr.iut.virusdefense.modele.deplacement.GestionnaireDeplacement;
+import fr.iut.virusdefense.modele.enums.CodeMaladie;
 import fr.iut.virusdefense.modele.positionnables.Positionnable;
 import fr.iut.virusdefense.modele.positionnables.maladies.capacites.Capacite;
 import fr.iut.virusdefense.modele.positionnables.maladies.capacites.CapacitePeriodique;
@@ -102,4 +103,6 @@ public abstract class Maladie extends Positionnable implements ActeurRetirable {
             this.capaciteMort.activer(this);
         }
     }
+
+    public abstract CodeMaladie getCodeMaladie();
 }
