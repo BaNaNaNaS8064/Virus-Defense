@@ -30,9 +30,6 @@ public class Environnement {
 
     private static Environnement uniqueInstance = null;
 
-    /**
-     * Créé un terrain sans maladies
-     */
     private Environnement(String idNiveau) {
         carte = new LecteurCarte(idNiveau).creer();
         deplacement = new Deplacement(carte);
@@ -78,11 +75,6 @@ public class Environnement {
         statutPartieProperty.setValue(statutPartie);
     }
 
-    /**
-     * Ajoute {@code m} à {@code maladies}
-     *
-     * @param m une maladie à ajouter
-     */
     public void ajouterMaladie(Maladie m) {
         gestionnaireActeur.getMaladies().add(m);
     }
@@ -135,9 +127,6 @@ public class Environnement {
         gestionnaireActeur.getZones().add(z);
     }
 
-    /**
-     * La méthode qui s'éxécute à chaque tour
-     */
     public void unTour() {
         if (getStatutPartie() == StatutPartie.PASTERMINEE) {
             if (joueur.getPv() <= 0 || (Niveau.getInstance().estTermine() && gestionnaireActeur.getMaladies().isEmpty())) {
@@ -166,11 +155,6 @@ public class Environnement {
         return false;
     }
 
-
-    /**
-     * Vérifie si les générateurs ont un chemins disponible pour les maladies vers la fin.
-     * @return Vrai si bloqué
-     */
     public boolean pointsApparitionBloques(){
         for (PointApparition pointApparition : gestionnaireActeur.getPointApparitions()) {
             if(deplacement.estBloquee(pointApparition.position()))

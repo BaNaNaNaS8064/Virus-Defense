@@ -75,10 +75,9 @@ public class Carte {
     }
 
     /**
-     * Retourne vrai si (ligne;colonne) se trouve dans les bornes de la carte
      * @param ligne une ligne
      * @param colonne une colonne
-     * @return si (i;y) se trouve dans les bornes de la carte
+     * @return si (ligne;colonne) se trouve dans les bornes de la carte
      */
     public boolean dansBornes(double ligne, double colonne) {
         return (0 <= ligne && ligne < getHauteur()) && (0 <= colonne && colonne < getLargeur());

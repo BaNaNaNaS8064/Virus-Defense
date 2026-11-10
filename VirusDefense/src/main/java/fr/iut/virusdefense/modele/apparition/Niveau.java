@@ -66,7 +66,7 @@ public class Niveau {
     /**
      * Démmare la prochaine vague,
      * c'est à dire met à jour les listes d'apparitions des points d'apparition
-     * de la carte de {@code environnement}
+     * de la carte
      */
     public void passerProchaineVague(){
         numVagueProperty.setValue(getNumVague() + 1);
@@ -76,7 +76,6 @@ public class Niveau {
     }
 
     /**
-     * Retourne vrai s'il reste des vagues, faux sinon
      * @return vrai s'il reste des vagues, faux sinon
      */
     public boolean resteVague(){
@@ -104,7 +103,6 @@ public class Niveau {
     }
 
     /**
-     * Retourne le nombre de vagues du niveau
      * @return le nombre de vagues du niveau
      */
     public int nombreDeVagues(){

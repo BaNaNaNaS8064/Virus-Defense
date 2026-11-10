@@ -20,7 +20,6 @@ public class Vague {
     }
 
     /**
-     * Retourne la liste de listes d'apparitions de la vagues
      * @return la liste de listes d'apparitions de la vagues
      */
     public ArrayList<ListeApparition> getListeApparitions() {
@@ -36,7 +35,6 @@ public class Vague {
     }
 
     /**
-     * Retourne vrai si la vague est terminée, faux sinon
      * @return true si la vague est terminée, false sinon
      */
     public boolean estTerminee(){
