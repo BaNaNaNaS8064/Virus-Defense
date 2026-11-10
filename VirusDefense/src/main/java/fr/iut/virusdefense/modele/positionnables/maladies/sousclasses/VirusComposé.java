@@ -24,4 +24,9 @@ public class VirusComposé extends Maladie {
         return true;
     }
 
+    @Override
+    public CodeMaladie getCodeMaladie() {
+        return CodeMaladie.valueOf("VIRUSCOMPOSE_"+ getStade());
+    }
+
 }

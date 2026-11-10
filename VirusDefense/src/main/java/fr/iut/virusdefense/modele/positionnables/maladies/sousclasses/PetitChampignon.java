@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.modele.positionnables.maladies.sousclasses;
 
+import fr.iut.virusdefense.modele.enums.CodeMaladie;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 
 public class PetitChampignon extends Maladie {
@@ -12,4 +13,8 @@ public class PetitChampignon extends Maladie {
         return true;
     }
 
+    @Override
+    public CodeMaladie getCodeMaladie() {
+        return CodeMaladie.PETITCHAMPIGNON;
+    }
 }
