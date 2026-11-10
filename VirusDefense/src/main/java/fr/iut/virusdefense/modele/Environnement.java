@@ -6,6 +6,7 @@ import fr.iut.virusdefense.modele.apparition.PointApparition;
 import fr.iut.virusdefense.modele.carte.Carte;
 import fr.iut.virusdefense.modele.carte.LecteurCarte;
 import fr.iut.virusdefense.modele.deplacement.Deplacement;
+import fr.iut.virusdefense.modele.enums.Difficulte;
 import fr.iut.virusdefense.modele.enums.StatutPartie;
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.modele.positionnables.cellules.attaques.Projectile;
@@ -45,9 +46,9 @@ public class Environnement {
         return uniqueInstance;
     }
 
-    public static void creerInstance(String idNiveau){
+    public static void creerInstance(String idNiveau, Difficulte difficulte){
         uniqueInstance = new Environnement(idNiveau);
-        Niveau.creerUniqueInstance(idNiveau);
+        Niveau.creerUniqueInstance(idNiveau, difficulte);
     }
 
     public Carte getCarte() {
