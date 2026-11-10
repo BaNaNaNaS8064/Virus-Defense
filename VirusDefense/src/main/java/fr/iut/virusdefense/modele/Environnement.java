@@ -8,6 +8,7 @@ import fr.iut.virusdefense.modele.carte.LecteurCarte;
 import fr.iut.virusdefense.modele.deplacement.Deplacement;
 import fr.iut.virusdefense.modele.enums.StatutPartie;
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
+import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 import fr.iut.virusdefense.modele.positionnables.cellules.attaques.Projectile;
 import fr.iut.virusdefense.modele.positionnables.cellules.attaques.Rayon;
 import fr.iut.virusdefense.modele.positionnables.cellules.attaques.Zone;
@@ -34,6 +35,7 @@ public class Environnement {
      * Créé un terrain sans maladies
      */
     private Environnement(String idNiveau) {
+        new LecteurStatsCellules("stats/stats_cellules.txt");
         carte = new LecteurCarte(idNiveau).creer();
         deplacement = new Deplacement(carte);
         joueur = new Joueur();

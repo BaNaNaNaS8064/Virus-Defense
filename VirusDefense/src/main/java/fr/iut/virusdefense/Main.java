@@ -15,7 +15,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        new LecteurStatsCellules("stats/stats_cellules.txt");
 
         paneEnsemble = new StackPane();
         Scene scene = initScene();

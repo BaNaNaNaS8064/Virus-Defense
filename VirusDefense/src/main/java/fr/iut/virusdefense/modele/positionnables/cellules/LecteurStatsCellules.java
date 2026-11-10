@@ -39,6 +39,9 @@ public class LecteurStatsCellules extends LecteurFichier {
         }
     }
     public static StatsCellule getStatistique(String nomCellule){
+        if (statistiques == null) {
+            new LecteurStatsCellules("stats/stats_cellules.txt");
+        }
         return statistiques.get(nomCellule.toUpperCase());
     }
 }

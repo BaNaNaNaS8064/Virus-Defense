@@ -3,12 +3,16 @@ package fr.iut.virusdefense.modele.positionnables.maladies.sousclasses;
 import fr.iut.virusdefense.modele.enums.CodeMaladie;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 import fr.iut.virusdefense.modele.positionnables.maladies.capacites.CapaciteInvocation;
+import fr.iut.virusdefense.modele.positionnables.maladies.LecteurStatsMaladies;
 
 public class VirusComposé extends Maladie {
     private final int stade;
 
     public VirusComposé(double ligne, double colonne, int stade){
-        super(ligne, colonne, 333/(int)(Math.pow(2,(stade-1))), 0.013, 24/(int)(Math.pow(2,(stade-1))));
+        super(ligne, colonne, LecteurStatsMaladies.getStatistique("VIRUSCOMPOSE_" + stade).pv(),
+                LecteurStatsMaladies.getStatistique("VIRUSCOMPOSE_"+ stade).vitesse(),
+                LecteurStatsMaladies.getStatistique("VIRUSCOMPOSE_"+ stade).recompense()
+        );
         this.stade = stade;
 
         if (stade > 0 && stade < 3)
