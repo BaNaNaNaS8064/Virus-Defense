@@ -3,6 +3,7 @@ package fr.iut.virusdefense.modele.apparition;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.acteurs.Acteur;
 import fr.iut.virusdefense.modele.enums.CodeMaladie;
+import fr.iut.virusdefense.modele.enums.Difficulte;
 import fr.iut.virusdefense.modele.positionnables.Positionnable;
 import fr.iut.virusdefense.modele.positionnables.maladies.FabriqueMaladie;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
@@ -46,7 +47,12 @@ public class PointApparition extends Positionnable implements Acteur {
     }
 
     private void ajouterDansLEnvironnement(CodeMaladie codeMaladie){
-        Maladie m = FabriqueMaladie.créerMaladie(codeMaladie, (int) getLigne(), (int) getColonne());
+        Maladie m;
+        if (Niveau.getInstance().getDifficulte() == Difficulte.DIFFICILE)
+            m = FabriqueMaladie.creerBlindee(codeMaladie, (int) getLigne(), (int) getColonne());
+        else
+            m = FabriqueMaladie.creerMaladie(codeMaladie, (int) getLigne(), (int) getColonne());
+
         if (m != null)
             Environnement.getInstance().ajouterMaladie(m);
     }
