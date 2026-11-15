@@ -14,11 +14,7 @@ import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ciblage
 import java.util.List;
 
 public class Pouazon extends Cellule {
-    private static int coutBase = 850;
 
-    public static int getCoutBase() {
-        return coutBase;
-    }
 
     public Pouazon( int ligne, int colonne){
         super(ligne, colonne,

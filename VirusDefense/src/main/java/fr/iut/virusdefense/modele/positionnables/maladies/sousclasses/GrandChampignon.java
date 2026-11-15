@@ -8,7 +8,7 @@ import fr.iut.virusdefense.modele.positionnables.maladies.capacites.CapacitePeri
 import fr.iut.virusdefense.modele.positionnables.maladies.LecteurStatsMaladies;
 
 public class GrandChampignon extends Maladie {
-    public GrandChampignon(int ligne, int colonne){
+    public GrandChampignon(double ligne, double colonne){
         super(ligne, colonne,
                 LecteurStatsMaladies.getStatistique("GrandChampignon").pv(),
                 LecteurStatsMaladies.getStatistique("GrandChampignon").vitesse(),

@@ -10,11 +10,7 @@ import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.Reconna
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ciblage.CiblageProche;
 
 public class RizCocher extends Cellule {
-    private static int coutBase = 900;
 
-    public static int getCoutBase() {
-        return coutBase;
-    }
 
     public RizCocher(int ligne, int colonne){
         super(ligne, colonne,

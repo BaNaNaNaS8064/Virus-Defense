@@ -9,11 +9,6 @@ import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ciblage
 
 public class MuleTyple extends Cellule {
 
-    private static int coutBase = 600;
-
-    public static int getCoutBase() {
-        return coutBase;
-    }
 
     public MuleTyple(int ligne, int colonne){
         super(ligne, colonne,

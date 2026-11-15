@@ -8,11 +8,7 @@ import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.Reconna
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ciblage.CiblageProche;
 
 public class Lasere extends Cellule {
-    private static int coutBase = 200;
 
-    public static int getCoutBase() {
-        return coutBase;
-    }
 
     public Lasere(int ligne, int colonne){
         super(ligne, colonne

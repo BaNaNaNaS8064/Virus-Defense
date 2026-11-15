@@ -5,7 +5,7 @@ import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 import fr.iut.virusdefense.modele.positionnables.maladies.LecteurStatsMaladies;
 
 public class Tumeur extends Maladie {
-    public Tumeur(int ligne, int colonne){
+    public Tumeur(double ligne, double colonne){
         super(ligne, colonne,
                 LecteurStatsMaladies.getStatistique("TUMEUR").pv(),
                 LecteurStatsMaladies.getStatistique("TUMEUR").vitesse(),

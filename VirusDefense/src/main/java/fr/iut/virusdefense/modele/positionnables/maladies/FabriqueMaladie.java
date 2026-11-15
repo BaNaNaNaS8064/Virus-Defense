@@ -10,15 +10,15 @@ public class FabriqueMaladie {
         ligne+=0.5;
         colonne+=0.5;
         return switch (codeMaladie) {
-            case BACTERIEBANALE -> new BacterieBanale((int)ligne, (int)colonne);
-            case PARASITE -> new Parasite((int)ligne, (int)colonne);
-            case VIRUS -> new Virus((int)ligne, (int)colonne);
-            case VIRUSCOMPOSE_1 -> new VirusComposé((int)ligne, (int)colonne, 1);
-            case VIRUSCOMPOSE_2 -> new VirusComposé((int)ligne, (int)colonne, 2);
-            case VIRUSCOMPOSE_3 -> new VirusComposé((int)ligne, (int)colonne, 3);
-            case PETITCHAMPIGNON -> new PetitChampignon((int)ligne, (int)colonne);
-            case GRANDCHAMPIGNON -> new GrandChampignon((int)ligne, (int)colonne);
-            case TUMEUR -> new Tumeur((int)ligne, (int)colonne);
+            case BACTERIEBANALE -> new BacterieBanale(ligne, colonne);
+            case PARASITE -> new Parasite(ligne, colonne);
+            case VIRUS -> new Virus(ligne, colonne);
+            case VIRUSCOMPOSE_1 -> new VirusComposé(ligne, colonne, 1);
+            case VIRUSCOMPOSE_2 -> new VirusComposé(ligne, colonne, 2);
+            case VIRUSCOMPOSE_3 -> new VirusComposé(ligne, colonne, 3);
+            case PETITCHAMPIGNON -> new PetitChampignon(ligne, colonne);
+            case GRANDCHAMPIGNON -> new GrandChampignon(ligne, colonne);
+            case TUMEUR -> new Tumeur(ligne, colonne);
             default -> null;
         };
     }

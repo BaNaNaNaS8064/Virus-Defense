@@ -9,11 +9,7 @@ import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ciblage
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ciblage.CiblageProche;
 
 public class Konsantre extends Cellule {
-    private static int coutBase = 1000;
 
-    public static int getCoutBase() {
-        return coutBase;
-    }
 
     public Konsantre(int ligne, int colonne){
         super(ligne, colonne,

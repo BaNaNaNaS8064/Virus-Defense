@@ -9,11 +9,7 @@ import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ciblage
 
 public class Sainple extends Cellule {
 
-    private static int coutBase = 50;
 
-    public static int getCoutBase() {
-        return coutBase;
-    }
 
     public Sainple(int ligne, int colonne){
         super(ligne, colonne,              LecteurStatsCellules.getStatistique("SAINPLE").frequence(),

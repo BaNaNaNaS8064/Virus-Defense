@@ -8,12 +8,8 @@ import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.Reconna
 import fr.iut.virusdefense.modele.positionnables.cellules.reconnaissance.ciblage.CiblagePlusDePV;
 
 public class Brulhure extends Cellule {
-    private static int coutBase = 1300;
     private final int tempsZone;
 
-    public static int getCoutBase() {
-        return coutBase;
-    }
 
     public Brulhure(int ligne, int colonne) {
         super(ligne, colonne,

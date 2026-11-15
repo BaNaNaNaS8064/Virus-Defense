@@ -5,7 +5,7 @@ import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 import fr.iut.virusdefense.modele.positionnables.maladies.LecteurStatsMaladies;
 
 public class Virus extends Maladie {
-    public Virus(int ligne, int colonne){
+    public Virus(double ligne, double colonne){
         super(ligne, colonne, LecteurStatsMaladies.getStatistique("VIRUS").pv(),
                 LecteurStatsMaladies.getStatistique("VIRUS").vitesse(),
                 LecteurStatsMaladies.getStatistique("VIRUS").recompense());

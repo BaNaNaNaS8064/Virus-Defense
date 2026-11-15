@@ -6,7 +6,7 @@ import fr.iut.virusdefense.modele.positionnables.maladies.LecteurStatsMaladies;
 
 public class BacterieBanale extends Maladie {
 
-    public BacterieBanale(int ligne, int colonne){
+    public BacterieBanale(double ligne, double colonne){
         super(ligne, colonne,
                 LecteurStatsMaladies.getStatistique("BACTERIEBANALE").pv(),
                 LecteurStatsMaladies.getStatistique("BACTERIEBANALE").vitesse(),
