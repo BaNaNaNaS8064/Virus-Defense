@@ -50,7 +50,6 @@ public class ListeApparition {
     }
 
     /**
-     * Retourne vrai s'il reste une/des maladie(s) à faire apparaître, faux sinon
      * @return true s'il reste une/des maladie(s) à faire apparaître, false sinon
      */
     public boolean resteProchain(){

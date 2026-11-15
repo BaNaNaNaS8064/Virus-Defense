@@ -1,7 +1,6 @@
 package fr.iut.virusdefense.modele.enums;
 
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
-import fr.iut.virusdefense.modele.positionnables.maladies.sousclasses.*;
 
 public enum CodeMaladie {
     MALADIEINCONNUE,
@@ -16,27 +15,10 @@ public enum CodeMaladie {
     VIRUSCOMPOSE_3;
 
     public static CodeMaladie codeDe(Maladie m) {
-        if (m instanceof BacterieBanale)
-            return BACTERIEBANALE;
+        if (m == null) {
+            return CodeMaladie.MALADIEINCONNUE;
+        }
 
-        if (m instanceof Parasite)
-            return PARASITE;
-
-        if (m instanceof Virus)
-            return VIRUS;
-
-        if (m instanceof VirusComposé)
-            return CodeMaladie.valueOf("VIRUSCOMPOSE_"+ ((VirusComposé) m).getStade());
-
-        if (m instanceof PetitChampignon)
-            return PETITCHAMPIGNON;
-
-        if (m instanceof GrandChampignon)
-            return GRANDCHAMPIGNON;
-
-        if (m instanceof Tumeur)
-            return TUMEUR;
-
-        return MALADIEINCONNUE;
+        return m.getCodeMaladie();
     }
 }

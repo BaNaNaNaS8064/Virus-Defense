@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.modele.positionnables.maladies.sousclasses;
 
+import fr.iut.virusdefense.modele.enums.CodeMaladie;
 import fr.iut.virusdefense.modele.positionnables.maladies.Maladie;
 import fr.iut.virusdefense.modele.positionnables.maladies.LecteurStatsMaladies;
 
@@ -16,4 +17,8 @@ public class Tumeur extends Maladie {
         return false;
     }
 
+    @Override
+    public CodeMaladie getCodeMaladie() {
+        return CodeMaladie.TUMEUR;
+    }
 }

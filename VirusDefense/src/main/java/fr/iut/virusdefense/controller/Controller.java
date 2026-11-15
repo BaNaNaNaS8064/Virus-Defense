@@ -4,6 +4,7 @@ import fr.iut.virusdefense.Main;
 import fr.iut.virusdefense.controller.observateurs.*;
 import fr.iut.virusdefense.modele.Environnement;
 import fr.iut.virusdefense.modele.apparition.Niveau;
+import fr.iut.virusdefense.modele.enums.Difficulte;
 import fr.iut.virusdefense.modele.enums.StatutPartie;
 import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 import fr.iut.virusdefense.modele.positionnables.cellules.sousclasses.*;
@@ -76,6 +77,7 @@ public class Controller implements Initializable {
     private GestionnaireClick gestionnaireClick;
 
     private String idNiveau;
+    private String difficulte;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {}
@@ -90,7 +92,7 @@ public class Controller implements Initializable {
         boutonVague.setStyle("-fx-background-color: #79911B");
         boutonVague.setOnMousePressed(this::démarrerVague);
 
-        Environnement.creerInstance(idNiveau);
+        Environnement.creerInstance(idNiveau, Difficulte.valueOf(difficulte.toUpperCase()));
 
         afficheurDeCarte = new AfficheurDeCarte(tuiles, new AfficheurDeChemin(paneLignes));
         gestionnaireClick = new GestionnaireClick(toggleGrpCellules, afficheurDeCarte , paneCentre);
@@ -190,8 +192,9 @@ public class Controller implements Initializable {
     }
 
 
-    public void changerNiveauEtJouer(String id){
+    public void changerNiveauEtJouer(String id, String difficulte){
         idNiveau = id;
+        this.difficulte = difficulte;
         démarrerEnv();
     }
 

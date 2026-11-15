@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.modele.positionnables.cellules.sousclasses;
 
+import fr.iut.virusdefense.modele.enums.CodeTuile;
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaqueProjectileExplosif;
@@ -47,4 +48,8 @@ public class Brulhure extends Cellule {
         return "Brul-hure";
     }
 
+    @Override
+    public CodeTuile getCodeTuile() {
+        return CodeTuile.BRULHURE;
+    }
 }

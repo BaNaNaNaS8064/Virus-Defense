@@ -1,5 +1,6 @@
 package fr.iut.virusdefense.modele.positionnables.cellules.sousclasses;
 
+import fr.iut.virusdefense.modele.enums.CodeTuile;
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
 import fr.iut.virusdefense.modele.positionnables.cellules.gestionnaireAttaque.GestionnaireAttaqueRayonConcentre;
@@ -44,6 +45,11 @@ public class Konsantre extends Cellule {
     @Override
     public String getNom() {
         return "Konsantré";
+    }
+
+    @Override
+    public CodeTuile getCodeTuile() {
+        return CodeTuile.KONSANTRE;
     }
 
 }

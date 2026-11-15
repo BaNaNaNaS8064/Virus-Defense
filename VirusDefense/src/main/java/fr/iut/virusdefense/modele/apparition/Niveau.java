@@ -1,6 +1,7 @@
 package fr.iut.virusdefense.modele.apparition;
 
 import fr.iut.virusdefense.modele.Environnement;
+import fr.iut.virusdefense.modele.enums.Difficulte;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
@@ -25,12 +26,16 @@ public class Niveau {
     /// le nombre restant de tours avant la prochain vague
     int delai;
 
+    /// La difficulté des maladies
+    private Difficulte difficulte;
+
     private static Niveau uniqueInstance = null;
 
-    private Niveau(String idNiveau){
+    private Niveau(String idNiveau, Difficulte difficulte) {
         delaiEntreVagues = 600;
         delai = Integer.MAX_VALUE;
         numVagueProperty = new SimpleIntegerProperty(-1);
+        this.difficulte = difficulte;
         initVagues(idNiveau);
     }
 
@@ -38,8 +43,8 @@ public class Niveau {
         return uniqueInstance;
     }
 
-    public static void creerUniqueInstance(String idNiveau){
-        uniqueInstance = new Niveau(idNiveau);
+    public static void creerUniqueInstance(String idNiveau, Difficulte difficulte){
+        uniqueInstance = new Niveau(idNiveau, difficulte);
     }
 
     public final int getNumVague(){
@@ -54,6 +59,10 @@ public class Niveau {
         numVagueProperty.setValue(numVague);
     }
 
+    public Difficulte getDifficulte() {
+        return difficulte;
+    }
+
     /**
      * Créé toutes les vagues du niveau {@code idNiveau} <br>
      * Chaque vague aura autant de listes d'apparition
@@ -66,7 +75,7 @@ public class Niveau {
     /**
      * Démmare la prochaine vague,
      * c'est à dire met à jour les listes d'apparitions des points d'apparition
-     * de la carte de {@code environnement}
+     * de la carte
      */
     public void passerProchaineVague(){
         numVagueProperty.setValue(getNumVague() + 1);
@@ -76,7 +85,6 @@ public class Niveau {
     }
 
     /**
-     * Retourne vrai s'il reste des vagues, faux sinon
      * @return vrai s'il reste des vagues, faux sinon
      */
     public boolean resteVague(){
@@ -104,7 +112,6 @@ public class Niveau {
     }
 
     /**
-     * Retourne le nombre de vagues du niveau
      * @return le nombre de vagues du niveau
      */
     public int nombreDeVagues(){

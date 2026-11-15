@@ -6,6 +6,7 @@ import fr.iut.virusdefense.modele.apparition.PointApparition;
 import fr.iut.virusdefense.modele.carte.Carte;
 import fr.iut.virusdefense.modele.carte.LecteurCarte;
 import fr.iut.virusdefense.modele.deplacement.Deplacement;
+import fr.iut.virusdefense.modele.enums.Difficulte;
 import fr.iut.virusdefense.modele.enums.StatutPartie;
 import fr.iut.virusdefense.modele.positionnables.cellules.Cellule;
 import fr.iut.virusdefense.modele.positionnables.cellules.LecteurStatsCellules;
@@ -31,9 +32,6 @@ public class Environnement {
 
     private static Environnement uniqueInstance = null;
 
-    /**
-     * Créé un terrain sans maladies
-     */
     private Environnement(String idNiveau) {
         new LecteurStatsCellules("stats/stats_cellules.txt");
         carte = new LecteurCarte(idNiveau).creer();
@@ -47,9 +45,9 @@ public class Environnement {
         return uniqueInstance;
     }
 
-    public static void creerInstance(String idNiveau){
+    public static void creerInstance(String idNiveau, Difficulte difficulte){
         uniqueInstance = new Environnement(idNiveau);
-        Niveau.creerUniqueInstance(idNiveau);
+        Niveau.creerUniqueInstance(idNiveau, difficulte);
     }
 
     public Carte getCarte() {
@@ -80,11 +78,6 @@ public class Environnement {
         statutPartieProperty.setValue(statutPartie);
     }
 
-    /**
-     * Ajoute {@code m} à {@code maladies}
-     *
-     * @param m une maladie à ajouter
-     */
     public void ajouterMaladie(Maladie m) {
         gestionnaireActeur.getMaladies().add(m);
     }
@@ -137,9 +130,6 @@ public class Environnement {
         gestionnaireActeur.getZones().add(z);
     }
 
-    /**
-     * La méthode qui s'éxécute à chaque tour
-     */
     public void unTour() {
         if (getStatutPartie() == StatutPartie.PASTERMINEE) {
             if (joueur.getPv() <= 0 || (Niveau.getInstance().estTermine() && gestionnaireActeur.getMaladies().isEmpty())) {
@@ -168,11 +158,6 @@ public class Environnement {
         return false;
     }
 
-
-    /**
-     * Vérifie si les générateurs ont un chemins disponible pour les maladies vers la fin.
-     * @return Vrai si bloqué
-     */
     public boolean pointsApparitionBloques(){
         for (PointApparition pointApparition : gestionnaireActeur.getPointApparitions()) {
             if(deplacement.estBloquee(pointApparition.position()))
