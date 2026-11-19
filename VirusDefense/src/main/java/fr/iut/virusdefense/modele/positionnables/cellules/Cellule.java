@@ -20,7 +20,7 @@ public abstract class Cellule extends Positionnable implements Acteur {
 
     private final List <Amelioration> ameliorations;
 
-    public Cellule(double ligne, double colonne, int frequenceAttaque, int[] couts) {
+    public Cellule(int ligne, int colonne, int frequenceAttaque, int[] couts) {
         super(ligne, colonne);
 
         this.frequenceAttaque = frequenceAttaque;
